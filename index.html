@@ -307,8 +307,8 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
     <button class="b b-or" onclick="addSrv()">🔧 Registrar</button>
   </div></div>
   <div class="ch" id="chS">
-    <button class="b b-gh bs ac" onclick="fS='all';rSrv();uc(this)">Todos</button>
-    <button class="b b-gh bs" onclick="fS='Pendiente';rSrv();uc(this)">⏳ Pendientes</button>
+    <button class="b b-gh bs" onclick="fS='all';rSrv();uc(this)">Todos</button>
+    <button class="b b-gh bs ac" onclick="fS='Pendiente';rSrv();uc(this)">⏳ Pendientes</button>
     <button class="b b-gh bs" onclick="fS='Listo';rSrv();uc(this)">✅ Listos</button>
     <button class="b b-gh bs" onclick="fS='Entregado';rSrv();uc(this)">📦 Entregados</button>
   </div>
@@ -475,11 +475,17 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
   <div class="p"><div class="ph"><span class="pt">📊 Reportes</span></div><div class="pb">
     <div class="ch">
       <button class="b b-gh bs ac" onclick="rep('hoy',this)">Hoy</button>
+      <button class="b b-gh bs" onclick="rep('ayer',this)">Ayer</button>
       <button class="b b-gh bs" onclick="rep('sem',this)">Semana</button>
       <button class="b b-gh bs" onclick="rep('mes',this)">Mes</button>
       <button class="b b-gh bs" onclick="rep('all',this)">Total</button>
     </div>
+    <div class="fg" style="margin-bottom:12px">
+      <div class="ff"><label>Desde</label><input type="date" id="r-desde" onchange="repRango()"></div>
+      <div class="ff"><label>Hasta</label><input type="date" id="r-hasta" onchange="repRango()"></div>
+    </div>
     <div id="rC"></div>
+    <div id="rH" style="margin-top:14px"></div>
   </div></div>
 </div>
 
@@ -498,7 +504,7 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 // CORE
 // ============================================================
 let URL_=localStorage.getItem('vtp_url')||'',ON=false,uV=null,rN=parseInt(localStorage.getItem('vtp_rn')||'1');
-let micA=false,rec=null,fS='all',fT='hoy',fI='all';
+let micA=false,rec=null,fS='Pendiente',fT='hoy',fI='all';
 const D={inventario:[],ventas:[],cambios:[],compras:[],clientes:[],fiados:[],trabajadores:[],pagos:[],proveedores:[],servicios:[],tareas:[]};
 
 // API
@@ -736,14 +742,66 @@ function rPrv(){const tb=$('tPr');if(!D.proveedores.length){tb.innerHTML='<tr><t
 // REPORTES
 // ============================================================
 function rep(per,btn){
-  if(btn)uc(btn);const h=new Date(),fil=f=>{if(!f)return false;const p=f.split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);if(per==='hoy')return d.toDateString()===h.toDateString();if(per==='sem')return d>=new Date(h.getTime()-7*864e5);if(per==='mes')return d.getMonth()===h.getMonth()&&d.getFullYear()===h.getFullYear();return true;};
+  if(btn)uc(btn);const h=new Date(),ayer=new Date(h.getTime()-864e5);
+  const fil=f=>{if(!f)return false;const p=f.split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);
+    if(per==='hoy')return d.toDateString()===h.toDateString();
+    if(per==='ayer')return d.toDateString()===ayer.toDateString();
+    if(per==='sem')return d>=new Date(h.getTime()-7*864e5);
+    if(per==='mes')return d.getMonth()===h.getMonth()&&d.getFullYear()===h.getFullYear();
+    return true;};
+  repDatos(fil,per);
+}
+
+function repRango(){
+  const desde=$('r-desde').value,hasta=$('r-hasta').value;
+  if(!desde||!hasta)return;
+  const dD=new Date(desde),dH=new Date(hasta);
+  const fil=f=>{if(!f)return false;const p=f.split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);return d>=dD&&d<=new Date(dH.getTime()+864e5);};
+  repDatos(fil,'rango');
+}
+
+function repDatos(fil,per){
   const v=D.ventas.filter(x=>fil(x.fecha)),s=D.servicios.filter(x=>fil(x.fecha)),c=D.cambios.filter(x=>fil(x.fecha)),co=D.compras.filter(x=>fil(x.fecha)),pa=D.pagos.filter(x=>fil(x.fecha));
-  const tV=v.reduce((a,x)=>a+(+x.precio||0),0),tG=v.reduce((a,x)=>a+(+x.ganancia||0),0),tS=s.reduce((a,x)=>a+(+x.abono||0),0),tCg=c.reduce((a,x)=>a+(+x.ganancia||0),0),tCo=co.reduce((a,x)=>a+(+x.total||0),0),tP=pa.reduce((a,x)=>a+(+x.monto||0),0);
-  const ing=tG+tS+tCg,gas=tCo+tP,net=ing-gas;
+  const tV=v.reduce((a,x)=>a+(+x.precio||0),0),tG=v.reduce((a,x)=>a+(+x.ganancia||0),0);
+  const tSval=s.reduce((a,x)=>a+(+x.valor||0),0),tSabo=s.reduce((a,x)=>a+(+x.abono||0),0);
+  const tCg=c.reduce((a,x)=>a+(+x.ganancia||0),0),tCo=co.reduce((a,x)=>a+(+x.total||0),0),tP=pa.reduce((a,x)=>a+(+x.monto||0),0);
+  const ing=tG+tSabo+tCg,gas=tCo+tP,net=ing-gas;
   const pr={};v.forEach(x=>{pr[x.producto]=(pr[x.producto]||0)+1;});const top=Object.entries(pr).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  $('rC').innerHTML=`<div class="sg" style="grid-template-columns:repeat(2,1fr)"><div class="sc gr"><div class="sl">Ingresos</div><div class="sv" style="color:var(--green)">${cop(ing)}</div></div><div class="sc rd"><div class="sl">Gastos</div><div class="sv" style="color:var(--red)">${cop(gas)}</div></div><div class="sc ${net>=0?'gr':'rd'}" style="grid-column:1/-1"><div class="sl">Neto</div><div class="sv" style="color:${net>=0?'var(--green)':'var(--red)'}">${cop(net)}</div></div></div>
-  <div class="p"><div class="ph"><span class="pt">📊 Detalle</span></div><div class="pb"><div style="line-height:2;font-size:14px">💰 Ventas: <strong>${v.length}</strong> — ${cop(tV)} — Ganancia: <span class="cop">${cop(tG)}</span><br>🔧 Servicios: <strong>${s.length}</strong> — <span class="cop">${cop(tS)}</span><br>🔄 Cambios: <strong>${c.length}</strong> — <span class="cop">${cop(tCg)}</span><br>🛒 Compras: <strong>${co.length}</strong> — <span style="color:var(--red)">${cop(tCo)}</span><br>👷 Pagos: <strong>${pa.length}</strong> — <span style="color:var(--red)">${cop(tP)}</span></div></div></div>
-  ${top.length?`<div class="p"><div class="ph"><span class="pt">🏆 Top Productos</span></div><div class="pb"><table><thead><tr><th>Producto</th><th>Ventas</th></tr></thead><tbody>${top.map(([n,c])=>`<tr><td>${n}</td><td><span class="bg bg-gd">${c}</span></td></tr>`).join('')}</tbody></table></div></div>`:''}`;
+  
+  // Servicios por tipo
+  const srvTipo={};s.forEach(x=>{const t=x.tipo||'Otro';if(!srvTipo[t])srvTipo[t]={cant:0,valor:0,abono:0};srvTipo[t].cant++;srvTipo[t].valor+=(+x.valor||0);srvTipo[t].abono+=(+x.abono||0);});
+  const srvList=Object.entries(srvTipo).sort((a,b)=>b[1].cant-a[1].cant);
+
+  $('rC').innerHTML=`
+  <div class="sg" style="grid-template-columns:repeat(2,1fr)">
+    <div class="sc gr"><div class="sl">Ingresos</div><div class="sv" style="color:var(--green)">${cop(ing)}</div></div>
+    <div class="sc rd"><div class="sl">Gastos</div><div class="sv" style="color:var(--red)">${cop(gas)}</div></div>
+    <div class="sc ${net>=0?'gr':'rd'}" style="grid-column:1/-1"><div class="sl">Neto</div><div class="sv" style="color:${net>=0?'var(--green)':'var(--red)'}">${cop(net)}</div></div>
+  </div>
+  <div class="p"><div class="ph"><span class="pt">📊 Detalle</span></div><div class="pb"><div style="line-height:2;font-size:14px">
+    💰 Ventas: <strong>${v.length}</strong> — ${cop(tV)} — Ganancia: <span class="cop">${cop(tG)}</span><br>
+    🔧 Servicios: <strong>${s.length}</strong> — Valor: ${cop(tSval)} — Cobrado: <span class="cop">${cop(tSabo)}</span><br>
+    🔄 Cambios: <strong>${c.length}</strong> — <span class="cop">${cop(tCg)}</span><br>
+    🛒 Compras: <strong>${co.length}</strong> — <span style="color:var(--red)">${cop(tCo)}</span><br>
+    👷 Pagos: <strong>${pa.length}</strong> — <span style="color:var(--red)">${cop(tP)}</span>
+  </div></div></div>
+  ${top.length?`<div class="p"><div class="ph"><span class="pt">🏆 Top Productos</span></div><div class="pb"><table><thead><tr><th>Producto</th><th>Ventas</th></tr></thead><tbody>${top.map(([n,c])=>`<tr><td>${n}</td><td><span class="bg bg-gd">${c}</span></td></tr>`).join('')}</tbody></table></div></div>`:''}
+  ${srvList.length?`<div class="p"><div class="ph"><span class="pt">🔧 Servicios por Tipo</span></div><div class="pb"><table><thead><tr><th>Tipo</th><th>Cantidad</th><th>Valor</th><th>Cobrado</th></tr></thead><tbody>${srvList.map(([t,d])=>`<tr><td>${t}</td><td><span class="bg bg-or">${d.cant}</span></td><td>${cop(d.valor)}</td><td class="cop">${cop(d.abono)}</td></tr>`).join('')}</tbody></table></div></div>`:''}`;
+
+  // Historial día por día
+  if(per!=='hoy'&&per!=='ayer'){
+    const dias={};
+    v.forEach(x=>{if(!dias[x.fecha])dias[x.fecha]={ventas:0,servicios:0,ingVta:0,ganVta:0,ingSrv:0,cambios:0,ganCam:0};dias[x.fecha].ventas++;dias[x.fecha].ingVta+=(+x.precio||0);dias[x.fecha].ganVta+=(+x.ganancia||0);});
+    s.forEach(x=>{if(!dias[x.fecha])dias[x.fecha]={ventas:0,servicios:0,ingVta:0,ganVta:0,ingSrv:0,cambios:0,ganCam:0};dias[x.fecha].servicios++;dias[x.fecha].ingSrv+=(+x.abono||0);});
+    c.forEach(x=>{if(!dias[x.fecha])dias[x.fecha]={ventas:0,servicios:0,ingVta:0,ganVta:0,ingSrv:0,cambios:0,ganCam:0};dias[x.fecha].cambios++;dias[x.fecha].ganCam+=(+x.ganancia||0);});
+    const sorted=Object.entries(dias).sort((a,b)=>{const pa=a[0].split('/'),pb=b[0].split('/');return new Date(+pb[2],pb[1]-1,+pb[0])-new Date(+pa[2],pa[1]-1,+pa[0]);});
+    if(sorted.length){
+      $('rH').innerHTML=`<div class="p"><div class="ph"><span class="pt">📅 Historial por Día</span></div><div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Ventas</th><th>Servicios</th><th>Cambios</th><th>Ganancia</th></tr></thead><tbody>${sorted.map(([f,d])=>{
+        const ganTotal=d.ganVta+d.ingSrv+d.ganCam;
+        return `<tr><td style="color:var(--muted)">${f}</td><td><span class="bg bg-gd">${d.ventas}</span></td><td><span class="bg bg-or">${d.servicios}</span></td><td><span class="bg bg-bl">${d.cambios}</span></td><td style="color:var(--green);font-weight:700">${cop(ganTotal)}</td></tr>`;
+      }).join('')}</tbody></table></div></div></div>`;
+    }else{$('rH').innerHTML='';}
+  }else{$('rH').innerHTML='';}
 }
 
 // ============================================================
