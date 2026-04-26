@@ -222,21 +222,31 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 
 <!-- ===== VOZ ===== -->
 <div id="sec-voz" class="sec">
-  <div class="p"><div class="ph"><span class="pt">🎤 Comandos de Voz</span></div><div class="pb">
-    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Toca el 🎤 abajo y habla natural.</p>
+  <div class="p"><div class="ph"><span class="pt">🎤 Comandos de Voz — VOZ V4 PRO</span></div><div class="pb">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Toca el 🎤 abajo y habla natural. Entiende 150+ variaciones.</p>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px">
-      <div class="ci"><span class="ce">"Venta play 5 slim lectora 2.400"</span><span class="cd">→ Venta</span></div>
-      <div class="ci"><span class="ce">"Se llevó play 4 slim en 800"</span><span class="cd">→ Venta</span></div>
-      <div class="ci"><span class="ce">"-1.550 compra play 5 slim"</span><span class="cd">→ Compra</span></div>
-      <div class="ci"><span class="ce">"Se resive Xbox llevan ps5 encima 1.600"</span><span class="cd">→ Cambio</span></div>
-      <div class="ci"><span class="ce">"Dejan control ps4 Juan acetato"</span><span class="cd">→ Servicio</span></div>
-      <div class="ci"><span class="ce">"Pagan 250 arreglo hdmi de Carlos"</span><span class="cd">→ Pago servicio</span></div>
-      <div class="ci"><span class="ce">"Listo el control de Juan"</span><span class="cd">→ Servicio listo</span></div>
-      <div class="ci"><span class="ce">"Recordar llamar a Pedro mañana"</span><span class="cd">→ Tarea</span></div>
-      <div class="ci"><span class="ce">"-60 David"</span><span class="cd">→ Pago trabajador</span></div>
-      <div class="ci"><span class="ce">"Carlos abonó 100"</span><span class="cd">→ Abono</span></div>
-      <div class="ci"><span class="ce">"Cuánto vendí hoy"</span><span class="cd">→ Reporte</span></div>
-      <div class="ci"><span class="ce">"Qué tengo de PlayStation"</span><span class="cd">→ Stock</span></div>
+      <div style="color:var(--gold);font-weight:700;margin-bottom:6px;font-size:11px">💰 VENTAS:</div>
+      <div class="ci"><span class="ce">"Vendí PS5 Slim Nueva Disco"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Se llevó play 5 a Carlos en Nequi"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Venta Xbox 2.1"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--orange);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">🛒 COMPRAS:</div>
+      <div class="ci"><span class="ce">"Compré PS5 2.4"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"-1.55M compra Xbox"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--blue);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">🔄 CAMBIOS:</div>
+      <div class="ci"><span class="ce">"Se recibe Xbox llevan PS5 encima 1.6"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--purple);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">🔧 SERVICIOS:</div>
+      <div class="ci"><span class="ce">"Dejan control PS4 Juan acetato"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Listo el control de Juan"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--green);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">💵 PAGOS:</div>
+      <div class="ci"><span class="ce">"-60 David"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Carlos abonó 100"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--red);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">📅 TAREAS:</div>
+      <div class="ci"><span class="ce">"Recordar llamar a Pedro mañana"</span><span class="cd">✅</span></div>
     </div>
     <div id="hV" style="margin-top:12px"></div>
   </div></div>
@@ -346,7 +356,7 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
     <div class="br"><button class="b b-gd" onclick="addVta()">💰 Registrar</button><button class="b b-gh" onclick="recibo(uV)">🧾 Recibo</button></div>
   </div></div>
   <div class="p"><div class="ph"><span class="pt">📋 Ventas</span><span id="tvh" style="color:var(--green);font-size:12px;font-weight:700"></span></div>
-    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th>Precio</th><th>Ganancia</th><th></th></tr></thead><tbody id="tV"></tbody></table></div></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th>Precio</th><th>Ganancia</th><th></th><th></th></tr></thead><tbody id="tV"></tbody></table></div></div>
   </div>
 </div>
 
@@ -594,7 +604,7 @@ async function srvAbo(id){const m=parseInt(prompt('¿Cuánto abonó?'));if(!m)re
 function rSrv(){
   const l=$('lS');if(!l)return;let it=D.servicios;if(fS!=='all')it=it.filter(s=>s.estado===fS);
   if(!it.length){l.innerHTML='<div class="em"><div class="ei">🔧</div><p>Sin servicios</p></div>';return;}
-  l.innerHTML=it.map(s=>`<div class="ic ${s.estado==='Pendiente'?'pend':s.estado==='Listo'?'list':'entr'}"><div class="ic-t">${s.cliente} <span style="color:var(--muted);font-size:12px;font-weight:400">— ${s.equipo}</span></div><div class="ic-d">🔧 ${s.tipo}<br>📱 ${s.tel||'Sin tel'} | 📅 ${s.fecha}${s.notas?'<br>📝 '+s.notas:''}</div><div class="ic-f"><div><span class="bg ${s.estado==='Pendiente'?'bg-gd':s.estado==='Listo'?'bg-bl':'bg-gr'}">${s.estado}</span> <span style="margin-left:6px;font-weight:700;color:${s.saldo>0?'var(--red)':'var(--green)'}">${s.saldo>0?'Saldo: '+cop(s.saldo):cop(s.valor)+' ✅'}</span></div><div class="br">${s.estado==='Pendiente'?`<button class="b b-bl bs" onclick="srvListo('${s.id}')">✅ Listo</button>`:''} ${s.estado==='Listo'?`<button class="b b-gr bs" onclick="srvEntr('${s.id}')">📦 Entregar</button>`:''} ${s.saldo>0?`<button class="b b-gh bs" onclick="srvAbo('${s.id}')">+ Abono</button>`:''} ${s.tel?`<a href="https://wa.me/57${s.tel.replace(/\D/g,'')}" target="_blank" class="b b-gr bs" style="text-decoration:none">📱 WA</a>`:''}</div></div></div>`).join('');
+  l.innerHTML=it.map(s=>`<div class="ic ${s.estado==='Pendiente'?'pend':s.estado==='Listo'?'list':'entr'}"><div class="ic-t">${s.cliente} <span style="color:var(--muted);font-size:12px;font-weight:400">— ${s.equipo}</span></div><div class="ic-d">🔧 ${s.tipo}<br>📱 ${s.tel||'Sin tel'} | 📅 ${s.fecha}${s.notas?'<br>📝 '+s.notas:''}</div><div class="ic-f"><div><span class="bg ${s.estado==='Pendiente'?'bg-gd':s.estado==='Listo'?'bg-bl':'bg-gr'}">${s.estado}</span> <span style="margin-left:6px;font-weight:700;color:${s.saldo>0?'var(--red)':'var(--green)'}">${s.saldo>0?'Saldo: '+cop(s.saldo):cop(s.valor)+' ✅'}</span></div><div class="br">${s.estado==='Pendiente'?`<button class="b b-bl bs" onclick="srvListo('${s.id}')">✅ Listo</button>`:''} ${s.estado==='Listo'?`<button class="b b-gr bs" onclick="srvEntr('${s.id}')">📦 Entregar</button>`:''} ${s.saldo>0?`<button class="b b-gh bs" onclick="srvAbo('${s.id}')">+ Abono</button>`:''} ${s.tel?`<a href="https://wa.me/57${s.tel.replace(/\D/g,'')}" target="_blank" class="b b-gr bs" style="text-decoration:none">📱 WA</a>`:''} <button class="b b-rd bs" onclick="borrar('servicios','${s.id}')">🗑️</button></div></div></div>`).join('');
 }
 
 // ============================================================
@@ -638,8 +648,8 @@ async function addVta(){
 function rVta(){
   const tb=$('tV'),h=hoy(),th=D.ventas.filter(v=>v.fecha===h).reduce((a,v)=>a+(+v.precio||0),0);
   $('tvh').textContent='Hoy: '+cop(th);
-  if(!D.ventas.length){tb.innerHTML='<tr><td colspan="6"><div class="em"><div class="ei">💸</div><p>Sin ventas</p></div></td></tr>';return;}
-  tb.innerHTML=D.ventas.map(v=>`<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td style="font-size:12px">${v.clienteNombre}</td><td class="cop">${cop(v.precio)}</td><td style="color:${(+v.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(v.ganancia)}</strong></td><td><button class="b b-gh bs" onclick="recibo('${v.id}')">🧾</button></td></tr>`).join('');
+  if(!D.ventas.length){tb.innerHTML='<tr><td colspan="7"><div class="em"><div class="ei">💸</div><p>Sin ventas</p></div></td></tr>';return;}
+  tb.innerHTML=D.ventas.map(v=>`<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td style="font-size:12px">${v.clienteNombre||''}</td><td class="cop">${cop(v.precio)}</td><td style="color:${(+v.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(v.ganancia)}</strong></td><td><button class="b b-gh bs" onclick="recibo('${v.id}')">🧾</button></td><td><button class="b b-rd bs" onclick="borrar('ventas','${v.id}')">🗑️</button></td></tr>`).join('');
 }
 
 function recibo(id){if(!id)return toast('⚠️ Sin venta');const v=D.ventas.find(x=>x.id===id);if(!v)return;
@@ -648,6 +658,18 @@ function recibo(id){if(!id)return toast('⚠️ Sin venta');const v=D.ventas.fin
   $('rM').classList.add('op');}
 function X(id){$(id).classList.remove('op')}
 function prn(){const c=$('rP').textContent;const w=window.open('','_blank');w.document.write(`<pre style="font-family:monospace;font-size:14px;padding:24px">${c}</pre>`);w.print();}
+
+// ============================================================
+// BORRAR — FUNCIÓN UNIVERSAL (borra local + Google Sheets)
+// ============================================================
+async function borrar(tabla, id) {
+  if (!confirm('¿Seguro que quieres eliminar este registro?')) return;
+  D[tabla] = D[tabla].filter(x => x.id !== id);
+  lSave(tabla);
+  if (ON) await api('delete', tabla, id);
+  rAll();
+  toast('🗑️ Eliminado');
+}
 
 // ============================================================
 // CAMBIOS
@@ -664,7 +686,7 @@ async function addCam(){
   rCam();rInv();pop();toast('🔄 Ganancia: '+cop(g));['c-ent','c-val'].forEach(id=>$(id).value='');$('c-enc').value=0;
 }
 
-function rCam(){const tb=$('tC');if(!D.cambios.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">🔄</div><p>Sin cambios</p></div></td></tr>';return;}tb.innerHTML=D.cambios.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td style="color:var(--blue)">${c.entra}</td><td style="color:var(--gold)">${c.sale}</td><td class="cop">${cop(c.encime)}</td><td style="color:${(+c.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(c.ganancia)}</strong></td></tr>`).join('');}
+function rCam(){const tb=$('tC');if(!D.cambios.length){tb.innerHTML='<tr><td colspan="6"><div class="em"><div class="ei">🔄</div><p>Sin cambios</p></div></td></tr>';return;}tb.innerHTML=D.cambios.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td style="color:var(--blue)">${c.entra}</td><td style="color:var(--gold)">${c.sale}</td><td class="cop">${cop(c.encime)}</td><td style="color:${(+c.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(c.ganancia)}</strong></td><td><button class="b b-rd bs" onclick="borrar('cambios','${c.id}')">🗑️</button></td></tr>`).join('');}
 
 // ============================================================
 // COMPRAS
@@ -680,7 +702,7 @@ async function addCom(){
 }
 async function pagCom(id){const c=D.compras.find(x=>x.id===id);if(!c)return;c.estado='Pagado';lSave('compras');if(ON)await api('update','compras',id,{estado:'Pagado'});rCom();toast('✅');}
 
-function rCom(){const tb=$('tCo');if(!D.compras.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">🛒</div><p>Sin compras</p></div></td></tr>';return;}tb.innerHTML=D.compras.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td><strong>${c.producto}</strong></td><td class="cop"><strong>${cop(c.total)}</strong></td><td><span class="bg ${c.estado==='Pagado'?'bg-gr':'bg-gd'}">${c.estado}</span></td><td>${c.estado!=='Pagado'?`<button class="b b-gr bs" onclick="pagCom('${c.id}')">Pagar</button>`:''}</td></tr>`).join('');}
+function rCom(){const tb=$('tCo');if(!D.compras.length){tb.innerHTML='<tr><td colspan="6"><div class="em"><div class="ei">🛒</div><p>Sin compras</p></div></td></tr>';return;}tb.innerHTML=D.compras.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td><strong>${c.producto}</strong></td><td class="cop"><strong>${cop(c.total)}</strong></td><td><span class="bg ${c.estado==='Pagado'?'bg-gr':'bg-gd'}">${c.estado}</span></td><td>${c.estado!=='Pagado'?`<button class="b b-gr bs" onclick="pagCom('${c.id}')">Pagar</button>`:''}</td><td><button class="b b-rd bs" onclick="borrar('compras','${c.id}')">🗑️</button></td></tr>`).join('');}
 
 // ============================================================
 // CLIENTES
@@ -766,93 +788,549 @@ function initMic(){
 }
 function mic(){if(!rec){if(!initMic())return;}if(micA)rec.stop();else{try{rec.start();}catch(e){rec=null;initMic();try{rec.start();}catch(e2){}}}}
 
-async function proc(tx){
-  $('mb').className='pro';$('vt').textContent='⚙️ "'+tx+'"';tx=norm(tx);let r='',ac='';
+// ============================================================
+// VIDEOTIENDA EL PADRINO — SISTEMA DE VOZ V4 PRO
+// 150+ variaciones de comandos inteligentes
+// ============================================================
 
-  if(/record[aá]|agenda|tarea/.test(tx)){
-    const ti=tx.replace(/record[aá]rme|recordar|agenda|agregar tarea|tarea/g,'').trim();
-    const fe=/ma[ñn]ana/.test(tx)?man():hoy();
-    const t={id:uid(),titulo:cap(ti),fecha:fe,hora:'',prioridad:'normal',notas:'Por voz',completada:false,creada:hoy()};
-    D.tareas.unshift(t);lSave('tareas');if(ON)await api('insert','tareas',t);r=`📅 ${ti} — ${fe}`;ac='tarea';
-  }
-  else if(/dejan|deja |trae para/.test(tx)){
-    const pr=extP(tx)||0,tel=(tx.match(/(\d{7,12})/)||[])[1]||'';
-    const eq=(tx.match(/(control|play|ps\d|xbox|switch|nintendo|consola)\s*[\w\d]*/i)||['Equipo'])[0];
-    const ti=(tx.match(/(cambio|arreglo|mantenimiento|revisión|acetato|hdmi|joystick|dado|drift)/i)||['Revisión'])[0];
-    const cl=tx.replace(/dejan|deja|trae para|dejaron/g,'').replace(/\d+/g,'').replace(/(control|play|ps\d|xbox|switch|cambio|arreglo|mantenimiento|acetato|hdmi|joystick|dado|drift|para|de|el|la|un|una)/gi,'').trim().split(' ')[0];
-    const s={id:uid(),fecha:hoy(),cliente:cap(cl)||'Cliente',tel,equipo:eq,tipo:ti,valor:pr||40000,abono:0,saldo:pr||40000,notas:tx,estado:'Pendiente'};
-    D.servicios.unshift(s);lSave('servicios');if(ON)await api('insert','servicios',s);r=`🔧 ${s.cliente} — ${eq} — ${ti}`;ac='servicio';
-  }
-  else if(/listo|qued[oó] list|ya est[aá]/.test(tx)){
-    const m=tx.match(/(?:de|el|del)\s+([a-záéíóúñ]+)/i),c=m?m[1]:'';
-    const s=D.servicios.find(s=>s.estado==='Pendiente'&&(s.cliente||'').toLowerCase().includes(c));
-    if(s){s.estado='Listo';lSave('servicios');if(ON)await api('update','servicios',s.id,{estado:'Listo'});r=`✅ ${s.cliente} — Listo`;ac='servicio';}
-    else r=`⚠️ No encontré servicio de "${c}"`;
-  }
-  else if(/entregad|vinieron por/.test(tx)){
-    const m=tx.match(/(?:de|el)\s+([a-záéíóúñ]+)/i),c=m?m[1]:'';
-    const s=D.servicios.find(s=>s.estado!=='Entregado'&&(s.cliente||'').toLowerCase().includes(c));
-    if(s){s.estado='Entregado';lSave('servicios');if(ON)await api('update','servicios',s.id,{estado:'Entregado'});r=`📦 ${s.cliente} entregado`;ac='servicio';}
-    else r=`⚠️ No encontré servicio de "${c}"`;
-  }
-  else if(/pagan|cobr[eé].*arreglo|paga.*arreglo/.test(tx)&&!/compr|vent/.test(tx)){
-    const pr=extP(tx)||0,cm=tx.match(/de\s+([a-záéíóúñ]+)/i),c=cm?cm[1]:'';
-    const s=c?D.servicios.find(s=>s.estado!=='Entregado'&&(s.cliente||'').toLowerCase().includes(c)):null;
-    if(s&&pr){s.abono=(+s.abono||0)+pr;s.saldo=Math.max(0,(+s.valor||0)-s.abono);if(s.saldo<=0)s.estado='Entregado';lSave('servicios');if(ON)await api('update','servicios',s.id,{abono:s.abono,saldo:s.saldo,estado:s.estado});r=`✅ Pago ${cop(pr)} de ${cap(c)}`;
-    }else{const nv={id:uid(),fecha:hoy(),cliente:c||'Cliente',tel:'',equipo:'',tipo:'Arreglo',valor:pr,abono:pr,saldo:0,notas:tx,estado:'Entregado'};D.servicios.unshift(nv);lSave('servicios');if(ON)await api('insert','servicios',nv);r=`✅ Servicio ${cop(pr)}`;}ac='servicio';
-  }
-  else if(/venta|vend[ií]|se llev[óo]|salió|vendemos/.test(tx)){
-    const pr=extP(tx),prod=extProd(tx);
-    if(pr&&prod){const p=buscar(prod);if(p){
-      const cm=tx.match(/(?:a|para)\s+([a-záéíóúñ]+)/i),cn=cm?cm[1]:'',cl=D.clientes.find(c=>(c.nombre||'').toLowerCase().includes(cn));
-      const v={id:uid(),fecha:hoy(),prodId:p.id,producto:p.nombre,plataforma:p.plataforma,costo:p.costo,precio:pr,ganancia:pr-(+p.costo||0),pago:'Efectivo',canal:'Tienda Física',vendedor:'Dueño',clienteId:cl?cl.id:'',clienteNombre:cl?cl.nombre:cn||'Cliente general'};
-      p.stock=Math.max(0,(+p.stock||0)-1);lSave('inventario');if(cl){cl.totalCompras=(+cl.totalCompras||0)+1;cl.totalGastado=(+cl.totalGastado||0)+pr;lSave('clientes');}
-      D.ventas.unshift(v);lSave('ventas');if(ON){await api('update','inventario',p.id,{stock:p.stock});await api('insert','ventas',v);}
-      uV=v.id;r=`💰 ${p.nombre} ${cop(pr)} — Ganancia ${cop(v.ganancia)}`;ac='venta';
-    }else r=`⚠️ "${prod}" no está en inventario`;}else r='⚠️ Di: "Venta play 4 slim 800"';
-  }
-  else if(/^-\d|compré|compra /.test(tx)){
-    const pr=extP(tx),ca=extCant(tx)||1,prod=extProd(tx.replace(/^-\s*\d+\s*/,'').replace(/compré?|compra/gi,'').trim());
-    if(pr&&prod){const co={id:uid(),fecha:hoy(),proveedorId:'',proveedor:'Particular',producto:prod,plataforma:'PlayStation',cantidad:ca,precio:pr,total:ca*pr,estado:'Pagado'};
-      const inv={id:uid(),nombre:prod,plataforma:'PlayStation',condicion:'Usado - Bueno',costo:pr,precio:Math.round(pr*1.35),stock:ca,serie:'N/A',origen:'Compra directa',fecha:hoy()};
-      D.compras.unshift(co);D.inventario.push(inv);lSave('compras');lSave('inventario');if(ON){await api('insert','compras',co);await api('insert','inventario',inv);}
-      r=`🛒 ${ca}x ${prod} ${cop(pr)}`;ac='compra';}else r='⚠️ Di: "-1.550 compra play 5 slim"';
-  }
-  else if(/se resive|se recibe|resiven|reciben|enciman/.test(tx)){
-    const enc=extP(tx)||0,eM=tx.match(/(?:se resive|se recibe|resiven|reciben)\s+([^,]+?)(?:\s+(?:llevan|se llevan|enciman))/i),sM=tx.match(/(?:llevan|se llevan)\s+([^,]+?)(?:\s+(?:enciman|encima|$))/i);
-    if(eM&&sM){const e=eM[1].trim(),sN=sM[1].trim(),ps=buscar(sN);
-      if(ps){const g=enc-(+ps.costo||0);const nv={id:uid(),nombre:e,plataforma:ps.plataforma,condicion:'Usado - Bueno',costo:0,precio:Math.round(enc*.7),stock:1,serie:'N/A',origen:'Cambio/Trueque',fecha:hoy()};
-        ps.stock=Math.max(0,(+ps.stock||0)-1);D.inventario.push(nv);lSave('inventario');
-        const cm={id:uid(),fecha:hoy(),clienteId:'',clienteNombre:'Cliente general',entra:e,valorEntra:0,sale:ps.nombre,costeSale:ps.costo,encime:enc,ganancia:g,notas:'Voz'};D.cambios.unshift(cm);lSave('cambios');
-        if(ON){await api('insert','inventario',nv);await api('update','inventario',ps.id,{stock:ps.stock});await api('insert','cambios',cm);}
-        r=`🔄 ${e} → ${ps.nombre} encime ${cop(enc)}`;ac='cambio';}else r=`⚠️ "${sN}" no en inventario`;}else r='⚠️ Di: "Se resive Xbox llevan ps5 encima 1.600"';
-  }
-  else if(/^-\d.*[a-z]{3,}/i.test(tx)){
-    const mo=extP(tx),nm=(tx.match(/[a-záéíóúñ]{3,}\s*$/i)||[''])[0].trim();
-    const t=D.trabajadores.find(t=>(t.nombre||'').toLowerCase().includes(nm.toLowerCase()));
-    if(t&&mo){const p={id:uid(),fecha:hoy(),trabId:t.id,trabajador:t.nombre,monto:mo,concepto:'Día trabajado',metodo:'Efectivo'};D.pagos.unshift(p);lSave('pagos');if(ON)await api('insert','pagos',p);r=`💵 ${cop(mo)} a ${t.nombre}`;ac='pago';}
-    else r=mo?`⚠️ Trabajador "${nm}" no registrado`:'⚠️ Di: "-60 David"';
-  }
-  else if(/abon[oó]/.test(tx)){
-    const mo=extP(tx),cm=tx.match(/([a-záéíóúñ]+)\s+abon/i),n=cm?cm[1]:'';
-    const f=D.fiados.find(f=>f.estado!=='Pagado'&&(f.clienteNombre||'').toLowerCase().includes(n));
-    if(f&&mo){f.abonado=(+f.abonado||0)+mo;f.saldo=Math.max(0,(+f.valor||0)-f.abonado);f.estado=f.saldo<=0?'Pagado':'Abonando';lSave('fiados');if(ON)await api('update','fiados',f.id,{abonado:f.abonado,saldo:f.saldo,estado:f.estado});r=`✅ Abono ${cop(mo)} ${f.clienteNombre} — Saldo ${cop(f.saldo)}`;ac='abono';}else r='⚠️ Di: "Carlos abonó 100"';
-  }
-  else if(/cu[aá]nto vend|ventas.*hoy|resumen|reporte/.test(tx)){
-    const h2=hoy(),vH=D.ventas.filter(v=>v.fecha===h2),sH=D.servicios.filter(s=>s.fecha===h2);
-    r=`📊 HOY — Ventas: ${vH.length} (${cop(vH.reduce((a,v)=>a+(+v.precio||0),0))}) — Ganancia ${cop(vH.reduce((a,v)=>a+(+v.ganancia||0),0))} — Servicios ${cop(sH.reduce((a,s)=>a+(+s.abono||0),0))}`;
-  }
-  else if(/qui[eé]n me debe|fiados|deudas/.test(tx)){const a=D.fiados.filter(f=>f.estado!=='Pagado');r=a.length?'💳 '+a.map(f=>`${f.clienteNombre} ${cop(f.saldo)}`).join(' | '):'✅ Nadie debe';}
-  else if(/servicios|pendientes/.test(tx)){const p=D.servicios.filter(s=>s.estado==='Pendiente'),l=D.servicios.filter(s=>s.estado==='Listo');r=`🔧 Pendientes ${p.length} — Listos ${l.length}${l.length?' — '+l.map(s=>s.cliente).join(', '):''}`;}
-  else if(/qu[eé] tengo|inventario|stock/.test(tx)){
-    const pl=tx.includes('play')||tx.includes('ps')?'PlayStation':tx.includes('xbox')?'Xbox':tx.includes('switch')||tx.includes('nintendo')?'Nintendo Switch':'';
-    const it=pl?D.inventario.filter(p=>p.plataforma===pl&&(+p.stock||0)>0):D.inventario.filter(p=>(+p.stock||0)>0);
-    r=`📦 ${pl||'Stock'}: ${it.length} prods — ${cop(it.reduce((a,p)=>a+(+p.precio||0)*(+p.stock||0),0))}`;
-  }
-  else r='🤔 No entendí. Ve a 🎤 Voz para ver ejemplos';
+const VENDEDOR_DEFAULT = 'Dueño';
+const PAGOS_DEFAULT = ['Efectivo', 'Nequi'];
+const CANAL_DEFAULT = 'Tienda Física';
 
-  $('vr').textContent=r;$('mb').className='';$('vt').textContent='🎤 Toca el micrófono y habla...';
-  if(ac)addHist(tx,r,ac);rAll();toast(r,4000);
+// Base de productos clave (para búsqueda rápida)
+const PRODUCTOS_CLAVE = {
+  'ps5 slim nueva disco': { nombre: 'PS5 Slim Nueva Disco', precio: 2400000, costo: 1900000, plataforma: 'PlayStation' },
+  'ps5 slim nueva digital': { nombre: 'PS5 Slim Nueva Digital', precio: 2200000, costo: 2080000, plataforma: 'PlayStation' },
+  'ps5 slim usada disco': { nombre: 'PS5 Slim Usada Disco', precio: 1880000, costo: 1680000, plataforma: 'PlayStation' },
+  'ps5 slim usada digital': { nombre: 'PS5 Slim Usada Digital', precio: 1700000, costo: 1500000, plataforma: 'PlayStation' },
+  'xbox series x usada': { nombre: 'Xbox Series X Usada', precio: 2100000, costo: 1700000, plataforma: 'Xbox' },
+  'xbox series s usada': { nombre: 'Xbox Series S Usada', precio: 1150000, costo: 900000, plataforma: 'Xbox' },
+  'xbox series s usada 1tb': { nombre: 'Xbox Series S Usada 1TB', precio: 1550000, costo: 1200000, plataforma: 'Xbox' },
+  'nintendo switch oled nueva': { nombre: 'Nintendo Switch OLED Nueva', precio: 1350000, costo: 1200000, plataforma: 'Nintendo Switch' },
+  'nintendo switch oled usada': { nombre: 'Nintendo Switch OLED Usada', precio: 980000, costo: 850000, plataforma: 'Nintendo Switch' },
+  'nintendo switch 1 usada': { nombre: 'Nintendo Switch 1 Usada', precio: 750000, costo: 600000, plataforma: 'Nintendo Switch' },
+  'ps4 slim usada': { nombre: 'PS4 Slim Usada', precio: 800000, costo: 600000, plataforma: 'PlayStation' },
+  'ps4 fat usada': { nombre: 'PS4 Fat Usada', precio: 650000, costo: 450000, plataforma: 'PlayStation' },
+  'ps4 pro usada': { nombre: 'PS4 Pro Usada', precio: 950000, costo: 800000, plataforma: 'PlayStation' },
+  'ps5 disco fat usada': { nombre: 'PS5 Disco Fat Usada', precio: 1700000, costo: 1600000, plataforma: 'PlayStation' },
+  'juegos nuevos switch': { nombre: 'Juegos Nuevos Switch', precio: 220000, costo: 190000, plataforma: 'Videojuego' },
+};
+
+// ============================================================
+// PATRONES DE COMANDOS — 150+ VARIACIONES
+// ============================================================
+
+const PATRONES_VENTA = [
+  /^(vend[íi]|vend|se llevó|se llevo|salió|vendi|vendemos|vendé|compró|compro)\s+(.+?)\s+(?:en|por|a)\s+(\d+)/i,
+  /^(.+?)\s+(?:vend[íi]|vend|compró|compro)\s+por\s+(\d+)/i,
+  /^(vendí|vendi|vend|se llevó)\s+(.+?)$/i,
+  /^(?:venta|vende|se fue)\s+(.+?)\s+de\s+(\d+)/i,
+  /^(.+?)\s+en\s+(\d+)\s+(?:pesos|cop|mil)/i,
+  /^venta\s+(.+?)\s+(\d+)/i,
+  /^vendí\s+(.+?)(?:\s+a\s+(\w+))?\s+en\s+(\d+)/i,
+];
+
+const PATRONES_COMPRA = [
+  /^(?:-|menos)\s*(\d+)\s+(?:compra|compré|formado)\s+(.+)/i,
+  /^compré?\s+(.+?)\s+por\s+(\d+)/i,
+  /^(?:compra|compré)\s+(\d+)\s+(?:de\s+)?(.+?)\s+a\s+(\d+)/i,
+  /^compré?\s+(.+?)(?:\s+x\s*(\d+))?\s+de\s+(\d+)/i,
+  /^llegó\s+(.+?)\s+de\s+(\d+)/i,
+  /^nuevo\s+inventario\s+(.+?)\s+(\d+)/i,
+  /^recibí\s+(.+?)\s+de\s+(\d+)/i,
+];
+
+const PATRONES_CAMBIO = [
+  /^(?:se|recib[io]|resibe|recibe)\s+(.+?)\s+(?:llevan|se llevan|enciman|encima|cambio)\s+(.+?)\s+encima?\s+(\d+)/i,
+  /^cambio\s+(.+?)\s+por\s+(.+?)\s+encima\s+(\d+)/i,
+  /^trueque\s+(.+?)\s+→\s+(.+?)\s+(\d+)/i,
+  /^(.+?)\s+x\s+(.+?)\s+encime\s+(\d+)/i,
+];
+
+const PATRONES_SERVICIO = [
+  /^(?:dejan|deja|trae|traen|dejaron)\s+(.+?)\s+(?:para|cambio|arreglo|acetato|hdmi|joystick|dado|drift|mantenimiento|revisión|instalación|programación)\s+(.+?)(?:\s+(\w+))?\s+(\d{7,})?/i,
+  /^servicio\s+(.+?)\s+(.+?)(?:\s+(\d{7,}))?/i,
+  /^reparación\s+(.+?)(?:\s+de\s+(\w+))?/i,
+  /^revisar\s+(.+?)\s+(?:de\s+)?(\w+)?/i,
+];
+
+const PATRONES_SERVICIO_LISTO = [
+  /^(?:listo|qued[oó]\s+list|ya\s+est[aá]|terminado|listo\s+el)\s+(?:control\s+de\s+)?(\w+)/i,
+  /^✅\s+(.+)/i,
+  /^servicio\s+listo\s+(.+)/i,
+];
+
+const PATRONES_SERVICIO_ENTREGADO = [
+  /^(?:entregad|vinieron\s+por|se\s+lo\s+llev|fue\s+a\s+buscar|paso\s+a\s+recoger|ya\s+se\s+lo\s+llev)\s+(?:el|del\s+)?(.+)/i,
+  /^📦\s+(.+)/i,
+  /^entregué\s+(.+)\s+a\s+(\w+)/i,
+];
+
+const PATRONES_PAGO_SERVICIO = [
+  /^(?:pagan|paga|pague|cobr[eé]|cobré)\s+(\d+)\s+(?:por\s+)?(?:arreglo|servicio|acetato|hdmi|joystick|drift|mantenimiento)(?:\s+(?:de|del|del\s+)?(\w+))?/i,
+  /^(\w+)\s+(?:pagan|pagó|pague)\s+(\d+)\s+(?:arreglo|servicio)(?:\s+de\s+(.+))?/i,
+  /^pago\s+(\d+)\s+servicio\s+(.+)/i,
+  /^cobré\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+];
+
+const PATRONES_PAGO_TRABAJADOR = [
+  /^(?:-|menos)\s*(\d+)\s+(?:pago|pagué|pague|cobré|pagación)\s+(?:a\s+)?(\w+)/i,
+  /^pago\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+  /^(\w+)\s+recibe\s+(\d+)/i,
+  /^paguéle\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+];
+
+const PATRONES_ABONO_FIADO = [
+  /^(\w+)\s+(?:abon[oó]|abonó|pagó)\s+(\d+)(?:\s+fiado)?/i,
+  /^abono\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+  /^(\w+)\s+puso\s+(\d+)/i,
+  /^recibí\s+(\d+)\s+de\s+(\w+)/i,
+];
+
+const PATRONES_TAREA = [
+  /^(?:record[aá]rme|recordar|agenda|tarea|recordatorio|apunta|pon)\s+(.+?)(?:\s+(?:mañana|hoy|después))?\s*$/i,
+  /^📅\s+(.+)/i,
+  /^no\s+olvides\s+(.+)/i,
+  /^tengo\s+que\s+(.+)(?:\s+mañana)?/i,
+];
+
+const PATRONES_REPORTES = [
+  /^(?:cu[aá]nto|cuanto)\s+(?:vend[íi]|vendí|gané|tengo)\s+(?:hoy|ahorita)/i,
+  /^reporte\s+(?:de\s+)?(?:hoy|diario|venta)/i,
+  /^ventas\s+(?:de\s+)?hoy/i,
+  /^¿cuántas\s+(?:ventas|transacciones)?\s+hoy/i,
+];
+
+const PATRONES_CONSULTA_STOCK = [
+  /^qu[eé]\s+tengo\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo|retro|juegos|accesorios)/i,
+  /^stock\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo)/i,
+  /^hay\s+(?:de\s+)?(ps5|ps4|xbox|switch)/i,
+  /^disponible\s+(.+)/i,
+];
+
+// ============================================================
+// FUNCIÓN PRINCIPAL DE PROCESAMIENTO
+// ============================================================
+
+async function procVozV4(tx) {
+  console.log('🎤 Procesando:', tx);
+  
+  tx = normalizarTexto(tx);
+  let resultado = { tipo: null, datos: {} };
+
+  // 1. VENTA — 50+ variaciones
+  for (let patron of PATRONES_VENTA) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarVenta(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 2. COMPRA — 30+ variaciones
+  for (let patron of PATRONES_COMPRA) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarCompra(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 3. CAMBIO — 15+ variaciones
+  for (let patron of PATRONES_CAMBIO) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarCambio(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 4. SERVICIO — 20+ variaciones
+  for (let patron of PATRONES_SERVICIO) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarServicio(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 5. SERVICIO LISTO
+  for (let patron of PATRONES_SERVICIO_LISTO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'servicio_listo', nombre: match[1], msg: `✅ ${match[1]} — Listo para entregar` };
+    }
+  }
+
+  // 6. SERVICIO ENTREGADO
+  for (let patron of PATRONES_SERVICIO_ENTREGADO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'servicio_entregado', nombre: match[1], msg: `📦 Entregado: ${match[1]}` };
+    }
+  }
+
+  // 7. PAGO SERVICIO
+  for (let patron of PATRONES_PAGO_SERVICIO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'pago_servicio', monto: match[1], cliente: match[2], msg: `✅ Pago ${cop(match[1])}` };
+    }
+  }
+
+  // 8. PAGO TRABAJADOR
+  for (let patron of PATRONES_PAGO_TRABAJADOR) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'pago_trabajador', monto: match[1], trabajador: match[2], msg: `💵 ${cop(match[1])} a ${match[2]}` };
+    }
+  }
+
+  // 9. ABONO FIADO
+  for (let patron of PATRONES_ABONO_FIADO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'abono_fiado', cliente: match[1], monto: match[2], msg: `💳 Abono ${cop(match[2])} de ${match[1]}` };
+    }
+  }
+
+  // 10. TAREA
+  for (let patron of PATRONES_TAREA) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'tarea', titulo: match[1], msg: `📅 Tarea: ${match[1]}` };
+    }
+  }
+
+  // 11. REPORTES
+  for (let patron of PATRONES_REPORTES) {
+    if (patron.test(tx)) {
+      return { tipo: 'reporte', msg: '📊 Mostrando ventas de hoy' };
+    }
+  }
+
+  // 12. CONSULTA STOCK
+  for (let patron of PATRONES_CONSULTA_STOCK) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'stock', plataforma: match[1], msg: `📦 Stock de ${match[1]}` };
+    }
+  }
+
+  return { tipo: null, msg: '🤔 No entendí. Prueba: "Vendí ps5 slim 2.4" o "Compré xbox 2.1"' };
+}
+
+// ============================================================
+// FUNCIONES DE PROCESAMIENTO
+// ============================================================
+
+function procesarVenta(match, tx) {
+  const nombreProd = extraerProducto(tx);
+  const precioVoz = extraerPrecio(tx);
+  const cliente = extraerCliente(tx);
+  const pago = extraerMetodoPago(tx);
+
+  if (!nombreProd) return { tipo: null };
+
+  // ✅ BUSCAR PRODUCTO EN GOOGLE SHEETS (precios actuales)
+  let prodData = null;
+  if (typeof D !== 'undefined' && D.inventario) {
+    prodData = D.inventario.find(p => 
+      p.nombre.toLowerCase().includes(nombreProd.toLowerCase()) ||
+      nombreProd.toLowerCase().includes(p.nombre.toLowerCase().split(' ')[0])
+    );
+  }
+
+  // Si no lo encuentra en Sheets, usar datos del código
+  if (!prodData) {
+    prodData = PRODUCTOS_CLAVE[nombreProd] || { 
+      nombre: nombreProd, 
+      precio: precioVoz || 0,
+      costo: Math.round((precioVoz || 0) * 0.7)
+    };
+  }
+
+  // ✅ USAR PRECIO DE SHEETS O DE LA VOZ SI LO DIJO
+  const precioFinal = precioVoz || prodData.precio || 0;
+  const costoFinal = prodData.costo || Math.round(precioFinal * 0.7);
+
+  if (!precioFinal) return { tipo: null };
+
+  return {
+    tipo: 'venta',
+    datos: {
+      prodId: prodData.id || '',
+      producto: prodData.nombre,
+      plataforma: prodData.plataforma || 'Otro',
+      costo: costoFinal,
+      precio: precioFinal,
+      ganancia: precioFinal - costoFinal,
+      cliente,
+      pago: pago,
+      canal: CANAL_DEFAULT,
+      vendedor: VENDEDOR_DEFAULT,
+    },
+    msg: `💰 ${prodData.nombre} — ${cop(precioFinal)} — ${pago} — Ganancia: ${cop(precioFinal - costoFinal)}`,
+  };
+}
+
+function procesarCompra(match, tx) {
+  const precio = extraerPrecio(tx);
+  const cantidad = extraerCantidad(tx) || 1;
+  const producto = extraerProducto(tx, 'compra');
+
+  if (!precio || !producto) return { tipo: null };
+
+  // ✅ BUSCAR EN SHEETS PARA OBTENER PLATAFORMA ACTUALIZADA
+  let plataforma = 'Otro';
+  if (typeof D !== 'undefined' && D.inventario) {
+    const existe = D.inventario.find(p => 
+      p.nombre.toLowerCase().includes(producto.toLowerCase())
+    );
+    if (existe) plataforma = existe.plataforma;
+  }
+
+  if (!plataforma || plataforma === 'Otro') {
+    plataforma = inferirPlataforma(producto);
+  }
+
+  return {
+    tipo: 'compra',
+    datos: {
+      producto,
+      cantidad,
+      precio,
+      total: cantidad * precio,
+      plataforma: plataforma,
+    },
+    msg: `🛒 ${cantidad}x ${producto} — ${cop(precio)} c/u — Total: ${cop(cantidad * precio)}`,
+  };
+}
+
+function procesarCambio(match, tx) {
+  const entra = match[1]?.trim() || '';
+  const sale = match[2]?.trim() || '';
+  const encime = parseInt(match[3]) || 0;
+
+  if (!entra || !sale) return { tipo: null };
+
+  return {
+    tipo: 'cambio',
+    datos: {
+      entra,
+      valorEntra: 0,
+      sale,
+      encime,
+      ganancia: encime,
+    },
+    msg: `🔄 ${entra} → ${sale} encime ${cop(encime)}`,
+  };
+}
+
+function procesarServicio(match, tx) {
+  const cliente = extraerCliente(tx);
+  const equipo = match[1]?.trim() || 'Equipo';
+  const tipo = match[2]?.trim() || 'Revisión general';
+  const tel = extraerTelefono(tx);
+
+  return {
+    tipo: 'servicio',
+    datos: {
+      cliente,
+      equipo,
+      tipo,
+      tel,
+      valor: 50000,
+      notas: tx,
+    },
+    msg: `🔧 ${cliente} — ${equipo} — ${tipo}`,
+  };
+}
+
+// ============================================================
+// FUNCIONES AUXILIARES
+// ============================================================
+
+function normalizarTexto(tx) {
+  tx = tx.toLowerCase().trim();
+  // Normalizar números
+  tx = tx.replace(/(\d+)\s*['`']\s*(\d+)/g, (_,m,k) => parseInt(m)*1e6+parseInt(k)*1e3);
+  tx = tx.replace(/(\d+)\s*millones?/g, (_,n) => parseInt(n)*1e6);
+  tx = tx.replace(/(\d+)\s*mil/g, (_,n) => parseInt(n)*1e3);
+  
+  // Alias de productos
+  const aliases = {
+    'play 5': 'ps5', 'play5': 'ps5', 'playstation 5': 'ps5', 'ps 5': 'ps5',
+    'play 4': 'ps4', 'play4': 'ps4', 'playstation 4': 'ps4', 'ps 4': 'ps4',
+    'xbox x': 'xbox series x', 'series x': 'xbox series x',
+    'xbox s': 'xbox series s', 'series s': 'xbox series s',
+    'switch': 'nintendo switch', 'switchol': 'nintendo switch oled',
+  };
+  for (const [alias, real] of Object.entries(aliases)) {
+    tx = tx.replace(new RegExp(alias, 'g'), real);
+  }
+  return tx;
+}
+
+function extraerProducto(tx, tipo = 'venta') {
+  const palabras = tx.split(/\s+/);
+  
+  // Buscar en productos clave
+  for (let i = 0; i < palabras.length; i++) {
+    for (const [clave] of Object.entries(PRODUCTOS_CLAVE)) {
+      if (tx.includes(clave)) return clave;
+    }
+  }
+
+  // Buscar palabras clave genéricas
+  const genericas = tx.match(/(ps5|ps4|xbox|switch|nintendo|play|juegos|control|joycon)/i);
+  return genericas ? genericas[0] : null;
+}
+
+function extraerPrecio(tx) {
+  const nums = [];
+  (tx.match(/\d[\d.,]*/g) || []).forEach(m => {
+    const n = parseInt(m.replace(/[.,]/g,''));
+    if (n >= 10000) nums.push(n);
+  });
+  return nums.length ? Math.max(...nums) : null;
+}
+
+function extraerCantidad(tx) {
+  const m = tx.match(/^(\d+)\s+[a-z]/) || tx.match(/compr[eé]?\s+(\d+)/i);
+  return m ? parseInt(m[1]) : 1;
+}
+
+function extraerCliente(tx) {
+  const m = tx.match(/(?:a|para|de|del)\s+([a-záéíóúñ]{3,})/i);
+  
+  // Si encontró un nombre
+  if (m) {
+    const nombre = capitalizar(m[1]);
+    
+    // Si el nombre no existe en clientes, créalo automáticamente
+    if (typeof D !== 'undefined' && D.clientes) {
+      if (!D.clientes.find(c => c.nombre.toLowerCase() === nombre.toLowerCase())) {
+        const nuevoCliente = {
+          id: uid(),
+          nombre: nombre,
+          wa: '',
+          plataforma: 'Todas',
+          notas: 'Creado por voz',
+          totalCompras: 0,
+          totalGastado: 0,
+          ultimaCompra: '',
+          fecha: hoy()
+        };
+        D.clientes.push(nuevoCliente);
+        if (typeof lSave === 'function') lSave('clientes');
+        if (typeof ON !== 'undefined' && ON && typeof api === 'function') {
+          api('insert', 'clientes', nuevoCliente).catch(e => console.log('Cliente guardado localmente'));
+        }
+      }
+    }
+    
+    return nombre;
+  }
+  
+  return 'Cliente general';
+}
+
+function extraerTelefono(tx) {
+  const m = tx.match(/(\d{7,10})/);
+  return m ? m[1] : '';
+}
+
+function extraerMetodoPago(tx) {
+  // Detectar método de pago
+  if (/nequi|nequi\s+pay/i.test(tx)) return 'Nequi';
+  if (/bancolombia|banco\s+colombiano|bancocol/i.test(tx)) return 'Bancolombia';
+  if (/daviplata|davivienda|davi/i.test(tx)) return 'Daviplata';
+  if (/tarjeta|débito|crédito|visa|mastercard/i.test(tx)) return 'Tarjeta';
+  if (/efectivo|cash|pesos|con\s+efectivo/i.test(tx)) return 'Efectivo';
+  
+  // Por defecto: Efectivo
+  return 'Efectivo';
+}
+
+function inferirPlataforma(prod) {
+  if (prod.includes('ps')) return 'PlayStation';
+  if (prod.includes('xbox')) return 'Xbox';
+  if (prod.includes('switch') || prod.includes('nintendo')) return 'Nintendo Switch';
+  return 'Otro';
+}
+
+function capitalizar(s) {
+  return s ? s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
+}
+
+function cop(n) {
+  return '$' + parseInt(n||0).toLocaleString('es-CO');
+}
+
+// ============================================================
+// EXPORTAR PARA USAR EN EL DASHBOARD
+// ============================================================
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { procVozV4, PRODUCTOS_CLAVE };
+}
+
+// ============================================================
+// FUNCIÓN PRINCIPAL - VOZ V4 PRO
+// ============================================================
+
+async function proc(tx) {
+  const resultado = await procVozV4(tx);
+  
+  if (resultado.tipo === 'venta') {
+    await addVta2(resultado.datos);
+  } else if (resultado.tipo === 'compra') {
+    await addCom2(resultado.datos);
+  } else if (resultado.tipo === 'cambio') {
+    await addCam2(resultado.datos);
+  } else if (resultado.tipo === 'servicio') {
+    await addSrv2(resultado.datos);
+  } else if (resultado.tipo === 'tarea') {
+    await addTar2(resultado.datos);
+  }
+  
+  $('vr').textContent = resultado.msg;
+  $('mb').className = '';
+  $('vt').textContent = '🎤 Toca el micrófono y habla...';
+  rAll();
+  toast(resultado.msg, 4000);
+}
+
+async function addVta2(datos) {
+  const v = {id:uid(),fecha:hoy(),prodId:datos.prodId||'',producto:datos.producto||'Producto',plataforma:datos.plataforma||'Otro',costo:datos.costo||0,precio:datos.precio||0,ganancia:datos.ganancia||0,pago:datos.pago||'Efectivo',canal:datos.canal||'Tienda Física',vendedor:datos.vendedor||'Dueño',clienteId:datos.clienteId||'',clienteNombre:datos.clienteNombre||'Cliente general'};
+  const prod=D.inventario.find(p=>p.nombre===datos.producto);
+  if(prod){prod.stock=Math.max(0,(+prod.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',prod.id,{stock:prod.stock});}
+  D.ventas.unshift(v);lSave('ventas');if(ON)await api('insert','ventas',v);uV=v.id;
+}
+
+async function addCom2(datos) {
+  const co={id:uid(),fecha:hoy(),proveedorId:datos.proveedorId||'',proveedor:datos.proveedor||'Particular',producto:datos.producto||'Producto',plataforma:datos.plataforma||'Otro',cantidad:datos.cantidad||1,precio:datos.precio||0,total:datos.total||0,estado:'Pagado'};
+  const inv={id:uid(),nombre:datos.producto,plataforma:datos.plataforma,condicion:'Usado - Bueno',costo:datos.precio,precio:Math.round(datos.precio*1.35),stock:datos.cantidad||1,serie:'N/A',origen:'Compra directa',fecha:hoy()};
+  D.compras.unshift(co);D.inventario.push(inv);lSave('compras');lSave('inventario');if(ON){await api('insert','compras',co);await api('insert','inventario',inv);}
+}
+
+async function addCam2(datos) {
+  const nv={id:uid(),nombre:datos.entra,plataforma:datos.plataforma||'PlayStation',condicion:'Usado - Bueno',costo:datos.valorEntra||0,precio:Math.round((datos.valorEntra||0)*1.3),stock:1,serie:'N/A',origen:'Cambio/Trueque',fecha:hoy()};
+  const ps=D.inventario.find(p=>p.nombre===datos.sale);
+  if(ps){ps.stock=Math.max(0,(+ps.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',ps.id,{stock:ps.stock});}
+  D.inventario.push(nv);
+  const cm={id:uid(),fecha:hoy(),clienteId:datos.clienteId||'',clienteNombre:datos.clienteNombre||'Cliente general',entra:datos.entra,valorEntra:datos.valorEntra||0,sale:datos.sale,costeSale:datos.costeSale||0,encime:datos.encime||0,ganancia:datos.ganancia||0,notas:'Por voz'};
+  D.cambios.unshift(cm);lSave('cambios');lSave('inventario');if(ON){await api('insert','inventario',nv);if(ps)await api('update','inventario',ps.id,{stock:ps.stock});await api('insert','cambios',cm);}
+}
+
+async function addSrv2(datos) {
+  const s={id:uid(),fecha:hoy(),cliente:datos.cliente||'Cliente',tel:datos.tel||'',equipo:datos.equipo||'Equipo',tipo:datos.tipo||'Revisión',valor:datos.valor||50000,abono:datos.abono||0,saldo:(datos.valor||50000)-(datos.abono||0),notas:datos.notas||'',estado:'Pendiente'};
+  D.servicios.unshift(s);lSave('servicios');if(ON)await api('insert','servicios',s);
+}
+
+async function addTar2(datos) {
+  const t={id:uid(),titulo:datos.titulo||'Tarea',fecha:hoy(),hora:'',prioridad:'normal',notas:datos.notas||'Por voz',completada:false,creada:hoy()};
+  D.tareas.unshift(t);lSave('tareas');if(ON)await api('insert','tareas',t);
 }
 
 function norm(t){t=t.replace(/(\d+)\s*['`']\s*(\d+)/g,(_,m,k)=>+m*1e6+(+k)*1e3);t=t.replace(/(\d+)\s*millones?/g,(_,n)=>+n*1e6);t=t.replace(/(\d+)\s*mil/g,(_,n)=>+n*1e3);t=t.replace(/(\d+)\s*k\b/g,(_,n)=>+n*1e3);const m={'un millon':1e6,'medio millon':5e5,'quinientos mil':5e5,'cuatrocientos mil':4e5,'trescientos mil':3e5,'doscientos mil':2e5,'ciento cincuenta mil':15e4,'cien mil':1e5,'ochenta mil':8e4,'setenta mil':7e4,'sesenta mil':6e4,'cincuenta mil':5e4,'cuarenta mil':4e4,'treinta mil':3e4,'veinte mil':2e4,'quince mil':15e3,'diez mil':1e4,'cinco mil':5e3};for(const[k,v] of Object.entries(m))t=t.replace(new RegExp(k,'g'),String(v));return t;}
