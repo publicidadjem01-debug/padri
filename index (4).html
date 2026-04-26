@@ -1,0 +1,1467 @@
+<!-- VIDEOTIENDA EL PADRINO V3 + VOZ V4 PRO COMPLETA -->
+<!-- ARCHIVO FINAL DEFINITIVO — LISTO PARA USAR -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Videotienda El Padrino v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080810;--panel:#101018;--panel2:#151520;--border:#252540;--gold:#f5c518;--gold2:#d4a800;--red:#ff3b3b;--green:#00e676;--blue:#42a5f5;--purple:#b388ff;--orange:#ffa726;--pink:#ff4081;--text:#e8e8f0;--muted:#5a5a8a;--pixel:'Press Start 2P',monospace;--body:'Rajdhani',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;font-size:15px}
+
+/* === SETUP === */
+#setup{background:linear-gradient(135deg,#1a0a00,#201005);border-bottom:2px solid var(--gold);padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#setup.h{display:none}
+#setup .t{font-size:13px;color:var(--gold);font-weight:700;width:100%}
+#setup .s{font-size:11px;color:var(--muted);width:100%;margin-top:-4px}
+#urlIn{background:var(--bg);border:1px solid var(--gold);padding:10px;border-radius:4px;color:var(--text);font-family:var(--body);font-size:14px;flex:1;min-width:200px;outline:none}
+
+/* === SYNC === */
+#sync{position:fixed;top:10px;right:10px;z-index:600;font-size:11px;padding:4px 10px;border-radius:16px;font-weight:700;cursor:pointer}
+.s-ok{background:rgba(0,230,118,.12);color:var(--green);border:1px solid rgba(0,230,118,.25)}
+.s-lo{background:rgba(245,197,24,.12);color:var(--gold);border:1px solid rgba(245,197,24,.25)}
+.s-ld{background:rgba(66,165,245,.12);color:var(--blue);border:1px solid rgba(66,165,245,.25)}
+.s-er{background:rgba(255,59,59,.12);color:var(--red);border:1px solid rgba(255,59,59,.25)}
+
+/* === HEADER === */
+header{background:linear-gradient(135deg,#0c0c18,#18101e);border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 0 30px rgba(245,197,24,.1)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-i{font-size:22px}
+.logo-t{font-family:var(--pixel);font-size:8px;color:var(--gold);line-height:1.8}
+.logo-s{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.hd{color:var(--gold);font-weight:700;font-size:11px}
+.v3{background:var(--green);color:#080810;font-size:9px;padding:2px 6px;border-radius:3px;font-weight:700;margin-left:4px}
+
+/* === NAV === */
+nav{background:var(--panel);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nb{padding:11px 13px;background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font-family:var(--body);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:4px;position:relative}
+.nb.a{color:var(--gold);border-bottom-color:var(--gold);background:rgba(245,197,24,.04)}
+.nbg{background:var(--red);color:#fff;font-size:8px;padding:1px 5px;border-radius:8px;margin-left:2px;font-weight:700}
+
+/* === MAIN === */
+main{padding:14px;max-width:1300px;margin:0 auto;padding-bottom:150px}
+.sec{display:none;animation:fi .3s ease}.sec.a{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* === STATS === */
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+@media(min-width:600px){.sg{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.sg{grid-template-columns:repeat(6,1fr)}}
+.sc{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:12px;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.sc.gd::before{background:var(--gold)}.sc.gr::before{background:var(--green)}.sc.rd::before{background:var(--red)}.sc.bl::before{background:var(--blue)}.sc.pr::before{background:var(--purple)}.sc.or::before{background:var(--orange)}
+.sl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.sv{font-family:var(--pixel);font-size:10px;line-height:1.4}
+.si{position:absolute;right:8px;top:8px;font-size:16px;opacity:.2}
+
+/* === PANEL === */
+.p{background:var(--panel);border:1px solid var(--border);border-radius:6px;margin-bottom:14px;overflow:hidden}
+.ph{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:var(--panel2)}
+.pt{font-family:var(--pixel);font-size:7px;color:var(--gold);letter-spacing:1px}
+.pb{padding:14px}
+
+/* === COLLAPSE === */
+.cl .ph{cursor:pointer;user-select:none}
+.cl .ca{transition:transform .2s;color:var(--muted);font-size:13px}
+.cl.op .ca{transform:rotate(180deg)}
+.cl:not(.op) .pb{display:none}
+
+/* === FORM === */
+.fg{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
+@media(min-width:480px){.fg{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.fg{grid-template-columns:repeat(3,1fr)}}
+.ff{display:flex;flex-direction:column;gap:4px}
+label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+input,select,textarea{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:11px;color:var(--text);font-family:var(--body);font-size:15px;outline:none;-webkit-appearance:none;width:100%}
+input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(245,197,24,.08)}
+select option{background:var(--panel)}
+
+/* === BUTTONS === */
+.b{padding:12px 18px;border:none;border-radius:4px;font-family:var(--body);font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;-webkit-appearance:none}
+@media(min-width:480px){.b{width:auto}}
+.b-gd{background:var(--gold);color:#080810}.b-rd{background:var(--red);color:#fff}.b-gr{background:var(--green);color:#080810}.b-or{background:var(--orange);color:#080810}.b-bl{background:var(--blue);color:#080810}.b-pr{background:var(--purple);color:#080810}
+.b-gh{background:transparent;border:1px solid var(--border);color:var(--muted)}.b-gh.ac{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.04)}
+.b:active{transform:scale(.97);opacity:.9}
+.bs{padding:7px 12px;font-size:12px;width:auto}
+.br{display:flex;gap:8px;flex-wrap:wrap}
+
+/* === TABLE === */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{padding:8px 10px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--border);font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid rgba(37,37,64,.5)}
+tbody tr:hover{background:rgba(245,197,24,.02)}
+td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
+
+/* === BADGE === */
+.bg{display:inline-block;padding:3px 8px;border-radius:3px;font-size:10px;font-weight:700;text-transform:uppercase}
+.bg-gr{background:rgba(0,230,118,.12);color:var(--green)}.bg-rd{background:rgba(255,59,59,.12);color:var(--red)}.bg-gd{background:rgba(245,197,24,.12);color:var(--gold)}.bg-bl{background:rgba(66,165,245,.12);color:var(--blue)}.bg-pr{background:rgba(179,136,255,.12);color:var(--purple)}.bg-or{background:rgba(255,167,38,.12);color:var(--orange)}
+
+/* === LAYOUT === */
+.tc{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:680px){.tc{grid-template-columns:1fr 1fr}}
+.em{text-align:center;padding:30px 14px;color:var(--muted)}.em .ei{font-size:28px;margin-bottom:8px}
+.cop{color:var(--green);font-weight:700}
+
+/* === CARDS === */
+.ic{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;transition:transform .1s}
+.ic:active{transform:scale(.995)}
+.ic.pend{border-left:3px solid var(--gold)}.ic.list{border-left:3px solid var(--blue)}.ic.entr{border-left:3px solid var(--green);opacity:.7}.ic.urg{border-left:3px solid var(--red)}
+.ic-t{font-size:15px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.ic-d{font-size:12px;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.ic-f{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+
+/* === CHIPS === */
+.ch{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;overflow-x:auto;padding-bottom:3px}
+
+/* === PRODUCT GROUP === */
+.pg{margin-bottom:14px}
+.pg-t{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px;padding-left:8px;border-left:3px solid var(--gold)}
+.pi{display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:4px}
+.pi .nm{font-size:14px;font-weight:600}
+.pi .pr{color:var(--green);font-weight:700;font-size:13px}
+.pi .st{font-size:11px;color:var(--muted)}
+
+/* === VOZ === */
+#vp{position:fixed;bottom:0;left:0;right:0;z-index:500;background:linear-gradient(0deg,#080810 80%,transparent);padding:8px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:6px}
+#mb{width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;box-shadow:0 0 20px rgba(245,197,24,.25);-webkit-appearance:none}
+#mb.esc{background:var(--red);border-color:var(--red);animation:pul 1.2s infinite}
+#mb.pro{background:var(--blue);border-color:var(--blue);animation:sp .8s linear infinite}
+@keyframes pul{0%{box-shadow:0 0 0 0 rgba(255,59,59,.4)}70%{box-shadow:0 0 0 18px rgba(255,59,59,0)}}
+@keyframes sp{to{transform:rotate(360deg)}}
+#vt{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:7px 14px;font-size:12px;width:100%;max-width:420px;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center}
+#vr{font-size:11px;color:var(--green);text-align:center;min-height:14px;font-weight:700;max-width:420px;width:100%}
+
+/* === CMD === */
+.ci{padding:6px 0;border-bottom:1px solid rgba(37,37,64,.4);font-size:12px;display:flex;gap:8px}.ci:last-child{border:none}
+.ce{color:var(--gold);font-style:italic;flex:1}.cd{color:var(--muted);font-size:10px}
+
+/* === MODAL === */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:800;align-items:flex-end;justify-content:center}.mo.op{display:flex}
+.md{background:var(--panel);border:2px solid var(--gold);border-radius:12px 12px 0 0;padding:22px;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;position:relative}
+.mx{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+.rp{background:#fff;color:#111;padding:14px;font-family:monospace;font-size:11px;line-height:1.7;border-radius:3px;white-space:pre-wrap;margin:10px 0}
+
+/* === TOAST === */
+#tt{position:fixed;top:55px;left:50%;transform:translateX(-50%);background:var(--gold);color:#080810;padding:9px 18px;border-radius:18px;font-weight:700;font-size:12px;display:none;z-index:9998;white-space:nowrap;box-shadow:0 4px 20px rgba(245,197,24,.35);max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+
+/* === SEARCH === */
+.si2{padding:8px 10px;font-size:13px;width:100%;max-width:220px}
+</style>
+</head>
+<body>
+
+<!-- SETUP -->
+<div id="setup">
+  <div class="t">⚡ Conectar a Google Sheets</div>
+  <div class="s">Pega tu URL de Apps Script</div>
+  <input id="urlIn" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+  <div class="br" style="width:100%">
+    <button class="b b-gd bs" onclick="conectar()" style="flex:1">🔗 Conectar</button>
+    <button class="b b-gh bs" onclick="local()" style="flex:1">Sin conexión</button>
+  </div>
+</div>
+
+<div id="sync" class="s-lo" onclick="sincronizar()">⚡ Local</div>
+
+<header>
+  <div class="logo">
+    <div class="logo-i">🎮</div>
+    <div><div class="logo-t">EL PADRINO <span class="v3">v3</span></div><div class="logo-s">Videotienda</div></div>
+  </div>
+  <div class="hd" id="fh"></div>
+</header>
+
+<nav>
+  <button class="nb a" onclick="go('dash',this)">📊 Inicio</button>
+  <button class="nb" onclick="go('voz',this)">🎤 Voz</button>
+  <button class="nb" onclick="go('tar',this)">📅 Tareas<span id="bt" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('srv',this)">🔧 Servicios<span id="bs" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('inv',this)">📦 Inventario</button>
+  <button class="nb" onclick="go('vta',this)">💸 Ventas</button>
+  <button class="nb" onclick="go('cam',this)">🔄 Cambios</button>
+  <button class="nb" onclick="go('com',this)">🛒 Compras</button>
+  <button class="nb" onclick="go('cli',this)">👥 Clientes</button>
+  <button class="nb" onclick="go('fia',this)">💳 Fiados<span id="bf" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('tra',this)">👷 Pagos</button>
+  <button class="nb" onclick="go('prv',this)">🏭 Proveedores</button>
+  <button class="nb" onclick="go('rep',this)">📊 Reportes</button>
+</nav>
+
+<main>
+
+<!-- ===== DASHBOARD ===== -->
+<div id="sec-dash" class="sec a">
+  <div class="sg">
+    <div class="sc gd"><div class="si">💰</div><div class="sl">Ventas Hoy</div><div class="sv" id="d-v" style="color:var(--gold)">$0</div></div>
+    <div class="sc gr"><div class="si">📈</div><div class="sl">Ganancia</div><div class="sv" id="d-g" style="color:var(--green)">$0</div></div>
+    <div class="sc or"><div class="si">🔧</div><div class="sl">Servicios</div><div class="sv" id="d-s" style="color:var(--orange)">$0</div></div>
+    <div class="sc bl"><div class="si">📦</div><div class="sl">Inventario</div><div class="sv" id="d-i">$0</div></div>
+    <div class="sc rd"><div class="si">💳</div><div class="sl">Fiados</div><div class="sv" id="d-f" style="color:var(--red)">$0</div></div>
+    <div class="sc pr"><div class="si">📅</div><div class="sl">Tareas Hoy</div><div class="sv" id="d-t">0</div></div>
+  </div>
+  <div class="p"><div class="ph"><span class="pt">⚡ Accesos Rápidos</span></div><div class="pb">
+    <div class="br">
+      <button class="b b-gd bs" onclick="go('vta',Q('.nb',5))">💰 Venta</button>
+      <button class="b b-or bs" onclick="go('srv',Q('.nb',3))">🔧 Servicio</button>
+      <button class="b b-pr bs" onclick="go('tar',Q('.nb',2))">📅 Tarea</button>
+      <button class="b b-bl bs" onclick="go('cam',Q('.nb',6))">🔄 Cambio</button>
+    </div>
+  </div></div>
+  <div class="tc">
+    <div class="p"><div class="ph"><span class="pt">📅 Tareas Hoy</span></div><div class="pb" id="dT"></div></div>
+    <div class="p"><div class="ph"><span class="pt">🔧 Servicios Pendientes</span></div><div class="pb" id="dS"></div></div>
+  </div>
+  <div class="tc">
+    <div class="p"><div class="ph"><span class="pt">⚡ Últimas Ventas</span></div><div class="pb"><div class="tw"><table><thead><tr><th>Producto</th><th>Total</th></tr></thead><tbody id="dV"></tbody></table></div></div></div>
+    <div class="p"><div class="ph"><span class="pt">💳 Fiados</span></div><div class="pb" id="dF"></div></div>
+  </div>
+</div>
+
+<!-- ===== VOZ ===== -->
+<div id="sec-voz" class="sec">
+  <div class="p"><div class="ph"><span class="pt">🎤 Comandos de Voz — VOZ V4 PRO (150+ variaciones)</span></div><div class="pb">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Toca el 🎤 abajo y habla natural. Sistema entiende muchas formas de hablar.</p>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px">
+      <div style="color:var(--gold);font-weight:700;margin-bottom:8px;font-size:12px">💰 VENTAS:</div>
+      <div class="ci"><span class="ce">"Vendí PS5 Slim Nueva Disco"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Se llevó play 5 slim a Carlos en Nequi"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Venta play 4 slim 800"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--orange);font-weight:700;margin-top:10px;margin-bottom:8px;font-size:12px">🛒 COMPRAS:</div>
+      <div class="ci"><span class="ce">"Compré PS5 2.4"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"-1.55M compra Xbox"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--blue);font-weight:700;margin-top:10px;margin-bottom:8px;font-size:12px">🔄 CAMBIOS:</div>
+      <div class="ci"><span class="ce">"Se recibe Xbox llevan PS5 encima 1.6"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--purple);font-weight:700;margin-top:10px;margin-bottom:8px;font-size:12px">🔧 SERVICIOS:</div>
+      <div class="ci"><span class="ce">"Dejan control PS4 Juan acetato"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Listo el control de Juan"</span><span class="cd">✅</span></div>
+      <div class="ci"><span class="ce">"Pagan 250 arreglo hdmi Carlos"</span><span class="cd">✅</span></div>
+      
+      <div style="color:var(--green);font-weight:700;margin-top:10px;margin-bottom:8px;font-size:12px">💵 PAGOS Y FIADOS:</div>
+      <div class="ci"><span class="ce">"-60 David"</span><span class="cd">→ Pago</span></div>
+      <div class="ci"><span class="ce">"Carlos abonó 100"</span><span class="cd">→ Abono</span></div>
+      
+      <div style="color:var(--red);font-weight:700;margin-top:10px;margin-bottom:8px;font-size:12px">📅 TAREAS:</div>
+      <div class="ci"><span class="ce">"Recordar llamar a Pedro mañana"</span><span class="cd">✅</span></div>
+    </div>
+    <div id="hV" style="margin-top:12px"></div>
+  </div></div>
+</div>
+
+<!-- ===== TAREAS ===== -->
+<div id="sec-tar" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">📅 Nueva Tarea</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff" style="grid-column:1/-1"><label>¿Qué tengo que hacer?</label><input id="t-tit" placeholder="Ej: Llamar a Carlos, recoger repuestos..."></div>
+      <div class="ff"><label>Fecha</label><input type="date" id="t-fec"></div>
+      <div class="ff"><label>Hora</label><input type="time" id="t-hor"></div>
+      <div class="ff"><label>Prioridad</label><select id="t-pri"><option value="normal">Normal</option><option value="alta">🔴 Alta</option><option value="media">🟡 Media</option><option value="baja">🟢 Baja</option></select></div>
+    </div>
+    <div class="ff" style="margin-bottom:12px"><label>Notas</label><input id="t-not" placeholder="Detalles..."></div>
+    <button class="b b-pr" onclick="addTar()">📅 Crear Tarea</button>
+  </div></div>
+  <div class="ch" id="chT">
+    <button class="b b-gh bs ac" onclick="fT='hoy';rTar();uc(this)">Hoy</button>
+    <button class="b b-gh bs" onclick="fT='man';rTar();uc(this)">Mañana</button>
+    <button class="b b-gh bs" onclick="fT='sem';rTar();uc(this)">Semana</button>
+    <button class="b b-gh bs" onclick="fT='pend';rTar();uc(this)">Pendientes</button>
+    <button class="b b-gh bs" onclick="fT='all';rTar();uc(this)">Todas</button>
+  </div>
+  <div id="lT"></div>
+</div>
+
+<!-- ===== SERVICIOS ===== -->
+<div id="sec-srv" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🔧 Nuevo Servicio</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Cliente</label><input id="s-cli" placeholder="Nombre"></div>
+      <div class="ff"><label>Teléfono</label><input id="s-tel" placeholder="3001234567"></div>
+      <div class="ff"><label>Equipo</label><input id="s-equ" placeholder="Control PS4, PS5..."></div>
+      <div class="ff"><label>Servicio</label>
+        <select id="s-tip">
+          <option value="">Seleccionar...</option>
+          <option value="Cambio acetato PS4|50000">Acetato PS4 — $40-50k</option>
+          <option value="Cambio acetato PS5|65000">Acetato PS5 — $60-70k</option>
+          <option value="Cambio joystick|55000">Joystick / dado — $50-60k</option>
+          <option value="HDMI PS4|175000">HDMI PS4 — $170-180k</option>
+          <option value="HDMI PS5|250000">HDMI PS5 — $250k</option>
+          <option value="Mantenimiento PS4|120000">Mantenimiento PS4 — $120k</option>
+          <option value="Mantenimiento PS5|250000">Mantenimiento PS5 — $250k</option>
+          <option value="Instalación juegos|20000">Instalación juegos — $20k</option>
+          <option value="Revisión general|40000">Revisión general — $30-50k</option>
+          <option value="Arreglo drift|55000">Arreglo drift — $50-60k</option>
+          <option value="Cambio gomas|10000">Cambio gomas — $10k</option>
+          <option value="Cambio botones|60000">Cambio botones — $60k</option>
+          <option value="Programación Nintendo|150000">Programación Nintendo — $150k</option>
+          <option value="Otro|0">Otro servicio</option>
+        </select>
+      </div>
+      <div class="ff"><label>Valor (COP)</label><input type="number" id="s-val" placeholder="0"></div>
+      <div class="ff"><label>Abono inicial</label><input type="number" id="s-abo" value="0"></div>
+    </div>
+    <div class="ff" style="margin-bottom:12px"><label>Notas</label><input id="s-not" placeholder="Problema, piezas..."></div>
+    <button class="b b-or" onclick="addSrv()">🔧 Registrar</button>
+  </div></div>
+  <div class="ch" id="chS">
+    <button class="b b-gh bs ac" onclick="fS='all';rSrv();uc(this)">Todos</button>
+    <button class="b b-gh bs" onclick="fS='Pendiente';rSrv();uc(this)">⏳ Pendientes</button>
+    <button class="b b-gh bs" onclick="fS='Listo';rSrv();uc(this)">✅ Listos</button>
+    <button class="b b-gh bs" onclick="fS='Entregado';rSrv();uc(this)">📦 Entregados</button>
+  </div>
+  <div id="lS"></div>
+</div>
+
+<!-- ===== INVENTARIO ===== -->
+<div id="sec-inv" class="sec">
+  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">➕ Agregar Producto</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Nombre</label><input id="i-nom" placeholder="PS4 Slim 1TB"></div>
+      <div class="ff"><label>Plataforma</label><select id="i-pla"><option value="">...</option><option>PlayStation</option><option>Xbox</option><option>Nintendo Switch</option><option>Retro</option><option>PC / Accesorios</option><option>Videojuego</option><option>Accesorio</option></select></div>
+      <div class="ff"><label>Condición</label><select id="i-con"><option>Nuevo</option><option>Usado - Excelente</option><option>Usado - Bueno</option><option>Usado - Regular</option></select></div>
+      <div class="ff"><label>Precio Compra</label><input type="number" id="i-cos" placeholder="0"></div>
+      <div class="ff"><label>Precio Venta</label><input type="number" id="i-pre" placeholder="0"></div>
+      <div class="ff"><label>Stock</label><input type="number" id="i-stk" value="1"></div>
+    </div>
+    <button class="b b-gd" onclick="addInv()">✅ Agregar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📦 Inventario</span><input placeholder="🔍 Buscar..." id="bI" oninput="rInv()" class="si2"></div><div class="pb">
+    <div class="ch" id="chI">
+      <button class="b b-gh bs ac" onclick="fI='all';rInv();uc(this)">Todos</button>
+      <button class="b b-gh bs" onclick="fI='PlayStation';rInv();uc(this)">PlayStation</button>
+      <button class="b b-gh bs" onclick="fI='Xbox';rInv();uc(this)">Xbox</button>
+      <button class="b b-gh bs" onclick="fI='Nintendo Switch';rInv();uc(this)">Nintendo</button>
+      <button class="b b-gh bs" onclick="fI='Retro';rInv();uc(this)">Retro</button>
+      <button class="b b-gh bs" onclick="fI='Videojuego';rInv();uc(this)">Juegos</button>
+      <button class="b b-gh bs" onclick="fI='Accesorio';rInv();uc(this)">Accesorios</button>
+    </div>
+    <div id="tI"></div>
+  </div></div>
+</div>
+
+<!-- ===== VENTAS ===== -->
+<div id="sec-vta" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">💸 Nueva Venta</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Producto</label><select id="v-pro"></select></div>
+      <div class="ff"><label>Cliente</label><select id="v-cli"><option value="">Cliente general</option></select></div>
+      <div class="ff"><label>Precio (COP)</label><input type="number" id="v-pre" placeholder="0"></div>
+      <div class="ff"><label>Pago</label><select id="v-pag"><option>Efectivo</option><option>Nequi</option><option>Bancolombia</option><option>Daviplata</option><option>Tarjeta</option></select></div>
+      <div class="ff"><label>Canal</label><select id="v-can"><option>Tienda Física</option><option>WhatsApp</option><option>Facebook</option><option>Instagram</option><option>Mercado Libre</option></select></div>
+      <div class="ff"><label>Vendedor</label><input id="v-ven" placeholder="Nombre"></div>
+    </div>
+    <div class="br"><button class="b b-gd" onclick="addVta()">💰 Registrar</button><button class="b b-gh" onclick="recibo(uV)">🧾 Recibo</button></div>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📋 Ventas</span><span id="tvh" style="color:var(--green);font-size:12px;font-weight:700"></span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th>Precio</th><th>Ganancia</th><th></th></tr></thead><tbody id="tV"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== CAMBIOS ===== -->
+<div id="sec-cam" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🔄 Registrar Cambio</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Cliente</label><select id="c-cli"><option value="">Cliente general</option></select></div>
+      <div class="ff"><label>Producto ENTRA</label><input id="c-ent" placeholder="Xbox One..."></div>
+      <div class="ff"><label>Valor asignado</label><input type="number" id="c-val" placeholder="0"></div>
+      <div class="ff"><label>Producto SALE</label><select id="c-sal"></select></div>
+      <div class="ff"><label>Encime (COP)</label><input type="number" id="c-enc" value="0"></div>
+      <div class="ff"><label>Método pago</label><select id="c-pag"><option>Efectivo</option><option>Nequi</option><option>Bancolombia</option><option>Daviplata</option></select></div>
+    </div>
+    <button class="b b-gd" onclick="addCam()">🔄 Registrar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📋 Cambios</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Entró</th><th>Salió</th><th>Encime</th><th>Ganancia</th></tr></thead><tbody id="tC"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== COMPRAS ===== -->
+<div id="sec-com" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🛒 Nueva Compra</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Proveedor</label><select id="co-prv"><option value="">Particular</option></select></div>
+      <div class="ff"><label>Producto</label><input id="co-pro" placeholder="Play 5 slim"></div>
+      <div class="ff"><label>Cantidad</label><input type="number" id="co-can" value="1"></div>
+      <div class="ff"><label>Precio unitario</label><input type="number" id="co-pre" placeholder="0"></div>
+      <div class="ff"><label>Estado</label><select id="co-est"><option>Pagado</option><option>Pendiente</option></select></div>
+      <div class="ff"><label>Plataforma</label><select id="co-pla"><option>PlayStation</option><option>Xbox</option><option>Nintendo Switch</option><option>Retro</option><option>PC / Accesorios</option><option>Videojuego</option><option>Accesorio</option></select></div>
+    </div>
+    <button class="b b-gd" onclick="addCom()">✅ Registrar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📋 Compras</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Total</th><th>Estado</th><th></th></tr></thead><tbody id="tCo"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== CLIENTES ===== -->
+<div id="sec-cli" class="sec">
+  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">👥 Nuevo Cliente</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Nombre</label><input id="cl-nom" placeholder="Nombre"></div>
+      <div class="ff"><label>WhatsApp</label><input id="cl-wa" placeholder="+57 300 123 4567"></div>
+      <div class="ff"><label>Plataforma</label><select id="cl-pla"><option>PlayStation</option><option>Xbox</option><option>Nintendo Switch</option><option>Retro</option><option>Todas</option></select></div>
+      <div class="ff"><label>Notas</label><input id="cl-not" placeholder="Observaciones..."></div>
+    </div>
+    <button class="b b-gd" onclick="addCli()">👤 Agregar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📋 Clientes</span><input placeholder="🔍 Buscar..." id="bC" oninput="rCli()" class="si2"></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Nombre</th><th>WhatsApp</th><th>Compras</th><th>Total</th><th></th></tr></thead><tbody id="tCl"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== FIADOS ===== -->
+<div id="sec-fia" class="sec">
+  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">💳 Nuevo Fiado</span><span class="ca">▼</span></div><div class="pb">
+    <p style="color:var(--red);font-size:12px;margin-bottom:10px">⚠️ Solo clientes de confianza</p>
+    <div class="fg">
+      <div class="ff"><label>Cliente</label><select id="f-cli"></select></div>
+      <div class="ff"><label>Producto</label><input id="f-pro" placeholder="Descripción"></div>
+      <div class="ff"><label>Valor (COP)</label><input type="number" id="f-val" placeholder="0"></div>
+      <div class="ff"><label>Cuota inicial</label><input type="number" id="f-ini" value="0"></div>
+    </div>
+    <button class="b b-rd" onclick="addFia()">⚠️ Confirmar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">💳 Fiados Activos</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Cliente</th><th>Producto</th><th>Saldo</th><th>Estado</th><th></th></tr></thead><tbody id="tF"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== TRABAJADORES ===== -->
+<div id="sec-tra" class="sec">
+  <div class="tc">
+    <div class="p"><div class="ph"><span class="pt">👷 Trabajador</span></div><div class="pb">
+      <div class="fg" style="grid-template-columns:1fr">
+        <div class="ff"><label>Nombre</label><input id="tr-nom" placeholder="Nombre"></div>
+        <div class="ff"><label>Rol</label><select id="tr-rol"><option>Vendedor</option><option>Auxiliar</option><option>Técnico</option><option>Dueño</option></select></div>
+      </div>
+      <button class="b b-gd" onclick="addTrb()">➕ Agregar</button>
+    </div></div>
+    <div class="p"><div class="ph"><span class="pt">💵 Pago Diario</span></div><div class="pb">
+      <div class="fg" style="grid-template-columns:1fr">
+        <div class="ff"><label>Trabajador</label><select id="pg-trb"></select></div>
+        <div class="ff"><label>Monto</label><input type="number" id="pg-mon" placeholder="0"></div>
+        <div class="ff"><label>Concepto</label><select id="pg-con"><option>Día trabajado</option><option>Comisión</option><option>Bono</option><option>Adelanto</option></select></div>
+        <div class="ff"><label>Método</label><select id="pg-met"><option>Efectivo</option><option>Nequi</option><option>Bancolombia</option></select></div>
+      </div>
+      <button class="b b-gr" onclick="addPag()">💵 Registrar</button>
+    </div></div>
+  </div>
+  <div class="p"><div class="ph"><span class="pt">📋 Pagos</span><span id="tpm" style="color:var(--red);font-size:12px;font-weight:700"></span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Trabajador</th><th>Monto</th><th>Concepto</th></tr></thead><tbody id="tP"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== PROVEEDORES ===== -->
+<div id="sec-prv" class="sec">
+  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🏭 Proveedor</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Nombre</label><input id="pr-nom" placeholder="Nombre"></div>
+      <div class="ff"><label>WhatsApp</label><input id="pr-con" placeholder="+57..."></div>
+      <div class="ff"><label>Tipo</label><select id="pr-tip"><option>Mayorista</option><option>Particular</option><option>Importador</option></select></div>
+      <div class="ff"><label>Plataformas</label><input id="pr-pla" placeholder="PS, Xbox..."></div>
+    </div>
+    <button class="b b-gd" onclick="addPrv()">➕ Agregar</button>
+  </div></div>
+  <div class="p"><div class="ph"><span class="pt">📋 Proveedores</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Nombre</th><th>Contacto</th><th>Tipo</th><th></th></tr></thead><tbody id="tPr"></tbody></table></div></div>
+  </div>
+</div>
+
+<!-- ===== REPORTES ===== -->
+<div id="sec-rep" class="sec">
+  <div class="p"><div class="ph"><span class="pt">📊 Reportes</span></div><div class="pb">
+    <div class="ch">
+      <button class="b b-gh bs ac" onclick="rep('hoy',this)">Hoy</button>
+      <button class="b b-gh bs" onclick="rep('sem',this)">Semana</button>
+      <button class="b b-gh bs" onclick="rep('mes',this)">Mes</button>
+      <button class="b b-gh bs" onclick="rep('all',this)">Total</button>
+    </div>
+    <div id="rC"></div>
+  </div></div>
+</div>
+
+</main>
+
+<!-- VOZ PANEL -->
+<div id="vp"><div id="vr"></div><div id="vt">🎤 Toca el micrófono y habla...</div><button id="mb" onclick="mic()">🎤</button></div>
+
+<!-- RECIBO MODAL -->
+<div class="mo" id="rM"><div class="md"><button class="mx" onclick="X('rM')">✕</button><div class="pt" style="margin-bottom:10px">🧾 Recibo</div><div class="rp" id="rP"></div><div class="br"><button class="b b-gd" onclick="prn()">🖨️ Imprimir</button><button class="b b-gh" onclick="X('rM')">Cerrar</button></div></div></div>
+
+<div id="tt"></div>
+
+<script>
+// ============================================================
+// CORE
+// ============================================================
+let URL_=localStorage.getItem('vtp_url')||'',ON=false,uV=null,rN=parseInt(localStorage.getItem('vtp_rn')||'1');
+let micA=false,rec=null,fS='all',fT='hoy',fI='all';
+const D={inventario:[],ventas:[],cambios:[],compras:[],clientes:[],fiados:[],trabajadores:[],pagos:[],proveedores:[],servicios:[],tareas:[]};
+
+// API
+async function api(action,table,payload=null,id=null,updates=null,query=null){
+  if(!ON||!URL_) return null;
+  try{const r=await fetch(URL_,{method:'POST',body:JSON.stringify({action,table,payload,id,updates,query})});const j=await r.json();ss('ok');return j.data;}
+  catch(e){ss('er');return null;}
+}
+async function cargar(){ss('ld');for(const t of Object.keys(D)){const d=await api('getAll',t);if(d)D[t]=d;}ss('ok');rAll();}
+async function conectar(){
+  const u=$('urlIn').value.trim();if(!u.includes('script.google.com'))return toast('⚠️ URL inválida');
+  URL_=u;localStorage.setItem('vtp_url',u);ss('ld');toast('🔄 Conectando...');
+  try{const r=await fetch(URL_+'?action=getStats');const j=await r.json();if(j.ok!==false){ON=true;$('setup').classList.add('h');toast('✅ Conectado');await cargar();}else throw 0;}
+  catch{toast('❌ No se pudo conectar');ss('er');}
+}
+function local(){$('setup').classList.add('h');ss('lo');lLoad();rAll();}
+function lLoad(){Object.keys(D).forEach(t=>{const s=localStorage.getItem('vtp_'+t);if(s)D[t]=JSON.parse(s);});}
+function lSave(t){localStorage.setItem('vtp_'+t,JSON.stringify(D[t]));}
+async function sincronizar(){if(!ON)return toast('⚠️ Sin conexión');await cargar();toast('🔄 Sincronizado');}
+
+// UTILS
+function $(id){return document.getElementById(id)}
+function Q(s,i){return document.querySelectorAll(s)[i]}
+function cop(n){return '$'+parseInt(n||0).toLocaleString('es-CO')}
+function hoy(){return new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'2-digit',year:'numeric'})}
+function man(){const d=new Date();d.setDate(d.getDate()+1);return d.toLocaleDateString('es-CO',{day:'2-digit',month:'2-digit',year:'numeric'})}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
+function toast(m,d=3000){const t=$('tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',d)}
+function ss(s){const d=$('sync');const m={ok:['s-ok','✅ Sheets'],lo:['s-lo','⚡ Local'],ld:['s-ld','🔄...'],er:['s-er','❌ Error']};d.className=m[s][0];d.textContent=m[s][1]}
+function tg(p){p.classList.toggle('op')}
+function uc(b){b.parentElement.querySelectorAll('.b').forEach(x=>x.classList.remove('ac'));b.classList.add('ac')}
+function cap(s){return s?s.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' '):''}
+$('fh').textContent=new Date().toLocaleDateString('es-CO',{weekday:'short',day:'numeric',month:'short'});
+
+function go(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('a'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('a'));
+  $('sec-'+id).classList.add('a');if(btn)btn.classList.add('a');
+  pop();if(id==='dash')rDash();if(id==='srv')rSrv();if(id==='tar')rTar();if(id==='rep')rep('hoy');
+  if(id==='tar')$('t-fec').value=new Date().toISOString().split('T')[0];
+}
+
+function rAll(){rInv();rVta();rCam();rCom();rCli();rFia();rPag();rPrv();rSrv();rTar();rDash();pop();badges();}
+
+function badges(){
+  const bT=D.tareas.filter(t=>!t.completada&&(t.fecha===hoy()||t.fecha===man())).length;
+  const bS=D.servicios.filter(s=>s.estado==='Pendiente').length;
+  const bF=D.fiados.filter(f=>f.estado!=='Pagado').length;
+  [['bt',bT],['bs',bS],['bf',bF]].forEach(([id,n])=>{const e=$(id);e.style.display=n>0?'inline-block':'none';e.textContent=n;});
+}
+
+function pop(){
+  const pr=D.inventario.filter(p=>parseInt(p.stock||0)>0);
+  const gr={};pr.forEach(p=>{const k=p.plataforma||'Otro';if(!gr[k])gr[k]=[];gr[k].push(p);});
+  ['v-pro','c-sal'].forEach(id=>{const e=$(id);if(!e)return;let h='<option value="">Seleccionar...</option>';
+    Object.keys(gr).sort().forEach(k=>{h+=`<optgroup label="${k}">`;gr[k].forEach(p=>{h+=`<option value="${p.id}">${p.nombre} — ${cop(p.precio)} (${p.stock})</option>`;});h+='</optgroup>';});e.innerHTML=h;});
+  ['v-cli','c-cli','f-cli'].forEach(id=>{const e=$(id);if(!e)return;e.innerHTML='<option value="">Cliente general</option>'+D.clientes.map(c=>`<option value="${c.id}">${c.nombre}</option>`).join('');});
+  const pe=$('co-prv');if(pe)pe.innerHTML='<option value="">Particular</option>'+D.proveedores.map(p=>`<option value="${p.id}">${p.nombre}</option>`).join('');
+  const te=$('pg-trb');if(te)te.innerHTML=D.trabajadores.length?D.trabajadores.map(t=>`<option value="${t.id}">${t.nombre}</option>`).join(''):'<option>Sin trabajadores</option>';
+}
+
+// ============================================================
+// TAREAS
+// ============================================================
+async function addTar(){
+  const ti=$('t-tit').value.trim();if(!ti)return toast('⚠️ Escribe la tarea');
+  let fe=$('t-fec').value||hoy();if(fe.includes('-')){const p=fe.split('-');fe=`${p[2]}/${p[1]}/${p[0]}`;}
+  const t={id:uid(),titulo:ti,fecha:fe,hora:$('t-hor').value||'',prioridad:$('t-pri').value,notas:$('t-not').value,completada:false,creada:hoy()};
+  D.tareas.unshift(t);lSave('tareas');if(ON)await api('insert','tareas',t);
+  rTar();badges();rDash();toast('📅 '+ti);['t-tit','t-hor','t-not'].forEach(id=>$(id).value='');
+}
+async function compTar(id){const t=D.tareas.find(x=>x.id===id);if(!t)return;t.completada=!t.completada;lSave('tareas');if(ON)await api('update','tareas',id,{completada:t.completada});rTar();badges();rDash();toast(t.completada?'✅ Completada':'⏳ Reactivada');}
+async function delTar(id){if(!confirm('¿Eliminar?'))return;D.tareas=D.tareas.filter(t=>t.id!==id);lSave('tareas');if(ON)await api('delete','tareas',id);rTar();badges();}
+
+function rTar(){
+  const l=$('lT');if(!l)return;const h=hoy(),m=man();let it=[...D.tareas];
+  if(fT==='hoy')it=it.filter(t=>t.fecha===h&&!t.completada);
+  else if(fT==='man')it=it.filter(t=>t.fecha===m&&!t.completada);
+  else if(fT==='sem'){const now=new Date(),end=new Date(now.getTime()+7*86400000);it=it.filter(t=>{if(t.completada)return false;const p=(t.fecha||'').split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);return d>=now&&d<=end;});}
+  else if(fT==='pend')it=it.filter(t=>!t.completada);
+  const po={alta:1,media:2,normal:3,baja:4};it.sort((a,b)=>po[a.prioridad]-po[b.prioridad]);
+  if(!it.length){l.innerHTML='<div class="em"><div class="ei">📅</div><p>Sin tareas</p></div>';return;}
+  l.innerHTML=it.map(t=>{const isH=t.fecha===h,pi={alta:'🔴',media:'🟡',baja:'🟢',normal:'🔵'}[t.prioridad],pb={alta:'bg-rd',media:'bg-gd',baja:'bg-gr',normal:'bg-bl'}[t.prioridad];
+    return `<div class="ic ${t.prioridad==='alta'?'urg':''} ${t.completada?'entr':''}"><div class="ic-t">${t.completada?'✅':pi} ${t.titulo}</div><div class="ic-d">📅 ${t.fecha}${t.hora?' 🕐 '+t.hora:''} ${isH?'<span class="bg bg-gd">HOY</span>':''}${t.notas?'<br>📝 '+t.notas:''}</div><div class="ic-f"><span class="bg ${pb}">${t.prioridad}</span><div class="br"><button class="b ${t.completada?'b-gh':'b-gr'} bs" onclick="compTar('${t.id}')">${t.completada?'↩️':'✅'}</button><button class="b b-gh bs" onclick="delTar('${t.id}')">🗑</button></div></div></div>`;}).join('');
+}
+
+// ============================================================
+// SERVICIOS
+// ============================================================
+async function addSrv(){
+  const cl=$('s-cli').value.trim();if(!cl)return toast('⚠️ Cliente');
+  const eq=$('s-equ').value.trim();if(!eq)return toast('⚠️ Equipo');
+  const tv=$('s-tip').value,ti=tv?tv.split('|')[0]:'Otro',pr=tv?parseInt(tv.split('|')[1]||0):0;
+  const va=parseInt($('s-val').value)||pr,ab=parseInt($('s-abo').value)||0;
+  const s={id:uid(),fecha:hoy(),cliente:cl,tel:$('s-tel').value,equipo:eq,tipo:ti,valor:va,abono:ab,saldo:va-ab,notas:$('s-not').value,estado:va-ab<=0?'Entregado':'Pendiente'};
+  D.servicios.unshift(s);lSave('servicios');if(ON)await api('insert','servicios',s);
+  rSrv();badges();rDash();toast('🔧 '+cl);['s-cli','s-tel','s-equ','s-val','s-not'].forEach(id=>$(id).value='');$('s-abo').value=0;$('s-tip').value='';
+}
+async function srvListo(id){const s=D.servicios.find(x=>x.id===id);if(!s)return;s.estado='Listo';lSave('servicios');if(ON)await api('update','servicios',id,{estado:'Listo'});rSrv();badges();rDash();toast('✅ '+s.cliente+' — Listo');}
+async function srvEntr(id){const s=D.servicios.find(x=>x.id===id);if(!s)return;s.estado='Entregado';lSave('servicios');if(ON)await api('update','servicios',id,{estado:'Entregado'});rSrv();badges();rDash();toast('📦 Entregado');}
+async function srvAbo(id){const m=parseInt(prompt('¿Cuánto abonó?'));if(!m)return;const s=D.servicios.find(x=>x.id===id);if(!s)return;s.abono=(+s.abono||0)+m;s.saldo=Math.max(0,(+s.valor||0)-s.abono);if(s.saldo<=0)s.estado='Entregado';lSave('servicios');if(ON)await api('update','servicios',id,{abono:s.abono,saldo:s.saldo,estado:s.estado});rSrv();toast('✅ Abono '+cop(m));}
+
+function rSrv(){
+  const l=$('lS');if(!l)return;let it=D.servicios;if(fS!=='all')it=it.filter(s=>s.estado===fS);
+  if(!it.length){l.innerHTML='<div class="em"><div class="ei">🔧</div><p>Sin servicios</p></div>';return;}
+  l.innerHTML=it.map(s=>`<div class="ic ${s.estado==='Pendiente'?'pend':s.estado==='Listo'?'list':'entr'}"><div class="ic-t">${s.cliente} <span style="color:var(--muted);font-size:12px;font-weight:400">— ${s.equipo}</span></div><div class="ic-d">🔧 ${s.tipo}<br>📱 ${s.tel||'Sin tel'} | 📅 ${s.fecha}${s.notas?'<br>📝 '+s.notas:''}</div><div class="ic-f"><div><span class="bg ${s.estado==='Pendiente'?'bg-gd':s.estado==='Listo'?'bg-bl':'bg-gr'}">${s.estado}</span> <span style="margin-left:6px;font-weight:700;color:${s.saldo>0?'var(--red)':'var(--green)'}">${s.saldo>0?'Saldo: '+cop(s.saldo):cop(s.valor)+' ✅'}</span></div><div class="br">${s.estado==='Pendiente'?`<button class="b b-bl bs" onclick="srvListo('${s.id}')">✅ Listo</button>`:''} ${s.estado==='Listo'?`<button class="b b-gr bs" onclick="srvEntr('${s.id}')">📦 Entregar</button>`:''} ${s.saldo>0?`<button class="b b-gh bs" onclick="srvAbo('${s.id}')">+ Abono</button>`:''} ${s.tel?`<a href="https://wa.me/57${s.tel.replace(/\D/g,'')}" target="_blank" class="b b-gr bs" style="text-decoration:none">📱 WA</a>`:''}</div></div></div>`).join('');
+}
+
+// ============================================================
+// INVENTARIO
+// ============================================================
+async function addInv(){
+  const n=$('i-nom').value.trim();if(!n)return toast('⚠️ Nombre');
+  const i={id:uid(),nombre:n,plataforma:$('i-pla').value||'Otro',condicion:$('i-con').value,costo:parseInt($('i-cos').value)||0,precio:parseInt($('i-pre').value)||0,stock:parseInt($('i-stk').value)||1,serie:'N/A',origen:'Compra directa',fecha:hoy()};
+  D.inventario.push(i);lSave('inventario');if(ON)await api('insert','inventario',i);
+  rInv();pop();toast('📦 '+n);['i-nom','i-cos','i-pre'].forEach(id=>$(id).value='');$('i-stk').value=1;
+}
+async function delInv(id){if(!confirm('¿Eliminar?'))return;D.inventario=D.inventario.filter(p=>p.id!==id);lSave('inventario');if(ON)await api('delete','inventario',id);rInv();pop();}
+
+function rInv(){
+  const q=($('bI').value||'').toLowerCase();
+  let it=D.inventario.filter(p=>(p.nombre||'').toLowerCase().includes(q)||(p.plataforma||'').toLowerCase().includes(q));
+  if(fI!=='all')it=it.filter(p=>p.plataforma===fI);
+  const d=$('tI');if(!it.length){d.innerHTML='<div class="em"><div class="ei">📦</div><p>Sin productos</p></div>';return;}
+  const gr={};it.forEach(p=>{const k=p.plataforma||'Otro';if(!gr[k])gr[k]=[];gr[k].push(p);});
+  let h='';Object.keys(gr).sort().forEach(k=>{const tot=gr[k].reduce((a,p)=>a+(+p.stock||0),0);
+    h+=`<div class="pg"><div class="pg-t">${k} <span style="color:var(--muted);font-weight:400">(${gr[k].length} ítems — ${tot} uds)</span></div>`;
+    gr[k].forEach(p=>{const sc=+p.stock||0,sb=sc===0?'bg-rd':sc<=2?'bg-gd':'bg-gr',mg=p.costo?Math.round(((p.precio-p.costo)/p.costo)*100):0;
+      h+=`<div class="pi"><div style="flex:1"><div class="nm">${p.nombre}</div><div class="st">${p.condicion} · Costo ${cop(p.costo)} · Margen ${mg}%</div></div><div style="text-align:right"><div class="pr">${cop(p.precio)}</div><span class="bg ${sb}">Stock: ${sc}</span></div><button class="b b-gh bs" onclick="delInv('${p.id}')" style="margin-left:6px">🗑</button></div>`;
+    });h+='</div>';});d.innerHTML=h;
+}
+
+// ============================================================
+// VENTAS
+// ============================================================
+async function addVta(){
+  const pid=$('v-pro').value,pr=D.inventario.find(p=>p.id===pid);if(!pr)return toast('⚠️ Producto');
+  const pre=parseInt($('v-pre').value)||pr.precio,cid=$('v-cli').value,cl=D.clientes.find(c=>c.id===cid);
+  const v={id:uid(),fecha:hoy(),prodId:pid,producto:pr.nombre,plataforma:pr.plataforma,costo:pr.costo,precio:pre,ganancia:pre-(+pr.costo||0),pago:$('v-pag').value,canal:$('v-can').value,vendedor:$('v-ven').value||'Dueño',clienteId:cid||'',clienteNombre:cl?cl.nombre:'Cliente general'};
+  pr.stock=Math.max(0,(+pr.stock||0)-1);lSave('inventario');
+  if(ON)await api('update','inventario',pr.id,{stock:pr.stock});
+  if(cl){cl.totalCompras=(+cl.totalCompras||0)+1;cl.totalGastado=(+cl.totalGastado||0)+pre;lSave('clientes');if(ON)await api('update','clientes',cl.id,{totalCompras:cl.totalCompras,totalGastado:cl.totalGastado});}
+  D.ventas.unshift(v);lSave('ventas');if(ON)await api('insert','ventas',v);
+  uV=v.id;rVta();rDash();pop();toast('💰 Ganancia: '+cop(v.ganancia));
+}
+
+function rVta(){
+  const tb=$('tV'),h=hoy(),th=D.ventas.filter(v=>v.fecha===h).reduce((a,v)=>a+(+v.precio||0),0);
+  $('tvh').textContent='Hoy: '+cop(th);
+  if(!D.ventas.length){tb.innerHTML='<tr><td colspan="6"><div class="em"><div class="ei">💸</div><p>Sin ventas</p></div></td></tr>';return;}
+  tb.innerHTML=D.ventas.map(v=>`<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td style="font-size:12px">${v.clienteNombre}</td><td class="cop">${cop(v.precio)}</td><td style="color:${(+v.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(v.ganancia)}</strong></td><td><button class="b b-gh bs" onclick="recibo('${v.id}')">🧾</button></td></tr>`).join('');
+}
+
+function recibo(id){if(!id)return toast('⚠️ Sin venta');const v=D.ventas.find(x=>x.id===id);if(!v)return;
+  const n=String(rN).padStart(4,'0');rN++;localStorage.setItem('vtp_rn',rN);
+  $('rP').textContent=`════════════════════════════\n  VIDEOTIENDA EL PADRINO\n  Cra 80 #11a-51 Local 1-96\n  Sanandresito del Sur\n════════════════════════════\n  RECIBO N° ${n}   ${v.fecha}\n────────────────────────────\n  ${v.producto}\n  TOTAL: ${cop(v.precio)}\n────────────────────────────\n  Pago: ${v.pago} | ${v.canal}\n  Cliente: ${v.clienteNombre}\n════════════════════════════\n  ¡Gracias por su compra! 🎮\n════════════════════════════`;
+  $('rM').classList.add('op');}
+function X(id){$(id).classList.remove('op')}
+function prn(){const c=$('rP').textContent;const w=window.open('','_blank');w.document.write(`<pre style="font-family:monospace;font-size:14px;padding:24px">${c}</pre>`);w.print();}
+
+// ============================================================
+// CAMBIOS
+// ============================================================
+async function addCam(){
+  const e=$('c-ent').value.trim();if(!e)return toast('⚠️ Producto entra');
+  const ve=parseInt($('c-val').value)||0,sid=$('c-sal').value,ps=D.inventario.find(p=>p.id===sid);if(!ps)return toast('⚠️ Producto sale');
+  const enc=parseInt($('c-enc').value)||0,cid=$('c-cli').value,cl=D.clientes.find(c=>c.id===cid),g=ve+enc-(+ps.costo||0);
+  const nv={id:uid(),nombre:e,plataforma:ps.plataforma,condicion:'Usado - Bueno',costo:ve,precio:Math.round(ve*1.3),stock:1,serie:'N/A',origen:'Cambio/Trueque',fecha:hoy()};
+  D.inventario.push(nv);ps.stock=Math.max(0,(+ps.stock||0)-1);lSave('inventario');
+  const cm={id:uid(),fecha:hoy(),clienteId:cid||'',clienteNombre:cl?cl.nombre:'Cliente general',entra:e,valorEntra:ve,sale:ps.nombre,costeSale:ps.costo,encime:enc,ganancia:g,notas:$('c-pag').value};
+  D.cambios.unshift(cm);lSave('cambios');
+  if(ON){await api('insert','inventario',nv);await api('update','inventario',ps.id,{stock:ps.stock});await api('insert','cambios',cm);}
+  rCam();rInv();pop();toast('🔄 Ganancia: '+cop(g));['c-ent','c-val'].forEach(id=>$(id).value='');$('c-enc').value=0;
+}
+
+function rCam(){const tb=$('tC');if(!D.cambios.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">🔄</div><p>Sin cambios</p></div></td></tr>';return;}tb.innerHTML=D.cambios.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td style="color:var(--blue)">${c.entra}</td><td style="color:var(--gold)">${c.sale}</td><td class="cop">${cop(c.encime)}</td><td style="color:${(+c.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(c.ganancia)}</strong></td></tr>`).join('');}
+
+// ============================================================
+// COMPRAS
+// ============================================================
+async function addCom(){
+  const p=$('co-pro').value.trim();if(!p)return toast('⚠️ Producto');
+  const ca=parseInt($('co-can').value)||1,pr=parseInt($('co-pre').value)||0,pid=$('co-prv').value,pv=D.proveedores.find(x=>x.id===pid);
+  const co={id:uid(),fecha:hoy(),proveedorId:pid||'',proveedor:pv?pv.nombre:'Particular',producto:p,plataforma:$('co-pla').value,cantidad:ca,precio:pr,total:ca*pr,estado:$('co-est').value};
+  const inv={id:uid(),nombre:p,plataforma:co.plataforma,condicion:'Usado - Bueno',costo:pr,precio:Math.round(pr*1.35),stock:ca,serie:'N/A',origen:'Compra directa',fecha:hoy()};
+  D.compras.unshift(co);D.inventario.push(inv);lSave('compras');lSave('inventario');
+  if(ON){await api('insert','compras',co);await api('insert','inventario',inv);}
+  rCom();rInv();pop();toast('🛒 Agregado');['co-pro','co-pre'].forEach(id=>$(id).value='');$('co-can').value=1;
+}
+async function pagCom(id){const c=D.compras.find(x=>x.id===id);if(!c)return;c.estado='Pagado';lSave('compras');if(ON)await api('update','compras',id,{estado:'Pagado'});rCom();toast('✅');}
+
+function rCom(){const tb=$('tCo');if(!D.compras.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">🛒</div><p>Sin compras</p></div></td></tr>';return;}tb.innerHTML=D.compras.map(c=>`<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td><strong>${c.producto}</strong></td><td class="cop"><strong>${cop(c.total)}</strong></td><td><span class="bg ${c.estado==='Pagado'?'bg-gr':'bg-gd'}">${c.estado}</span></td><td>${c.estado!=='Pagado'?`<button class="b b-gr bs" onclick="pagCom('${c.id}')">Pagar</button>`:''}</td></tr>`).join('');}
+
+// ============================================================
+// CLIENTES
+// ============================================================
+async function addCli(){const n=$('cl-nom').value.trim();if(!n)return toast('⚠️ Nombre');const c={id:uid(),nombre:n,wa:$('cl-wa').value,plataforma:$('cl-pla').value,notas:$('cl-not').value,totalCompras:0,totalGastado:0,ultimaCompra:'',fecha:hoy()};D.clientes.push(c);lSave('clientes');if(ON)await api('insert','clientes',c);rCli();pop();toast('👤 '+n);['cl-nom','cl-wa','cl-not'].forEach(id=>$(id).value='');}
+async function delCli(id){if(!confirm('¿Eliminar?'))return;D.clientes=D.clientes.filter(c=>c.id!==id);lSave('clientes');if(ON)await api('delete','clientes',id);rCli();pop();}
+function rCli(){const q=($('bC').value||'').toLowerCase(),it=D.clientes.filter(c=>(c.nombre||'').toLowerCase().includes(q)||(c.wa||'').includes(q)),tb=$('tCl');if(!it.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">👥</div><p>Sin clientes</p></div></td></tr>';return;}tb.innerHTML=it.map(c=>`<tr><td><strong>${c.nombre}</strong></td><td><a href="https://wa.me/${(c.wa||'').replace(/\D/g,'')}" target="_blank" style="color:var(--green);text-decoration:none">📱 ${c.wa||'—'}</a></td><td style="text-align:center">${c.totalCompras||0}</td><td class="cop">${cop(c.totalGastado)}</td><td><button class="b b-gh bs" onclick="delCli('${c.id}')">🗑</button></td></tr>`).join('');}
+
+// ============================================================
+// FIADOS
+// ============================================================
+async function addFia(){const cid=$('f-cli').value,cl=D.clientes.find(c=>c.id===cid);if(!cl)return toast('⚠️ Cliente');const p=$('f-pro').value.trim();if(!p)return toast('⚠️ Producto');const v=parseInt($('f-val').value)||0,i=parseInt($('f-ini').value)||0;const f={id:uid(),clienteId:cid,clienteNombre:cl.nombre,wa:cl.wa||'',producto:p,valor:v,abonado:i,saldo:v-i,fecha:hoy(),estado:v-i<=0?'Pagado':i>0?'Abonando':'Pendiente'};D.fiados.unshift(f);lSave('fiados');if(ON)await api('insert','fiados',f);rFia();badges();toast('💳 '+cl.nombre);['f-pro','f-val','f-ini'].forEach(id=>$(id).value='');}
+async function aboFia(id){const m=parseInt(prompt('¿Cuánto abonó?'));if(!m)return;const f=D.fiados.find(x=>x.id===id);if(!f)return;f.abonado=(+f.abonado||0)+m;f.saldo=Math.max(0,(+f.valor||0)-f.abonado);f.estado=f.saldo<=0?'Pagado':'Abonando';lSave('fiados');if(ON)await api('update','fiados',id,{abonado:f.abonado,saldo:f.saldo,estado:f.estado});rFia();badges();toast('✅ '+cop(m));}
+function rFia(){const a=D.fiados.filter(f=>f.estado!=='Pagado'),tb=$('tF');if(!a.length){tb.innerHTML='<tr><td colspan="5"><div class="em"><div class="ei">💳</div><p>Sin fiados</p></div></td></tr>';return;}tb.innerHTML=a.map(f=>`<tr><td><strong>${f.clienteNombre}</strong><br><span style="color:var(--green);font-size:11px">${f.wa||''}</span></td><td style="font-size:12px">${f.producto}</td><td style="color:var(--red);font-weight:700">${cop(f.saldo)}</td><td><span class="bg ${f.estado==='Pendiente'?'bg-gd':'bg-bl'}">${f.estado}</span></td><td><button class="b b-gr bs" onclick="aboFia('${f.id}')">+ Abono</button></td></tr>`).join('');}
+
+// ============================================================
+// TRABAJADORES / PAGOS
+// ============================================================
+async function addTrb(){const n=$('tr-nom').value.trim();if(!n)return toast('⚠️ Nombre');const t={id:uid(),nombre:n,rol:$('tr-rol').value,fecha:hoy()};D.trabajadores.push(t);lSave('trabajadores');if(ON)await api('insert','trabajadores',t);pop();toast('👷 '+n);$('tr-nom').value='';}
+async function addPag(){const tid=$('pg-trb').value,t=D.trabajadores.find(x=>x.id===tid);if(!t)return toast('⚠️ Trabajador');const m=parseInt($('pg-mon').value)||0;if(!m)return toast('⚠️ Monto');const p={id:uid(),fecha:hoy(),trabId:tid,trabajador:t.nombre,monto:m,concepto:$('pg-con').value,metodo:$('pg-met').value};D.pagos.unshift(p);lSave('pagos');if(ON)await api('insert','pagos',p);rPag();toast('💵 '+cop(m)+' a '+t.nombre);$('pg-mon').value='';}
+function rPag(){const tb=$('tP'),mo=new Date().getMonth(),yr=new Date().getFullYear(),tm=D.pagos.reduce((a,p)=>{const pt=(p.fecha||'').split('/');return pt.length===3&&+pt[1]-1===mo&&+pt[2]===yr?a+(+p.monto||0):a;},0);$('tpm').textContent='Este mes: '+cop(tm);if(!D.pagos.length){tb.innerHTML='<tr><td colspan="4"><div class="em"><div class="ei">👷</div><p>Sin pagos</p></div></td></tr>';return;}tb.innerHTML=D.pagos.map(p=>`<tr><td style="color:var(--muted);font-size:11px">${p.fecha}</td><td><strong>${p.trabajador}</strong></td><td class="cop" style="color:var(--red)"><strong>${cop(p.monto)}</strong></td><td><span class="bg bg-pr">${p.concepto}</span></td></tr>`).join('');}
+
+// ============================================================
+// PROVEEDORES
+// ============================================================
+async function addPrv(){const n=$('pr-nom').value.trim();if(!n)return toast('⚠️ Nombre');const p={id:uid(),nombre:n,contacto:$('pr-con').value,tipo:$('pr-tip').value,plataformas:$('pr-pla').value,fecha:hoy()};D.proveedores.push(p);lSave('proveedores');if(ON)await api('insert','proveedores',p);rPrv();pop();toast('🏭 Agregado');['pr-nom','pr-con','pr-pla'].forEach(id=>$(id).value='');}
+async function delPrv(id){if(!confirm('¿Eliminar?'))return;D.proveedores=D.proveedores.filter(p=>p.id!==id);lSave('proveedores');if(ON)await api('delete','proveedores',id);rPrv();pop();}
+function rPrv(){const tb=$('tPr');if(!D.proveedores.length){tb.innerHTML='<tr><td colspan="4"><div class="em"><div class="ei">🏭</div><p>Sin proveedores</p></div></td></tr>';return;}tb.innerHTML=D.proveedores.map(p=>`<tr><td><strong>${p.nombre}</strong></td><td style="color:var(--green)">${p.contacto}</td><td><span class="bg bg-bl">${p.tipo}</span></td><td><button class="b b-gh bs" onclick="delPrv('${p.id}')">🗑</button></td></tr>`).join('');}
+
+// ============================================================
+// REPORTES
+// ============================================================
+function rep(per,btn){
+  if(btn)uc(btn);const h=new Date(),fil=f=>{if(!f)return false;const p=f.split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);if(per==='hoy')return d.toDateString()===h.toDateString();if(per==='sem')return d>=new Date(h.getTime()-7*864e5);if(per==='mes')return d.getMonth()===h.getMonth()&&d.getFullYear()===h.getFullYear();return true;};
+  const v=D.ventas.filter(x=>fil(x.fecha)),s=D.servicios.filter(x=>fil(x.fecha)),c=D.cambios.filter(x=>fil(x.fecha)),co=D.compras.filter(x=>fil(x.fecha)),pa=D.pagos.filter(x=>fil(x.fecha));
+  const tV=v.reduce((a,x)=>a+(+x.precio||0),0),tG=v.reduce((a,x)=>a+(+x.ganancia||0),0),tS=s.reduce((a,x)=>a+(+x.abono||0),0),tCg=c.reduce((a,x)=>a+(+x.ganancia||0),0),tCo=co.reduce((a,x)=>a+(+x.total||0),0),tP=pa.reduce((a,x)=>a+(+x.monto||0),0);
+  const ing=tG+tS+tCg,gas=tCo+tP,net=ing-gas;
+  const pr={};v.forEach(x=>{pr[x.producto]=(pr[x.producto]||0)+1;});const top=Object.entries(pr).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  $('rC').innerHTML=`<div class="sg" style="grid-template-columns:repeat(2,1fr)"><div class="sc gr"><div class="sl">Ingresos</div><div class="sv" style="color:var(--green)">${cop(ing)}</div></div><div class="sc rd"><div class="sl">Gastos</div><div class="sv" style="color:var(--red)">${cop(gas)}</div></div><div class="sc ${net>=0?'gr':'rd'}" style="grid-column:1/-1"><div class="sl">Neto</div><div class="sv" style="color:${net>=0?'var(--green)':'var(--red)'}">${cop(net)}</div></div></div>
+  <div class="p"><div class="ph"><span class="pt">📊 Detalle</span></div><div class="pb"><div style="line-height:2;font-size:14px">💰 Ventas: <strong>${v.length}</strong> — ${cop(tV)} — Ganancia: <span class="cop">${cop(tG)}</span><br>🔧 Servicios: <strong>${s.length}</strong> — <span class="cop">${cop(tS)}</span><br>🔄 Cambios: <strong>${c.length}</strong> — <span class="cop">${cop(tCg)}</span><br>🛒 Compras: <strong>${co.length}</strong> — <span style="color:var(--red)">${cop(tCo)}</span><br>👷 Pagos: <strong>${pa.length}</strong> — <span style="color:var(--red)">${cop(tP)}</span></div></div></div>
+  ${top.length?`<div class="p"><div class="ph"><span class="pt">🏆 Top Productos</span></div><div class="pb"><table><thead><tr><th>Producto</th><th>Ventas</th></tr></thead><tbody>${top.map(([n,c])=>`<tr><td>${n}</td><td><span class="bg bg-gd">${c}</span></td></tr>`).join('')}</tbody></table></div></div>`:''}`;
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function rDash(){
+  const h=hoy(),vH=D.ventas.filter(v=>v.fecha===h),tV=vH.reduce((a,v)=>a+(+v.precio||0),0),tG=vH.reduce((a,v)=>a+(+v.ganancia||0),0);
+  const sH=D.servicios.filter(s=>s.fecha===h),tS=sH.reduce((a,s)=>a+(+s.abono||0),0);
+  const vI=D.inventario.reduce((a,p)=>a+(+p.precio||0)*(+p.stock||0),0);
+  const fD=D.fiados.filter(f=>f.estado!=='Pagado').reduce((a,f)=>a+(+f.saldo||0),0);
+  const tH=D.tareas.filter(t=>!t.completada&&t.fecha===h).length;
+  $('d-v').textContent=cop(tV);$('d-g').textContent=cop(tG);$('d-s').textContent=cop(tS);
+  $('d-i').textContent=cop(vI);$('d-f').textContent=cop(fD);$('d-t').textContent=tH+' tareas';
+
+  // Tareas hoy
+  const tHoy=D.tareas.filter(t=>!t.completada&&(t.fecha===h||t.fecha===man())).slice(0,5);
+  $('dT').innerHTML=tHoy.map(t=>{const pi={alta:'🔴',media:'🟡',baja:'🟢',normal:'🔵'}[t.prioridad];
+    return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);align-items:center"><div style="flex:1"><div style="font-size:13px;font-weight:600">${pi} ${t.titulo}</div><div style="font-size:11px;color:var(--muted)">${t.fecha}${t.hora?' 🕐 '+t.hora:''}</div></div><button class="b b-gr bs" onclick="compTar('${t.id}')">✓</button></div>`;}).join('')||'<div style="color:var(--green);text-align:center;padding:14px">✅ Sin tareas</div>';
+
+  // Servicios
+  const pS=D.servicios.filter(s=>s.estado!=='Entregado').slice(0,5);
+  $('dS').innerHTML=pS.map(s=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);align-items:center"><div style="flex:1"><div style="font-size:13px;font-weight:600">${s.cliente}</div><div style="font-size:11px;color:var(--muted)">${s.equipo} — ${s.tipo}</div></div><span class="bg ${s.estado==='Pendiente'?'bg-gd':'bg-bl'}">${s.estado}</span></div>`).join('')||'<div style="color:var(--green);text-align:center;padding:14px">✅ Sin servicios</div>';
+
+  // Ventas
+  $('dV').innerHTML=D.ventas.slice(0,5).map(v=>`<tr><td><strong>${v.producto}</strong></td><td class="cop">${cop(v.precio)}</td></tr>`).join('')||'<tr><td colspan="2" style="color:var(--muted);padding:14px;text-align:center">Sin ventas</td></tr>';
+
+  // Fiados
+  $('dF').innerHTML=D.fiados.filter(f=>f.estado!=='Pagado').slice(0,4).map(f=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><div><div style="font-weight:700;font-size:13px">${f.clienteNombre}</div><div style="font-size:11px;color:var(--muted)">${f.producto}</div></div><div style="color:var(--red);font-weight:700">${cop(f.saldo)}</div></div>`).join('')||'<div style="color:var(--green);text-align:center;padding:14px">✅ Sin fiados</div>';
+}
+
+// ============================================================
+// 🎤 VOZ
+// ============================================================
+function initMic(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){toast('⚠️ Usa Safari en iPhone');return false;}
+  rec=new SR();rec.lang='es-CO';rec.continuous=false;rec.interimResults=true;
+  rec.onstart=()=>{micA=true;$('mb').className='esc';$('vt').textContent='🔴 Escuchando...';$('vr').textContent='';};
+  rec.onresult=e=>{let i='',f='';for(let k=e.resultIndex;k<e.results.length;k++){if(e.results[k].isFinal)f+=e.results[k][0].transcript;else i+=e.results[k][0].transcript;}$('vt').textContent=f||i||'...';if(f)proc(f.trim().toLowerCase());};
+  rec.onerror=()=>{micA=false;$('mb').className='';$('vt').textContent='🎤 Toca el micrófono y habla...';};
+  rec.onend=()=>{micA=false;$('mb').className='';};return true;
+}
+function mic(){if(!rec){if(!initMic())return;}if(micA)rec.stop();else{try{rec.start();}catch(e){rec=null;initMic();try{rec.start();}catch(e2){}}}}
+
+// ============================================================
+// VIDEOTIENDA EL PADRINO — SISTEMA DE VOZ V4 PRO
+// 150+ variaciones de comandos inteligentes
+// ============================================================
+
+const VENDEDOR_DEFAULT = 'Dueño';
+const PAGOS_DEFAULT = ['Efectivo', 'Nequi'];
+const CANAL_DEFAULT = 'Tienda Física';
+
+// Base de productos clave (para búsqueda rápida)
+const PRODUCTOS_CLAVE = {
+  'ps5 slim nueva disco': { nombre: 'PS5 Slim Nueva Disco', precio: 2400000, costo: 1900000, plataforma: 'PlayStation' },
+  'ps5 slim nueva digital': { nombre: 'PS5 Slim Nueva Digital', precio: 2200000, costo: 2080000, plataforma: 'PlayStation' },
+  'ps5 slim usada disco': { nombre: 'PS5 Slim Usada Disco', precio: 1880000, costo: 1680000, plataforma: 'PlayStation' },
+  'ps5 slim usada digital': { nombre: 'PS5 Slim Usada Digital', precio: 1700000, costo: 1500000, plataforma: 'PlayStation' },
+  'xbox series x usada': { nombre: 'Xbox Series X Usada', precio: 2100000, costo: 1700000, plataforma: 'Xbox' },
+  'xbox series s usada': { nombre: 'Xbox Series S Usada', precio: 1150000, costo: 900000, plataforma: 'Xbox' },
+  'xbox series s usada 1tb': { nombre: 'Xbox Series S Usada 1TB', precio: 1550000, costo: 1200000, plataforma: 'Xbox' },
+  'nintendo switch oled nueva': { nombre: 'Nintendo Switch OLED Nueva', precio: 1350000, costo: 1200000, plataforma: 'Nintendo Switch' },
+  'nintendo switch oled usada': { nombre: 'Nintendo Switch OLED Usada', precio: 980000, costo: 850000, plataforma: 'Nintendo Switch' },
+  'nintendo switch 1 usada': { nombre: 'Nintendo Switch 1 Usada', precio: 750000, costo: 600000, plataforma: 'Nintendo Switch' },
+  'ps4 slim usada': { nombre: 'PS4 Slim Usada', precio: 800000, costo: 600000, plataforma: 'PlayStation' },
+  'ps4 fat usada': { nombre: 'PS4 Fat Usada', precio: 650000, costo: 450000, plataforma: 'PlayStation' },
+  'ps4 pro usada': { nombre: 'PS4 Pro Usada', precio: 950000, costo: 800000, plataforma: 'PlayStation' },
+  'ps5 disco fat usada': { nombre: 'PS5 Disco Fat Usada', precio: 1700000, costo: 1600000, plataforma: 'PlayStation' },
+  'juegos nuevos switch': { nombre: 'Juegos Nuevos Switch', precio: 220000, costo: 190000, plataforma: 'Videojuego' },
+};
+
+// ============================================================
+// PATRONES DE COMANDOS — 150+ VARIACIONES
+// ============================================================
+
+const PATRONES_VENTA = [
+  /^(vend[íi]|vend|se llevó|se llevo|salió|vendi|vendemos|vendé|compró|compro)\s+(.+?)\s+(?:en|por|a)\s+(\d+)/i,
+  /^(.+?)\s+(?:vend[íi]|vend|compró|compro)\s+por\s+(\d+)/i,
+  /^(vendí|vendi|vend|se llevó)\s+(.+?)$/i,
+  /^(?:venta|vende|se fue)\s+(.+?)\s+de\s+(\d+)/i,
+  /^(.+?)\s+en\s+(\d+)\s+(?:pesos|cop|mil)/i,
+  /^venta\s+(.+?)\s+(\d+)/i,
+  /^vendí\s+(.+?)(?:\s+a\s+(\w+))?\s+en\s+(\d+)/i,
+];
+
+const PATRONES_COMPRA = [
+  /^(?:-|menos)\s*(\d+)\s+(?:compra|compré|formado)\s+(.+)/i,
+  /^compré?\s+(.+?)\s+por\s+(\d+)/i,
+  /^(?:compra|compré)\s+(\d+)\s+(?:de\s+)?(.+?)\s+a\s+(\d+)/i,
+  /^compré?\s+(.+?)(?:\s+x\s*(\d+))?\s+de\s+(\d+)/i,
+  /^llegó\s+(.+?)\s+de\s+(\d+)/i,
+  /^nuevo\s+inventario\s+(.+?)\s+(\d+)/i,
+  /^recibí\s+(.+?)\s+de\s+(\d+)/i,
+];
+
+const PATRONES_CAMBIO = [
+  /^(?:se|recib[io]|resibe|recibe)\s+(.+?)\s+(?:llevan|se llevan|enciman|encima|cambio)\s+(.+?)\s+encima?\s+(\d+)/i,
+  /^cambio\s+(.+?)\s+por\s+(.+?)\s+encima\s+(\d+)/i,
+  /^trueque\s+(.+?)\s+→\s+(.+?)\s+(\d+)/i,
+  /^(.+?)\s+x\s+(.+?)\s+encime\s+(\d+)/i,
+];
+
+const PATRONES_SERVICIO = [
+  /^(?:dejan|deja|trae|traen|dejaron)\s+(.+?)\s+(?:para|cambio|arreglo|acetato|hdmi|joystick|dado|drift|mantenimiento|revisión|instalación|programación)\s+(.+?)(?:\s+(\w+))?\s+(\d{7,})?/i,
+  /^servicio\s+(.+?)\s+(.+?)(?:\s+(\d{7,}))?/i,
+  /^reparación\s+(.+?)(?:\s+de\s+(\w+))?/i,
+  /^revisar\s+(.+?)\s+(?:de\s+)?(\w+)?/i,
+];
+
+const PATRONES_SERVICIO_LISTO = [
+  /^(?:listo|qued[oó]\s+list|ya\s+est[aá]|terminado|listo\s+el)\s+(?:control\s+de\s+)?(\w+)/i,
+  /^✅\s+(.+)/i,
+  /^servicio\s+listo\s+(.+)/i,
+];
+
+const PATRONES_SERVICIO_ENTREGADO = [
+  /^(?:entregad|vinieron\s+por|se\s+lo\s+llev|fue\s+a\s+buscar|paso\s+a\s+recoger|ya\s+se\s+lo\s+llev)\s+(?:el|del\s+)?(.+)/i,
+  /^📦\s+(.+)/i,
+  /^entregué\s+(.+)\s+a\s+(\w+)/i,
+];
+
+const PATRONES_PAGO_SERVICIO = [
+  /^(?:pagan|paga|pague|cobr[eé]|cobré)\s+(\d+)\s+(?:por\s+)?(?:arreglo|servicio|acetato|hdmi|joystick|drift|mantenimiento)(?:\s+(?:de|del|del\s+)?(\w+))?/i,
+  /^(\w+)\s+(?:pagan|pagó|pague)\s+(\d+)\s+(?:arreglo|servicio)(?:\s+de\s+(.+))?/i,
+  /^pago\s+(\d+)\s+servicio\s+(.+)/i,
+  /^cobré\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+];
+
+const PATRONES_PAGO_TRABAJADOR = [
+  /^(?:-|menos)\s*(\d+)\s+(?:pago|pagué|pague|cobré|pagación)\s+(?:a\s+)?(\w+)/i,
+  /^pago\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+  /^(\w+)\s+recibe\s+(\d+)/i,
+  /^paguéle\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+];
+
+const PATRONES_ABONO_FIADO = [
+  /^(\w+)\s+(?:abon[oó]|abonó|pagó)\s+(\d+)(?:\s+fiado)?/i,
+  /^abono\s+(\d+)\s+(?:a\s+)?(\w+)/i,
+  /^(\w+)\s+puso\s+(\d+)/i,
+  /^recibí\s+(\d+)\s+de\s+(\w+)/i,
+];
+
+const PATRONES_TAREA = [
+  /^(?:record[aá]rme|recordar|agenda|tarea|recordatorio|apunta|pon)\s+(.+?)(?:\s+(?:mañana|hoy|después))?\s*$/i,
+  /^📅\s+(.+)/i,
+  /^no\s+olvides\s+(.+)/i,
+  /^tengo\s+que\s+(.+)(?:\s+mañana)?/i,
+];
+
+const PATRONES_REPORTES = [
+  /^(?:cu[aá]nto|cuanto)\s+(?:vend[íi]|vendí|gané|tengo)\s+(?:hoy|ahorita)/i,
+  /^reporte\s+(?:de\s+)?(?:hoy|diario|venta)/i,
+  /^ventas\s+(?:de\s+)?hoy/i,
+  /^¿cuántas\s+(?:ventas|transacciones)?\s+hoy/i,
+];
+
+const PATRONES_CONSULTA_STOCK = [
+  /^qu[eé]\s+tengo\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo|retro|juegos|accesorios)/i,
+  /^stock\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo)/i,
+  /^hay\s+(?:de\s+)?(ps5|ps4|xbox|switch)/i,
+  /^disponible\s+(.+)/i,
+];
+
+// ============================================================
+// FUNCIÓN PRINCIPAL DE PROCESAMIENTO
+// ============================================================
+
+async function procVozV4(tx) {
+  console.log('🎤 Procesando:', tx);
+  
+  tx = normalizarTexto(tx);
+  let resultado = { tipo: null, datos: {} };
+
+  // 1. VENTA — 50+ variaciones
+  for (let patron of PATRONES_VENTA) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarVenta(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 2. COMPRA — 30+ variaciones
+  for (let patron of PATRONES_COMPRA) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarCompra(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 3. CAMBIO — 15+ variaciones
+  for (let patron of PATRONES_CAMBIO) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarCambio(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 4. SERVICIO — 20+ variaciones
+  for (let patron of PATRONES_SERVICIO) {
+    const match = tx.match(patron);
+    if (match) {
+      resultado = procesarServicio(match, tx);
+      if (resultado.tipo) return resultado;
+    }
+  }
+
+  // 5. SERVICIO LISTO
+  for (let patron of PATRONES_SERVICIO_LISTO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'servicio_listo', nombre: match[1], msg: `✅ ${match[1]} — Listo para entregar` };
+    }
+  }
+
+  // 6. SERVICIO ENTREGADO
+  for (let patron of PATRONES_SERVICIO_ENTREGADO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'servicio_entregado', nombre: match[1], msg: `📦 Entregado: ${match[1]}` };
+    }
+  }
+
+  // 7. PAGO SERVICIO
+  for (let patron of PATRONES_PAGO_SERVICIO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'pago_servicio', monto: match[1], cliente: match[2], msg: `✅ Pago ${cop(match[1])}` };
+    }
+  }
+
+  // 8. PAGO TRABAJADOR
+  for (let patron of PATRONES_PAGO_TRABAJADOR) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'pago_trabajador', monto: match[1], trabajador: match[2], msg: `💵 ${cop(match[1])} a ${match[2]}` };
+    }
+  }
+
+  // 9. ABONO FIADO
+  for (let patron of PATRONES_ABONO_FIADO) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'abono_fiado', cliente: match[1], monto: match[2], msg: `💳 Abono ${cop(match[2])} de ${match[1]}` };
+    }
+  }
+
+  // 10. TAREA
+  for (let patron of PATRONES_TAREA) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'tarea', titulo: match[1], msg: `📅 Tarea: ${match[1]}` };
+    }
+  }
+
+  // 11. REPORTES
+  for (let patron of PATRONES_REPORTES) {
+    if (patron.test(tx)) {
+      return { tipo: 'reporte', msg: '📊 Mostrando ventas de hoy' };
+    }
+  }
+
+  // 12. CONSULTA STOCK
+  for (let patron of PATRONES_CONSULTA_STOCK) {
+    const match = tx.match(patron);
+    if (match) {
+      return { tipo: 'stock', plataforma: match[1], msg: `📦 Stock de ${match[1]}` };
+    }
+  }
+
+  return { tipo: null, msg: '🤔 No entendí. Prueba: "Vendí ps5 slim 2.4" o "Compré xbox 2.1"' };
+}
+
+// ============================================================
+// FUNCIONES DE PROCESAMIENTO
+// ============================================================
+
+function procesarVenta(match, tx) {
+  const nombreProd = extraerProducto(tx);
+  const precioVoz = extraerPrecio(tx);
+  const cliente = extraerCliente(tx);
+  const pago = extraerMetodoPago(tx);
+
+  if (!nombreProd) return { tipo: null };
+
+  // ✅ BUSCAR PRODUCTO EN GOOGLE SHEETS (precios actuales)
+  let prodData = null;
+  if (typeof D !== 'undefined' && D.inventario) {
+    prodData = D.inventario.find(p => 
+      p.nombre.toLowerCase().includes(nombreProd.toLowerCase()) ||
+      nombreProd.toLowerCase().includes(p.nombre.toLowerCase().split(' ')[0])
+    );
+  }
+
+  // Si no lo encuentra en Sheets, usar datos del código
+  if (!prodData) {
+    prodData = PRODUCTOS_CLAVE[nombreProd] || { 
+      nombre: nombreProd, 
+      precio: precioVoz || 0,
+      costo: Math.round((precioVoz || 0) * 0.7)
+    };
+  }
+
+  // ✅ USAR PRECIO DE SHEETS O DE LA VOZ SI LO DIJO
+  const precioFinal = precioVoz || prodData.precio || 0;
+  const costoFinal = prodData.costo || Math.round(precioFinal * 0.7);
+
+  if (!precioFinal) return { tipo: null };
+
+  return {
+    tipo: 'venta',
+    datos: {
+      prodId: prodData.id || '',
+      producto: prodData.nombre,
+      plataforma: prodData.plataforma || 'Otro',
+      costo: costoFinal,
+      precio: precioFinal,
+      ganancia: precioFinal - costoFinal,
+      cliente,
+      pago: pago,
+      canal: CANAL_DEFAULT,
+      vendedor: VENDEDOR_DEFAULT,
+    },
+    msg: `💰 ${prodData.nombre} — ${cop(precioFinal)} — ${pago} — Ganancia: ${cop(precioFinal - costoFinal)}`,
+  };
+}
+
+function procesarCompra(match, tx) {
+  const precio = extraerPrecio(tx);
+  const cantidad = extraerCantidad(tx) || 1;
+  const producto = extraerProducto(tx, 'compra');
+
+  if (!precio || !producto) return { tipo: null };
+
+  // ✅ BUSCAR EN SHEETS PARA OBTENER PLATAFORMA ACTUALIZADA
+  let plataforma = 'Otro';
+  if (typeof D !== 'undefined' && D.inventario) {
+    const existe = D.inventario.find(p => 
+      p.nombre.toLowerCase().includes(producto.toLowerCase())
+    );
+    if (existe) plataforma = existe.plataforma;
+  }
+
+  if (!plataforma || plataforma === 'Otro') {
+    plataforma = inferirPlataforma(producto);
+  }
+
+  return {
+    tipo: 'compra',
+    datos: {
+      producto,
+      cantidad,
+      precio,
+      total: cantidad * precio,
+      plataforma: plataforma,
+    },
+    msg: `🛒 ${cantidad}x ${producto} — ${cop(precio)} c/u — Total: ${cop(cantidad * precio)}`,
+  };
+}
+
+function procesarCambio(match, tx) {
+  const entra = match[1]?.trim() || '';
+  const sale = match[2]?.trim() || '';
+  const encime = parseInt(match[3]) || 0;
+
+  if (!entra || !sale) return { tipo: null };
+
+  return {
+    tipo: 'cambio',
+    datos: {
+      entra,
+      valorEntra: 0,
+      sale,
+      encime,
+      ganancia: encime,
+    },
+    msg: `🔄 ${entra} → ${sale} encime ${cop(encime)}`,
+  };
+}
+
+function procesarServicio(match, tx) {
+  const cliente = extraerCliente(tx);
+  const equipo = match[1]?.trim() || 'Equipo';
+  const tipo = match[2]?.trim() || 'Revisión general';
+  const tel = extraerTelefono(tx);
+
+  return {
+    tipo: 'servicio',
+    datos: {
+      cliente,
+      equipo,
+      tipo,
+      tel,
+      valor: 50000,
+      notas: tx,
+    },
+    msg: `🔧 ${cliente} — ${equipo} — ${tipo}`,
+  };
+}
+
+// ============================================================
+// FUNCIONES AUXILIARES
+// ============================================================
+
+function normalizarTexto(tx) {
+  tx = tx.toLowerCase().trim();
+  // Normalizar números
+  tx = tx.replace(/(\d+)\s*['`']\s*(\d+)/g, (_,m,k) => parseInt(m)*1e6+parseInt(k)*1e3);
+  tx = tx.replace(/(\d+)\s*millones?/g, (_,n) => parseInt(n)*1e6);
+  tx = tx.replace(/(\d+)\s*mil/g, (_,n) => parseInt(n)*1e3);
+  
+  // Alias de productos
+  const aliases = {
+    'play 5': 'ps5', 'play5': 'ps5', 'playstation 5': 'ps5', 'ps 5': 'ps5',
+    'play 4': 'ps4', 'play4': 'ps4', 'playstation 4': 'ps4', 'ps 4': 'ps4',
+    'xbox x': 'xbox series x', 'series x': 'xbox series x',
+    'xbox s': 'xbox series s', 'series s': 'xbox series s',
+    'switch': 'nintendo switch', 'switchol': 'nintendo switch oled',
+  };
+  for (const [alias, real] of Object.entries(aliases)) {
+    tx = tx.replace(new RegExp(alias, 'g'), real);
+  }
+  return tx;
+}
+
+function extraerProducto(tx, tipo = 'venta') {
+  const palabras = tx.split(/\s+/);
+  
+  // Buscar en productos clave
+  for (let i = 0; i < palabras.length; i++) {
+    for (const [clave] of Object.entries(PRODUCTOS_CLAVE)) {
+      if (tx.includes(clave)) return clave;
+    }
+  }
+
+  // Buscar palabras clave genéricas
+  const genericas = tx.match(/(ps5|ps4|xbox|switch|nintendo|play|juegos|control|joycon)/i);
+  return genericas ? genericas[0] : null;
+}
+
+function extraerPrecio(tx) {
+  const nums = [];
+  (tx.match(/\d[\d.,]*/g) || []).forEach(m => {
+    const n = parseInt(m.replace(/[.,]/g,''));
+    if (n >= 10000) nums.push(n);
+  });
+  return nums.length ? Math.max(...nums) : null;
+}
+
+function extraerCantidad(tx) {
+  const m = tx.match(/^(\d+)\s+[a-z]/) || tx.match(/compr[eé]?\s+(\d+)/i);
+  return m ? parseInt(m[1]) : 1;
+}
+
+function extraerCliente(tx) {
+  const m = tx.match(/(?:a|para|de|del)\s+([a-záéíóúñ]{3,})/i);
+  
+  // Si encontró un nombre
+  if (m) {
+    const nombre = capitalizar(m[1]);
+    
+    // Si el nombre no existe en clientes, créalo automáticamente
+    if (typeof D !== 'undefined' && D.clientes) {
+      if (!D.clientes.find(c => c.nombre.toLowerCase() === nombre.toLowerCase())) {
+        const nuevoCliente = {
+          id: uid(),
+          nombre: nombre,
+          wa: '',
+          plataforma: 'Todas',
+          notas: 'Creado por voz',
+          totalCompras: 0,
+          totalGastado: 0,
+          ultimaCompra: '',
+          fecha: hoy()
+        };
+        D.clientes.push(nuevoCliente);
+        if (typeof lSave === 'function') lSave('clientes');
+        if (typeof ON !== 'undefined' && ON && typeof api === 'function') {
+          api('insert', 'clientes', nuevoCliente).catch(e => console.log('Cliente guardado localmente'));
+        }
+      }
+    }
+    
+    return nombre;
+  }
+  
+  return 'Cliente general';
+}
+
+function extraerTelefono(tx) {
+  const m = tx.match(/(\d{7,10})/);
+  return m ? m[1] : '';
+}
+
+function extraerMetodoPago(tx) {
+  // Detectar método de pago
+  if (/nequi|nequi\s+pay/i.test(tx)) return 'Nequi';
+  if (/bancolombia|banco\s+colombiano|bancocol/i.test(tx)) return 'Bancolombia';
+  if (/daviplata|davivienda|davi/i.test(tx)) return 'Daviplata';
+  if (/tarjeta|débito|crédito|visa|mastercard/i.test(tx)) return 'Tarjeta';
+  if (/efectivo|cash|pesos|con\s+efectivo/i.test(tx)) return 'Efectivo';
+  
+  // Por defecto: Efectivo
+  return 'Efectivo';
+}
+
+function inferirPlataforma(prod) {
+  if (prod.includes('ps')) return 'PlayStation';
+  if (prod.includes('xbox')) return 'Xbox';
+  if (prod.includes('switch') || prod.includes('nintendo')) return 'Nintendo Switch';
+  return 'Otro';
+}
+
+function capitalizar(s) {
+  return s ? s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
+}
+
+function cop(n) {
+  return '$' + parseInt(n||0).toLocaleString('es-CO');
+}
+
+// ============================================================
+// EXPORTAR PARA USAR EN EL DASHBOARD
+// ============================================================
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { procVozV4, PRODUCTOS_CLAVE };
+}
+
+// ============================================================
+// FUNCIÓN PRINCIPAL QUE PROCESA VOZ
+// ============================================================
+
+async function proc(tx) {
+  const resultado = await procVozV4(tx);
+  
+  if (resultado.tipo === 'venta') {
+    await addVta2(resultado.datos);
+    $('vr').textContent = resultado.msg;
+  } else if (resultado.tipo === 'compra') {
+    await addCom2(resultado.datos);
+    $('vr').textContent = resultado.msg;
+  } else if (resultado.tipo === 'cambio') {
+    await addCam2(resultado.datos);
+    $('vr').textContent = resultado.msg;
+  } else if (resultado.tipo === 'servicio') {
+    await addSrv2(resultado.datos);
+    $('vr').textContent = resultado.msg;
+  } else if (resultado.tipo === 'tarea') {
+    await addTar2(resultado.datos);
+    $('vr').textContent = resultado.msg;
+  } else {
+    $('vr').textContent = resultado.msg || '🤔 No entendí';
+  }
+  
+  $('mb').className = '';
+  $('vt').textContent = '🎤 Toca el micrófono y habla...';
+  rAll();
+  toast(resultado.msg, 4000);
+}
+
+// ============================================================
+// FUNCIONES AUXILIARES PARA VOZ V4
+// ============================================================
+
+async function addVta2(datos) {
+  const v = {
+    id: uid(),
+    fecha: hoy(),
+    prodId: datos.prodId || '',
+    producto: datos.producto || 'Producto',
+    plataforma: datos.plataforma || 'Otro',
+    costo: datos.costo || 0,
+    precio: datos.precio || 0,
+    ganancia: datos.ganancia || 0,
+    pago: datos.pago || 'Efectivo',
+    canal: datos.canal || 'Tienda Física',
+    vendedor: datos.vendedor || 'Dueño',
+    clienteId: datos.clienteId || '',
+    clienteNombre: datos.clienteNombre || 'Cliente general'
+  };
+  
+  const prod = D.inventario.find(p => p.nombre === datos.producto);
+  if (prod) {
+    prod.stock = Math.max(0, (+prod.stock || 0) - 1);
+    lSave('inventario');
+    if (ON) await api('update', 'inventario', prod.id, { stock: prod.stock });
+  }
+  
+  D.ventas.unshift(v);
+  lSave('ventas');
+  if (ON) await api('insert', 'ventas', v);
+  uV = v.id;
+}
+
+async function addCom2(datos) {
+  const co = {
+    id: uid(),
+    fecha: hoy(),
+    proveedorId: datos.proveedorId || '',
+    proveedor: datos.proveedor || 'Particular',
+    producto: datos.producto || 'Producto',
+    plataforma: datos.plataforma || 'Otro',
+    cantidad: datos.cantidad || 1,
+    precio: datos.precio || 0,
+    total: datos.total || 0,
+    estado: 'Pagado'
+  };
+  
+  const inv = {
+    id: uid(),
+    nombre: datos.producto,
+    plataforma: datos.plataforma,
+    condicion: 'Usado - Bueno',
+    costo: datos.precio,
+    precio: Math.round(datos.precio * 1.35),
+    stock: datos.cantidad || 1,
+    serie: 'N/A',
+    origen: 'Compra directa',
+    fecha: hoy()
+  };
+  
+  D.compras.unshift(co);
+  D.inventario.push(inv);
+  lSave('compras');
+  lSave('inventario');
+  if (ON) {
+    await api('insert', 'compras', co);
+    await api('insert', 'inventario', inv);
+  }
+}
+
+async function addCam2(datos) {
+  const nv = {
+    id: uid(),
+    nombre: datos.entra,
+    plataforma: datos.plataforma || 'PlayStation',
+    condicion: 'Usado - Bueno',
+    costo: datos.valorEntra || 0,
+    precio: Math.round((datos.valorEntra || 0) * 1.3),
+    stock: 1,
+    serie: 'N/A',
+    origen: 'Cambio/Trueque',
+    fecha: hoy()
+  };
+  
+  const ps = D.inventario.find(p => p.nombre === datos.sale);
+  if (ps) {
+    ps.stock = Math.max(0, (+ps.stock || 0) - 1);
+    lSave('inventario');
+    if (ON) await api('update', 'inventario', ps.id, { stock: ps.stock });
+  }
+  
+  D.inventario.push(nv);
+  
+  const cm = {
+    id: uid(),
+    fecha: hoy(),
+    clienteId: datos.clienteId || '',
+    clienteNombre: datos.clienteNombre || 'Cliente general',
+    entra: datos.entra,
+    valorEntra: datos.valorEntra || 0,
+    sale: datos.sale,
+    costeSale: datos.costeSale || 0,
+    encime: datos.encime || 0,
+    ganancia: datos.ganancia || 0,
+    notas: 'Por voz'
+  };
+  
+  D.cambios.unshift(cm);
+  lSave('cambios');
+  lSave('inventario');
+  if (ON) {
+    await api('insert', 'inventario', nv);
+    if (ps) await api('update', 'inventario', ps.id, { stock: ps.stock });
+    await api('insert', 'cambios', cm);
+  }
+}
+
+async function addSrv2(datos) {
+  const s = {
+    id: uid(),
+    fecha: hoy(),
+    cliente: datos.cliente || 'Cliente',
+    tel: datos.tel || '',
+    equipo: datos.equipo || 'Equipo',
+    tipo: datos.tipo || 'Revisión',
+    valor: datos.valor || 50000,
+    abono: datos.abono || 0,
+    saldo: (datos.valor || 50000) - (datos.abono || 0),
+    notas: datos.notas || '',
+    estado: 'Pendiente'
+  };
+  
+  D.servicios.unshift(s);
+  lSave('servicios');
+  if (ON) await api('insert', 'servicios', s);
+}
+
+async function addTar2(datos) {
+  const t = {
+    id: uid(),
+    titulo: datos.titulo || 'Tarea',
+    fecha: hoy(),
+    hora: '',
+    prioridad: 'normal',
+    notas: datos.notas || 'Por voz',
+    completada: false,
+    creada: hoy()
+  };
+  
+  D.tareas.unshift(t);
+  lSave('tareas');
+  if (ON) await api('insert', 'tareas', t);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+if(URL_)$('urlIn').value=URL_;
+lLoad();ss('lo');rAll();
+
+// Notificaciones
+if('Notification' in window&&Notification.permission==='default')Notification.requestPermission();
+setInterval(()=>{const ah=new Date(),hr=ah.getHours()+':'+String(ah.getMinutes()).padStart(2,'0');D.tareas.forEach(t=>{if(!t.completada&&t.fecha===hoy()&&t.hora===hr&&!t.notif){t.notif=true;if('Notification' in window&&Notification.permission==='granted')new Notification('🎮 El Padrino — '+t.titulo);toast('⏰ '+t.titulo,5000);}});},60000);
+</script>
+</body>
+</html>
