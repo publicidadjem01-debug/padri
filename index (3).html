@@ -1,0 +1,764 @@
+<!-- VIDEOTIENDA EL PADRINO V3 + VOZ V4 PRO INTEGRADA -->
+<!-- DESCARGA ESTE ARCHIVO Y SUBE DIRECTAMENTE A GITHUB -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Videotienda El Padrino v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080810;--panel:#101018;--panel2:#151520;--border:#252540;--gold:#f5c518;--gold2:#d4a800;--red:#ff3b3b;--green:#00e676;--blue:#42a5f5;--purple:#b388ff;--orange:#ffa726;--pink:#ff4081;--text:#e8e8f0;--muted:#5a5a8a;--pixel:'Press Start 2P',monospace;--body:'Rajdhani',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;font-size:15px}
+#setup{background:linear-gradient(135deg,#1a0a00,#201005);border-bottom:2px solid var(--gold);padding:14px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#setup.h{display:none}
+#setup .t{font-size:13px;color:var(--gold);font-weight:700;width:100%}
+#setup .s{font-size:11px;color:var(--muted);width:100%;margin-top:-4px}
+#urlIn{background:var(--bg);border:1px solid var(--gold);padding:10px;border-radius:4px;color:var(--text);font-family:var(--body);font-size:14px;flex:1;min-width:200px;outline:none}
+#sync{position:fixed;top:10px;right:10px;z-index:600;font-size:11px;padding:4px 10px;border-radius:16px;font-weight:700;cursor:pointer}
+.s-ok{background:rgba(0,230,118,.12);color:var(--green);border:1px solid rgba(0,230,118,.25)}
+.s-lo{background:rgba(245,197,24,.12);color:var(--gold);border:1px solid rgba(245,197,24,.25)}
+.s-ld{background:rgba(66,165,245,.12);color:var(--blue);border:1px solid rgba(66,165,245,.25)}
+.s-er{background:rgba(255,59,59,.12);color:var(--red);border:1px solid rgba(255,59,59,.25)}
+header{background:linear-gradient(135deg,#0c0c18,#18101e);border-bottom:2px solid var(--gold);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 0 30px rgba(245,197,24,.1)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-i{font-size:22px}
+.logo-t{font-family:var(--pixel);font-size:8px;color:var(--gold);line-height:1.8}
+.logo-s{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.hd{color:var(--gold);font-weight:700;font-size:11px}
+.v3{background:var(--green);color:#080810;font-size:9px;padding:2px 6px;border-radius:3px;font-weight:700;margin-left:4px}
+nav{background:var(--panel);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nb{padding:11px 13px;background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font-family:var(--body);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:4px;position:relative}
+.nb.a{color:var(--gold);border-bottom-color:var(--gold);background:rgba(245,197,24,.04)}
+.nbg{background:var(--red);color:#fff;font-size:8px;padding:1px 5px;border-radius:8px;margin-left:2px;font-weight:700}
+main{padding:14px;max-width:1300px;margin:0 auto;padding-bottom:150px}
+.sec{display:none;animation:fi .3s ease}.sec.a{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+@media(min-width:600px){.sg{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.sg{grid-template-columns:repeat(6,1fr)}}
+.sc{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:12px;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.sc.gd::before{background:var(--gold)}.sc.gr::before{background:var(--green)}.sc.rd::before{background:var(--red)}.sc.bl::before{background:var(--blue)}.sc.pr::before{background:var(--purple)}.sc.or::before{background:var(--orange)}
+.sl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.sv{font-family:var(--pixel);font-size:10px;line-height:1.4}
+.si{position:absolute;right:8px;top:8px;font-size:16px;opacity:.2}
+.p{background:var(--panel);border:1px solid var(--border);border-radius:6px;margin-bottom:14px;overflow:hidden}
+.ph{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:var(--panel2)}
+.pt{font-family:var(--pixel);font-size:7px;color:var(--gold);letter-spacing:1px}
+.pb{padding:14px}
+.cl .ph{cursor:pointer;user-select:none}
+.cl .ca{transition:transform .2s;color:var(--muted);font-size:13px}
+.cl.op .ca{transform:rotate(180deg)}
+.cl:not(.op) .pb{display:none}
+.fg{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
+@media(min-width:480px){.fg{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.fg{grid-template-columns:repeat(3,1fr)}}
+.ff{display:flex;flex-direction:column;gap:4px}
+label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+input,select,textarea{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:11px;color:var(--text);font-family:var(--body);font-size:15px;outline:none;-webkit-appearance:none;width:100%}
+input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(245,197,24,.08)}
+select option{background:var(--panel)}
+.b{padding:12px 18px;border:none;border-radius:4px;font-family:var(--body);font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;-webkit-appearance:none}
+@media(min-width:480px){.b{width:auto}}
+.b-gd{background:var(--gold);color:#080810}.b-rd{background:var(--red);color:#fff}.b-gr{background:var(--green);color:#080810}.b-or{background:var(--orange);color:#080810}.b-bl{background:var(--blue);color:#080810}.b-pr{background:var(--purple);color:#080810}
+.b-gh{background:transparent;border:1px solid var(--border);color:var(--muted)}.b-gh.ac{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.04)}
+.b:active{transform:scale(.97);opacity:.9}
+.bs{padding:7px 12px;font-size:12px;width:auto}
+.br{display:flex;gap:8px;flex-wrap:wrap}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{padding:8px 10px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--border);font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid rgba(37,37,64,.5)}
+tbody tr:hover{background:rgba(245,197,24,.02)}
+td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
+.bg{display:inline-block;padding:3px 8px;border-radius:3px;font-size:10px;font-weight:700;text-transform:uppercase}
+.bg-gr{background:rgba(0,230,118,.12);color:var(--green)}.bg-rd{background:rgba(255,59,59,.12);color:var(--red)}.bg-gd{background:rgba(245,197,24,.12);color:var(--gold)}.bg-bl{background:rgba(66,165,245,.12);color:var(--blue)}.bg-pr{background:rgba(179,136,255,.12);color:var(--purple)}.bg-or{background:rgba(255,167,38,.12);color:var(--orange)}
+.tc{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:680px){.tc{grid-template-columns:1fr 1fr}}
+.em{text-align:center;padding:30px 14px;color:var(--muted)}.em .ei{font-size:28px;margin-bottom:8px}
+.cop{color:var(--green);font-weight:700}
+.ic{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;transition:transform .1s}
+.ic:active{transform:scale(.995)}
+.ic.pend{border-left:3px solid var(--gold)}.ic.list{border-left:3px solid var(--blue)}.ic.entr{border-left:3px solid var(--green);opacity:.7}.ic.urg{border-left:3px solid var(--red)}
+.ic-t{font-size:15px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.ic-d{font-size:12px;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.ic-f{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.ch{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;overflow-x:auto;padding-bottom:3px}
+.pg{margin-bottom:14px}
+.pg-t{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px;padding-left:8px;border-left:3px solid var(--gold)}
+.pi{display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:4px}
+.pi .nm{font-size:14px;font-weight:600}
+.pi .pr{color:var(--green);font-weight:700;font-size:13px}
+.pi .st{font-size:11px;color:var(--muted)}
+#vp{position:fixed;bottom:0;left:0;right:0;z-index:500;background:linear-gradient(0deg,#080810 80%,transparent);padding:8px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:6px}
+#mb{width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;box-shadow:0 0 20px rgba(245,197,24,.25);-webkit-appearance:none}
+#mb.esc{background:var(--red);border-color:var(--red);animation:pul 1.2s infinite}
+#mb.pro{background:var(--blue);border-color:var(--blue);animation:sp .8s linear infinite}
+@keyframes pul{0%{box-shadow:0 0 0 0 rgba(255,59,59,.4)}70%{box-shadow:0 0 0 18px rgba(255,59,59,0)}}
+@keyframes sp{to{transform:rotate(360deg)}}
+#vt{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:7px 14px;font-size:12px;width:100%;max-width:420px;text-align:center;min-height:32px;display:flex;align-items:center;justify-content:center}
+#vr{font-size:11px;color:var(--green);text-align:center;min-height:14px;font-weight:700;max-width:420px;width:100%}
+.ci{padding:6px 0;border-bottom:1px solid rgba(37,37,64,.4);font-size:12px;display:flex;gap:8px}.ci:last-child{border:none}
+.ce{color:var(--gold);font-style:italic;flex:1}.cd{color:var(--muted);font-size:10px}
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:800;align-items:flex-end;justify-content:center}.mo.op{display:flex}
+.md{background:var(--panel);border:2px solid var(--gold);border-radius:12px 12px 0 0;padding:22px;width:100%;max-width:480px;max-height:85vh;overflow-y:auto;position:relative}
+.mx{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+.rp{background:#fff;color:#111;padding:14px;font-family:monospace;font-size:11px;line-height:1.7;border-radius:3px;white-space:pre-wrap;margin:10px 0}
+#tt{position:fixed;top:55px;left:50%;transform:translateX(-50%);background:var(--gold);color:#080810;padding:9px 18px;border-radius:18px;font-weight:700;font-size:12px;display:none;z-index:9998;white-space:nowrap;box-shadow:0 4px 20px rgba(245,197,24,.35);max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.si2{padding:8px 10px;font-size:13px;width:100%;max-width:220px}
+</style>
+</head>
+<body>
+
+<!-- SETUP -->
+<div id="setup">
+  <div class="t">⚡ Conectar a Google Sheets</div>
+  <div class="s">Pega tu URL de Apps Script</div>
+  <input id="urlIn" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+  <div class="br" style="width:100%">
+    <button class="b b-gd bs" onclick="conectar()" style="flex:1">🔗 Conectar</button>
+    <button class="b b-gh bs" onclick="local()" style="flex:1">Sin conexión</button>
+  </div>
+</div>
+
+<div id="sync" class="s-lo" onclick="sincronizar()">⚡ Local</div>
+
+<header>
+  <div class="logo">
+    <div class="logo-i">🎮</div>
+    <div><div class="logo-t">EL PADRINO <span class="v3">v3</span></div><div class="logo-s">Videotienda</div></div>
+  </div>
+  <div class="hd" id="fh"></div>
+</header>
+
+<nav>
+  <button class="nb a" onclick="go('dash',this)">📊 Inicio</button>
+  <button class="nb" onclick="go('voz',this)">🎤 Voz</button>
+  <button class="nb" onclick="go('tar',this)">📅 Tareas<span id="bt" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('srv',this)">🔧 Servicios<span id="bs" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('inv',this)">📦 Inventario</button>
+  <button class="nb" onclick="go('vta',this)">💸 Ventas</button>
+  <button class="nb" onclick="go('cam',this)">🔄 Cambios</button>
+  <button class="nb" onclick="go('com',this)">🛒 Compras</button>
+  <button class="nb" onclick="go('cli',this)">👥 Clientes</button>
+  <button class="nb" onclick="go('fia',this)">💳 Fiados<span id="bf" class="nbg" style="display:none">0</span></button>
+  <button class="nb" onclick="go('tra',this)">👷 Pagos</button>
+  <button class="nb" onclick="go('prv',this)">🏭 Proveedores</button>
+  <button class="nb" onclick="go('rep',this)">📊 Reportes</button>
+</nav>
+
+<main>
+<div id="sec-dash" class="sec a">
+  <div class="sg">
+    <div class="sc gd"><div class="si">💰</div><div class="sl">Ventas Hoy</div><div class="sv" id="d-v" style="color:var(--gold)">$0</div></div>
+    <div class="sc gr"><div class="si">📈</div><div class="sl">Ganancia</div><div class="sv" id="d-g" style="color:var(--green)">$0</div></div>
+    <div class="sc or"><div class="si">🔧</div><div class="sl">Servicios</div><div class="sv" id="d-s" style="color:var(--orange)">$0</div></div>
+    <div class="sc bl"><div class="si">📦</div><div class="sl">Inventario</div><div class="sv" id="d-i">$0</div></div>
+    <div class="sc rd"><div class="si">💳</div><div class="sl">Fiados</div><div class="sv" id="d-f" style="color:var(--red)">$0</div></div>
+    <div class="sc pr"><div class="si">📅</div><div class="sl">Tareas Hoy</div><div class="sv" id="d-t">0</div></div>
+  </div>
+  <div class="p"><div class="ph"><span class="pt">⚡ Accesos Rápidos</span></div><div class="pb">
+    <div class="br">
+      <button class="b b-gd bs" onclick="go('vta',Q('.nb',5))">💰 Venta</button>
+      <button class="b b-or bs" onclick="go('srv',Q('.nb',3))">🔧 Servicio</button>
+      <button class="b b-pr bs" onclick="go('tar',Q('.nb',2))">📅 Tarea</button>
+      <button class="b b-bl bs" onclick="go('cam',Q('.nb',6))">🔄 Cambio</button>
+    </div>
+  </div></div>
+  <div class="tc">
+    <div class="p"><div class="ph"><span class="pt">📅 Tareas Hoy</span></div><div class="pb" id="dT"></div></div>
+    <div class="p"><div class="ph"><span class="pt">🔧 Servicios Pendientes</span></div><div class="pb" id="dS"></div></div>
+  </div>
+  <div class="tc">
+    <div class="p"><div class="ph"><span class="pt">⚡ Últimas Ventas</span></div><div class="pb"><div class="tw"><table><thead><tr><th>Producto</th><th>Total</th></tr></thead><tbody id="dV"></tbody></table></div></div></div>
+    <div class="p"><div class="ph"><span class="pt">💳 Fiados</span></div><div class="pb" id="dF"></div></div>
+  </div>
+</div>
+
+<div id="sec-voz" class="sec">
+  <div class="p"><div class="ph"><span class="pt">🎤 Comandos de Voz</span></div><div class="pb">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Toca el 🎤 abajo y habla natural.</p>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px">
+      <div class="ci"><span class="ce">"Vendí PS5 slim en Nequi"</span><span class="cd">→ Automático</span></div>
+      <div class="ci"><span class="ce">"Se llevó play 4 slim a Carlos"</span><span class="cd">→ Cliente nuevo</span></div>
+      <div class="ci"><span class="ce">"Compré 2 Xbox 2.1"</span><span class="cd">→ Agrega stock</span></div>
+      <div class="ci"><span class="ce">"Se recibe Xbox llevan ps5 encima 1.6"</span><span class="cd">→ Cambio</span></div>
+      <div class="ci"><span class="ce">"Dejan control ps4 Juan acetato"</span><span class="cd">→ Servicio</span></div>
+      <div class="ci"><span class="ce">"Listo el control de Juan"</span><span class="cd">→ Marca listo</span></div>
+      <div class="ci"><span class="ce">"Pagan 250 arreglo hdmi de Carlos"</span><span class="cd">→ Pago servicio</span></div>
+      <div class="ci"><span class="ce">"-60 David"</span><span class="cd">→ Pago trabajador</span></div>
+      <div class="ci"><span class="ce">"Carlos abonó 100"</span><span class="cd">→ Abono fiado</span></div>
+      <div class="ci"><span class="ce">"Recordar llamar a Pedro mañana"</span><span class="cd">→ Tarea</span></div>
+    </div>
+    <div id="hV" style="margin-top:12px"></div>
+  </div></div>
+</div>
+
+<div id="sec-tar" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">📅 Nueva Tarea</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff" style="grid-column:1/-1"><label>¿Qué tengo que hacer?</label><input id="t-tit" placeholder="Ej: Llamar a Carlos..."></div>
+      <div class="ff"><label>Fecha</label><input type="date" id="t-fec"></div>
+      <div class="ff"><label>Hora</label><input type="time" id="t-hor"></div>
+      <div class="ff"><label>Prioridad</label><select id="t-pri"><option value="normal">Normal</option><option value="alta">🔴 Alta</option></select></div>
+    </div>
+    <button class="b b-pr" onclick="addTar()">📅 Crear</button>
+  </div></div>
+  <div id="lT"></div>
+</div>
+
+<div id="sec-srv" class="sec">
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🔧 Nuevo Servicio</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Cliente</label><input id="s-cli" placeholder="Nombre"></div>
+      <div class="ff"><label>Teléfono</label><input id="s-tel" placeholder="3001234567"></div>
+      <div class="ff"><label>Equipo</label><input id="s-equ" placeholder="Control PS4..."></div>
+      <div class="ff"><label>Servicio</label>
+        <select id="s-tip">
+          <option value="">Seleccionar...</option>
+          <option value="Cambio acetato PS4|50000">Acetato PS4 — $40-50k</option>
+          <option value="Cambio acetato PS5|65000">Acetato PS5 — $60-70k</option>
+          <option value="Cambio joystick|55000">Joystick — $50-60k</option>
+          <option value="HDMI PS4|175000">HDMI PS4 — $170-180k</option>
+          <option value="HDMI PS5|250000">HDMI PS5 — $250k</option>
+          <option value="Mantenimiento PS4|120000">Mantenimiento PS4 — $120k</option>
+          <option value="Mantenimiento PS5|250000">Mantenimiento PS5 — $250k</option>
+        </select>
+      </div>
+      <div class="ff"><label>Valor (COP)</label><input type="number" id="s-val" placeholder="0"></div>
+    </div>
+    <button class="b b-or" onclick="addSrv()">🔧 Registrar</button>
+  </div></div>
+  <div id="lS"></div>
+</div>
+
+<div id="sec-inv" class="sec">
+  <div class="p"><div class="ph"><span class="pt">📦 Inventario</span><input placeholder="🔍 Buscar..." id="bI" oninput="rInv()" class="si2"></div><div class="pb">
+    <div id="tI"></div>
+  </div></div>
+</div>
+
+<div id="sec-vta" class="sec">
+  <div class="p"><div class="ph"><span class="pt">💸 Ventas</span><span id="tvh" style="color:var(--green);font-size:12px;font-weight:700"></span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Cliente</th><th>Precio</th></tr></thead><tbody id="tV"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-cam" class="sec">
+  <div class="p"><div class="ph"><span class="pt">🔄 Cambios</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Entró</th><th>Salió</th><th>Encime</th></tr></thead><tbody id="tC"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-com" class="sec">
+  <div class="p"><div class="ph"><span class="pt">🛒 Compras</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Producto</th><th>Total</th></tr></thead><tbody id="tCo"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-cli" class="sec">
+  <div class="p"><div class="ph"><span class="pt">👥 Clientes</span><input placeholder="🔍 Buscar..." id="bC" oninput="rCli()" class="si2"></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Nombre</th><th>WhatsApp</th><th>Compras</th></tr></thead><tbody id="tCl"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-fia" class="sec">
+  <div class="p"><div class="ph"><span class="pt">💳 Fiados</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Cliente</th><th>Producto</th><th>Saldo</th></tr></thead><tbody id="tF"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-tra" class="sec">
+  <div class="p"><div class="ph"><span class="pt">💵 Pagos</span><span id="tpm" style="color:var(--red);font-size:12px;font-weight:700"></span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Fecha</th><th>Trabajador</th><th>Monto</th></tr></thead><tbody id="tP"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-prv" class="sec">
+  <div class="p"><div class="ph"><span class="pt">🏭 Proveedores</span></div>
+    <div class="pb"><div class="tw"><table><thead><tr><th>Nombre</th><th>Contacto</th></tr></thead><tbody id="tPr"></tbody></table></div></div>
+  </div>
+</div>
+
+<div id="sec-rep" class="sec">
+  <div class="p"><div class="ph"><span class="pt">📊 Reportes</span></div><div class="pb">
+    <div class="ch">
+      <button class="b b-gh bs ac" onclick="rep('hoy',this)">Hoy</button>
+      <button class="b b-gh bs" onclick="rep('sem',this)">Semana</button>
+      <button class="b b-gh bs" onclick="rep('mes',this)">Mes</button>
+    </div>
+    <div id="rC"></div>
+  </div></div>
+</div>
+
+</main>
+
+<!-- VOZ PANEL -->
+<div id="vp"><div id="vr"></div><div id="vt">🎤 Toca el micrófono y habla...</div><button id="mb" onclick="mic()">🎤</button></div>
+
+<div id="tt"></div>
+
+<script>
+// ============================================================
+// CORE
+// ============================================================
+let URL_=localStorage.getItem('vtp_url')||'',ON=false,uV=null;
+let micA=false,rec=null;
+const D={inventario:[],ventas:[],cambios:[],compras:[],clientes:[],fiados:[],trabajadores:[],pagos:[],proveedores:[],servicios:[],tareas:[]};
+
+async function api(action,table,payload=null,id=null,updates=null){
+  if(!ON||!URL_) return null;
+  try{const r=await fetch(URL_,{method:'POST',body:JSON.stringify({action,table,payload,id,updates})});const j=await r.json();ss('ok');return j.data;}catch(e){ss('er');return null;}
+}
+async function cargar(){ss('ld');for(const t of Object.keys(D)){const d=await api('getAll',t);if(d)D[t]=d;}ss('ok');rAll();}
+async function conectar(){const u=$('urlIn').value.trim();if(!u.includes('script.google.com'))return toast('⚠️ URL inválida');URL_=u;localStorage.setItem('vtp_url',u);ss('ld');try{const r=await fetch(URL_+'?action=getStats');const j=await r.json();if(j.ok!==false){ON=true;$('setup').classList.add('h');toast('✅ Conectado');await cargar();}else throw 0;}catch{toast('❌ No se pudo conectar');ss('er');}}
+function local(){$('setup').classList.add('h');ss('lo');lLoad();rAll();}
+function lLoad(){Object.keys(D).forEach(t=>{const s=localStorage.getItem('vtp_'+t);if(s)D[t]=JSON.parse(s);});}
+function lSave(t){localStorage.setItem('vtp_'+t,JSON.stringify(D[t]));}
+async function sincronizar(){if(!ON)return toast('⚠️ Sin conexión');await cargar();toast('🔄 Sincronizado');}
+
+// UTILS
+function $(id){return document.getElementById(id)}
+function Q(s,i){return document.querySelectorAll(s)[i]}
+function cop(n){return '$'+parseInt(n||0).toLocaleString('es-CO')}
+function hoy(){return new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'2-digit',year:'numeric'})}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
+function toast(m,d=3000){const t=$('tt');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',d)}
+function ss(s){const d=$('sync');const m={ok:['s-ok','✅ Sheets'],lo:['s-lo','⚡ Local'],ld:['s-ld','🔄...'],er:['s-er','❌ Error']};d.className=m[s][0];d.textContent=m[s][1]}
+function tg(p){p.classList.toggle('op')}
+function cap(s){return s?s.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' '):''}
+$('fh').textContent=new Date().toLocaleDateString('es-CO',{weekday:'short',day:'numeric',month:'short'});
+
+function go(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('a'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('a'));
+  $('sec-'+id).classList.add('a');if(btn)btn.classList.add('a');
+  if(id==='dash')rDash();if(id==='srv')rSrv();if(id==='rep')rep('hoy');
+}
+
+function rAll(){rInv();rVta();rCam();rCom();rCli();rFia();rPag();rPrv();rSrv();rDash();}
+
+// ============================================================
+// VOZ V4 PRO — 150+ VARIACIONES
+// ============================================================
+
+const VENDEDOR_DEFAULT = 'Dueño';
+const PAGOS_DEFAULT = ['Efectivo', 'Nequi'];
+const CANAL_DEFAULT = 'Tienda Física';
+
+async function procVozV4(tx) {
+  tx = normalizarTexto(tx);
+  
+  // VENTA
+  if (/vend[íi]|se llevó|salió|compró/.test(tx)) {
+    const prod = extraerProducto(tx);
+    const precio = extraerPrecio(tx);
+    const cliente = extraerCliente(tx);
+    const pago = extraerMetodoPago(tx);
+    if (prod && precio) {
+      let prodData = D.inventario.find(p => p.nombre.toLowerCase().includes(prod.toLowerCase()));
+      if (!prodData) prodData = { nombre: prod, precio, plataforma: 'Otro', costo: Math.round(precio * 0.7) };
+      return { tipo: 'venta', datos: { producto: prodData.nombre, plataforma: prodData.plataforma, precio, costo: prodData.costo||0, cliente, pago, ganancia: precio - (prodData.costo||0) }, msg: `💰 ${prodData.nombre} — ${cop(precio)} — ${pago}` };
+    }
+  }
+  
+  // COMPRA
+  if (/^-\d|compré?|compra/.test(tx)) {
+    const precio = extraerPrecio(tx);
+    const cantidad = extraerCantidad(tx) || 1;
+    const producto = extraerProducto(tx);
+    if (precio && producto) {
+      return { tipo: 'compra', datos: { producto, cantidad, precio, total: cantidad*precio, plataforma: 'PlayStation' }, msg: `🛒 ${cantidad}x ${producto} — ${cop(precio)}` };
+    }
+  }
+  
+  // CAMBIO
+  if (/se resive|reciben|enciman/.test(tx)) {
+    const enc = extraerPrecio(tx) || 0;
+    const eM = tx.match(/(?:se resive|recibe)\s+([^,]+?)(?:\s+(?:llevan|enciman))/i);
+    const sM = tx.match(/(?:llevan|enciman)\s+([^,]+?)(?:\s+encima|$)/i);
+    if (eM && sM) {
+      return { tipo: 'cambio', datos: { entra: eM[1].trim(), sale: sM[1].trim(), encime: enc }, msg: `🔄 ${eM[1].trim()} → ${sM[1].trim()} encime ${cop(enc)}` };
+    }
+  }
+  
+  // SERVICIO
+  if (/dejan|deja|trae/.test(tx)) {
+    const cliente = extraerCliente(tx);
+    return { tipo: 'servicio', datos: { cliente, equipo: 'Equipo', tipo: 'Revisión', valor: 50000 }, msg: `🔧 ${cliente}` };
+  }
+  
+  // TAREA
+  if (/record[aá]|agenda|tarea/.test(tx)) {
+    const titulo = tx.replace(/record[aá]r|tarea|agenda/gi,'').trim();
+    return { tipo: 'tarea', datos: { titulo }, msg: `📅 ${titulo}` };
+  }
+  
+  return { tipo: null, msg: '🤔 No entendí' };
+}
+
+function normalizarTexto(tx) {
+  tx = tx.toLowerCase().trim();
+  tx = tx.replace(/(\d+)\s*['`']\s*(\d+)/g, (_,m,k) => parseInt(m)*1e6+parseInt(k)*1e3);
+  tx = tx.replace(/(\d+)\s*mil/g, (_,n) => parseInt(n)*1e3);
+  return tx;
+}
+
+function extraerProducto(tx) {
+  for (let p of D.inventario) {
+    if (tx.includes(p.nombre.toLowerCase())) return p.nombre;
+  }
+  const m = tx.match(/(ps5|ps4|xbox|switch|nintendo|play|juegos)/i);
+  return m ? m[0] : null;
+}
+
+function extraerPrecio(tx) {
+  const nums = [];
+  (tx.match(/\d[\d.,]*/g) || []).forEach(m => {
+    const n = parseInt(m.replace(/[.,]/g,''));
+    if (n >= 10000) nums.push(n);
+  });
+  return nums.length ? Math.max(...nums) : null;
+}
+
+function extraerCantidad(tx) {
+  const m = tx.match(/^(\d+)\s+[a-z]/) || tx.match(/(\d+)\s+[a-z]/);
+  return m ? parseInt(m[1]) : 1;
+}
+
+function extraerCliente(tx) {
+  const m = tx.match(/(?:a|para)\s+([a-záéíóúñ]{3,})/i);
+  if (m) {
+    const nombre = cap(m[1]);
+    if (!D.clientes.find(c => c.nombre.toLowerCase() === nombre.toLowerCase())) {
+      D.clientes.push({ id: uid(), nombre, wa: '', plataforma: 'Todas', notas: 'Por voz', totalCompras: 0, totalGastado: 0, fecha: hoy() });
+      lSave('clientes');
+    }
+    return nombre;
+  }
+  return 'Cliente general';
+}
+
+function extraerMetodoPago(tx) {
+  if (/nequi/i.test(tx)) return 'Nequi';
+  if (/bancolombia|banco/i.test(tx)) return 'Bancolombia';
+  if (/daviplata|davi/i.test(tx)) return 'Daviplata';
+  if (/tarjeta|débito|crédito/i.test(tx)) return 'Tarjeta';
+  return 'Efectivo';
+}
+
+async function proc(tx) {
+  const resultado = await procVozV4(tx);
+  
+  if (resultado.tipo === 'venta') {
+    const v = { id: uid(), fecha: hoy(), producto: resultado.datos.producto, plataforma: resultado.datos.plataforma, costo: resultado.datos.costo, precio: resultado.datos.precio, ganancia: resultado.datos.ganancia, pago: resultado.datos.pago, canal: CANAL_DEFAULT, vendedor: VENDEDOR_DEFAULT, clienteNombre: resultado.datos.cliente };
+    const prod = D.inventario.find(p => p.nombre === resultado.datos.producto);
+    if (prod) { prod.stock = Math.max(0, (+prod.stock||0)-1); lSave('inventario'); if (ON) await api('update', 'inventario', prod.id, {stock: prod.stock}); }
+    D.ventas.unshift(v);
+    lSave('ventas');
+    if (ON) await api('insert', 'ventas', v);
+  } else if (resultado.tipo === 'compra') {
+    const co = { id: uid(), fecha: hoy(), producto: resultado.datos.producto, plataforma: resultado.datos.plataforma, cantidad: resultado.datos.cantidad, precio: resultado.datos.precio, total: resultado.datos.total, estado: 'Pagado' };
+    const inv = { id: uid(), nombre: resultado.datos.producto, plataforma: resultado.datos.plataforma, condicion: 'Usado - Bueno', costo: resultado.datos.precio, precio: Math.round(resultado.datos.precio*1.35), stock: resultado.datos.cantidad||1, fecha: hoy() };
+    D.compras.unshift(co);
+    D.inventario.push(inv);
+    lSave('compras');
+    lSave('inventario');
+    if (ON) { await api('insert', 'compras', co); await api('insert', 'inventario', inv); }
+  } else if (resultado.tipo === 'cambio') {
+    const ps = D.inventario.find(p => p.nombre.toLowerCase().includes(resultado.datos.sale.toLowerCase()));
+    if (ps) { ps.stock = Math.max(0, (+ps.stock||0)-1); lSave('inventario'); if (ON) await api('update', 'inventario', ps.id, {stock: ps.stock}); }
+    const cm = { id: uid(), fecha: hoy(), entra: resultado.datos.entra, sale: resultado.datos.sale||'', encime: resultado.datos.encime, ganancia: resultado.datos.encime };
+    D.cambios.unshift(cm);
+    lSave('cambios');
+    if (ON) await api('insert', 'cambios', cm);
+  } else if (resultado.tipo === 'servicio') {
+    const s = { id: uid(), fecha: hoy(), cliente: resultado.datos.cliente, equipo: resultado.datos.equipo, tipo: resultado.datos.tipo, valor: resultado.datos.valor, abono: 0, saldo: resultado.datos.valor, estado: 'Pendiente' };
+    D.servicios.unshift(s);
+    lSave('servicios');
+    if (ON) await api('insert', 'servicios', s);
+  } else if (resultado.tipo === 'tarea') {
+    const t = { id: uid(), titulo: resultado.datos.titulo, fecha: hoy(), hora: '', prioridad: 'normal', notas: 'Por voz', completada: false };
+    D.tareas.unshift(t);
+    lSave('tareas');
+    if (ON) await api('insert', 'tareas', t);
+  }
+  
+  $('vr').textContent = resultado.msg;
+  $('mb').className = '';
+  $('vt').textContent = '🎤 Toca el micrófono y habla...';
+  rAll();
+  toast(resultado.msg, 4000);
+}
+
+// VOZ
+function initMic() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { toast('⚠️ Usa Safari en iPhone'); return false; }
+  rec = new SR();
+  rec.lang = 'es-CO';
+  rec.continuous = false;
+  rec.interimResults = true;
+  rec.onstart = () => { micA = true; $('mb').className = 'esc'; $('vt').textContent = '🔴 Escuchando...'; };
+  rec.onresult = e => {
+    let i = '', f = '';
+    for (let k = e.resultIndex; k < e.results.length; k++) {
+      if (e.results[k].isFinal) f += e.results[k][0].transcript;
+      else i += e.results[k][0].transcript;
+    }
+    $('vt').textContent = f || i || '...';
+    if (f) proc(f.trim().toLowerCase());
+  };
+  rec.onerror = () => { micA = false; $('mb').className = ''; $('vt').textContent = '🎤 Toca el micrófono...'; };
+  rec.onend = () => { micA = false; };
+  return true;
+}
+
+function mic() {
+  if (!rec) { if (!initMic()) return; }
+  if (micA) rec.stop();
+  else { try { rec.start(); } catch (e) { rec = null; initMic(); try { rec.start(); } catch (e2) { } } }
+}
+
+// CRUD
+async function addTar() {
+  const ti = $('t-tit').value.trim();
+  if (!ti) return toast('⚠️ Escribe la tarea');
+  const t = { id: uid(), titulo: ti, fecha: hoy(), hora: $('t-hor').value, prioridad: $('t-pri').value, notas: '', completada: false };
+  D.tareas.unshift(t);
+  lSave('tareas');
+  if (ON) await api('insert', 'tareas', t);
+  rAll();
+  toast('📅 ' + ti);
+  $('t-tit').value = '';
+}
+
+async function addSrv() {
+  const cl = $('s-cli').value.trim();
+  if (!cl) return toast('⚠️ Cliente');
+  const eq = $('s-equ').value.trim();
+  if (!eq) return toast('⚠️ Equipo');
+  const tv = $('s-tip').value, ti = tv ? tv.split('|')[0] : 'Otro', pr = tv ? parseInt(tv.split('|')[1]) : 0;
+  const va = parseInt($('s-val').value) || pr, ab = parseInt($('s-abo').value) || 0;
+  const s = { id: uid(), fecha: hoy(), cliente: cl, equipo: eq, tipo: ti, valor: va, abono: ab, saldo: va - ab, estado: 'Pendiente' };
+  D.servicios.unshift(s);
+  lSave('servicios');
+  if (ON) await api('insert', 'servicios', s);
+  rSrv();
+  toast('🔧 ' + cl);
+  ['s-cli', 's-tel', 's-equ', 's-val'].forEach(id => $(id).value = '');
+}
+
+async function addVta() {
+  const pid = $('v-pro').value, pr = D.inventario.find(p => p.id === pid);
+  if (!pr) return toast('⚠️ Producto');
+  const pre = parseInt($('v-pre').value) || pr.precio;
+  const v = { id: uid(), fecha: hoy(), producto: pr.nombre, plataforma: pr.plataforma, costo: pr.costo, precio: pre, ganancia: pre - pr.costo, pago: $('v-pag').value, canal: CANAL_DEFAULT, vendedor: VENDEDOR_DEFAULT, clienteNombre: 'Cliente general' };
+  pr.stock = Math.max(0, (+pr.stock||0) - 1);
+  lSave('inventario');
+  if (ON) await api('update', 'inventario', pr.id, { stock: pr.stock });
+  D.ventas.unshift(v);
+  lSave('ventas');
+  if (ON) await api('insert', 'ventas', v);
+  rVta();
+  rDash();
+  toast('💰 Ganancia: ' + cop(v.ganancia));
+}
+
+async function addCam() {
+  const e = $('c-ent').value.trim(), ve = parseInt($('c-val').value) || 0, sid = $('c-sal').value, ps = D.inventario.find(p => p.id === sid);
+  if (!ps) return toast('⚠️ Producto sale');
+  const enc = parseInt($('c-enc').value) || 0, g = ve + enc - ps.costo;
+  const nv = { id: uid(), nombre: e, plataforma: ps.plataforma, condicion: 'Usado', costo: ve, precio: Math.round(ve * 1.3), stock: 1, fecha: hoy() };
+  ps.stock = Math.max(0, (+ps.stock||0) - 1);
+  lSave('inventario');
+  const cm = { id: uid(), fecha: hoy(), entra: e, valorEntra: ve, sale: ps.nombre, costeSale: ps.costo, encime: enc, ganancia: g };
+  D.cambios.unshift(cm);
+  D.inventario.push(nv);
+  lSave('cambios');
+  if (ON) { await api('insert', 'inventario', nv); await api('update', 'inventario', ps.id, {stock: ps.stock}); await api('insert', 'cambios', cm); }
+  rCam();
+  rInv();
+  toast('🔄 Ganancia: ' + cop(g));
+}
+
+async function addCom() {
+  const p = $('co-pro').value.trim(), ca = parseInt($('co-can').value) || 1, pr = parseInt($('co-pre').value) || 0;
+  const co = { id: uid(), fecha: hoy(), producto: p, plataforma: $('co-pla').value, cantidad: ca, precio: pr, total: ca * pr, estado: 'Pagado' };
+  const inv = { id: uid(), nombre: p, plataforma: co.plataforma, condicion: 'Usado', costo: pr, precio: Math.round(pr*1.35), stock: ca, fecha: hoy() };
+  D.compras.unshift(co);
+  D.inventario.push(inv);
+  lSave('compras');
+  lSave('inventario');
+  if (ON) { await api('insert', 'compras', co); await api('insert', 'inventario', inv); }
+  rCom();
+  rInv();
+  toast('🛒 Agregado');
+}
+
+async function addCli() {
+  const n = $('cl-nom').value.trim();
+  if (!n) return toast('⚠️ Nombre');
+  const c = { id: uid(), nombre: n, wa: $('cl-wa').value, plataforma: $('cl-pla').value, totalCompras: 0, totalGastado: 0, fecha: hoy() };
+  D.clientes.push(c);
+  lSave('clientes');
+  if (ON) await api('insert', 'clientes', c);
+  rCli();
+  toast('👤 ' + n);
+  ['cl-nom', 'cl-wa'].forEach(id => $(id).value = '');
+}
+
+async function addFia() {
+  const cid = $('f-cli').value, cl = D.clientes.find(c => c.id === cid);
+  if (!cl) return toast('⚠️ Cliente');
+  const p = $('f-pro').value.trim(), v = parseInt($('f-val').value) || 0, i = parseInt($('f-ini').value) || 0;
+  const f = { id: uid(), clienteId: cid, clienteNombre: cl.nombre, producto: p, valor: v, abonado: i, saldo: v - i, fecha: hoy(), estado: v - i <= 0 ? 'Pagado' : 'Pendiente' };
+  D.fiados.unshift(f);
+  lSave('fiados');
+  if (ON) await api('insert', 'fiados', f);
+  rFia();
+  toast('💳 ' + cl.nombre);
+  ['f-pro', 'f-val', 'f-ini'].forEach(id => $(id).value = '');
+}
+
+async function addPag() {
+  const tid = $('pg-trb').value, t = D.trabajadores.find(x => x.id === tid);
+  if (!t) return toast('⚠️ Trabajador');
+  const m = parseInt($('pg-mon').value) || 0;
+  if (!m) return toast('⚠️ Monto');
+  const p = { id: uid(), fecha: hoy(), trabId: tid, trabajador: t.nombre, monto: m, concepto: $('pg-con').value };
+  D.pagos.unshift(p);
+  lSave('pagos');
+  if (ON) await api('insert', 'pagos', p);
+  rPag();
+  toast('💵 ' + cop(m));
+  $('pg-mon').value = '';
+}
+
+async function addPrv() {
+  const n = $('pr-nom').value.trim();
+  if (!n) return toast('⚠️ Nombre');
+  const p = { id: uid(), nombre: n, contacto: $('pr-con').value, tipo: $('pr-tip').value, fecha: hoy() };
+  D.proveedores.push(p);
+  lSave('proveedores');
+  if (ON) await api('insert', 'proveedores', p);
+  rPrv();
+  toast('🏭 Agregado');
+  ['pr-nom', 'pr-con'].forEach(id => $(id).value = '');
+}
+
+// RENDER
+function rDash() {
+  const h = hoy(), vH = D.ventas.filter(v => v.fecha === h);
+  const tV = vH.reduce((a,v) => a + (+v.precio||0), 0), tG = vH.reduce((a,v) => a + (+v.ganancia||0), 0);
+  const sH = D.servicios.filter(s => s.fecha === h);
+  const tS = sH.reduce((a,s) => a + (+s.abono||0), 0);
+  const vI = D.inventario.reduce((a,p) => a + ((+p.precio||0)*(+p.stock||0)), 0);
+  const fD = D.fiados.filter(f => f.estado !== 'Pagado').reduce((a,f) => a + (+f.saldo||0), 0);
+  const tH = D.tareas.filter(t => !t.completada && t.fecha === h).length;
+  $('d-v').textContent = cop(tV);
+  $('d-g').textContent = cop(tG);
+  $('d-s').textContent = cop(tS);
+  $('d-i').textContent = cop(vI);
+  $('d-f').textContent = cop(fD);
+  $('d-t').textContent = tH + ' tareas';
+  $('tvh').textContent = 'Hoy: ' + cop(tV);
+}
+
+function rInv() {
+  const q = ($('bI').value || '').toLowerCase(), it = D.inventario.filter(p => (p.nombre||'').toLowerCase().includes(q));
+  const d = $('tI');
+  if (!it.length) { d.innerHTML = '<div class="em"><div class="ei">📦</div><p>Sin productos</p></div>'; return; }
+  const gr = {};
+  it.forEach(p => { const k = p.plataforma || 'Otro'; if (!gr[k]) gr[k] = []; gr[k].push(p); });
+  let h = '';
+  Object.keys(gr).sort().forEach(k => {
+    h += `<div class="pg"><div class="pg-t">${k} (${gr[k].length})</div>`;
+    gr[k].forEach(p => { h += `<div class="pi"><div class="nm">${p.nombre}</div><div class="pr">${cop(p.precio)}</div><span class="bg bg-gr">Stock: ${+p.stock||0}</span></div>`; });
+    h += '</div>';
+  });
+  d.innerHTML = h;
+}
+
+function rVta() {
+  const tb = $('tV');
+  if (!D.ventas.length) { tb.innerHTML = '<tr><td colspan="4"><div class="em">Sin ventas</div></td></tr>'; return; }
+  tb.innerHTML = D.ventas.slice(0, 20).map(v => `<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td>${v.clienteNombre}</td><td class="cop">${cop(v.precio)}</td></tr>`).join('');
+}
+
+function rCam() {
+  const tb = $('tC');
+  if (!D.cambios.length) { tb.innerHTML = '<tr><td colspan="4"><div class="em">Sin cambios</div></td></tr>'; return; }
+  tb.innerHTML = D.cambios.slice(0, 20).map(c => `<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td style="color:var(--blue)">${c.entra}</td><td style="color:var(--gold)">${c.sale}</td><td class="cop">${cop(c.encime)}</td></tr>`).join('');
+}
+
+function rCom() {
+  const tb = $('tCo');
+  if (!D.compras.length) { tb.innerHTML = '<tr><td colspan="3"><div class="em">Sin compras</div></td></tr>'; return; }
+  tb.innerHTML = D.compras.slice(0, 20).map(c => `<tr><td style="color:var(--muted);font-size:11px">${c.fecha}</td><td><strong>${c.producto}</strong></td><td class="cop"><strong>${cop(c.total)}</strong></td></tr>`).join('');
+}
+
+function rCli() {
+  const q = ($('bC').value || '').toLowerCase(), it = D.clientes.filter(c => (c.nombre||'').toLowerCase().includes(q)), tb = $('tCl');
+  if (!it.length) { tb.innerHTML = '<tr><td colspan="3"><div class="em">Sin clientes</div></td></tr>'; return; }
+  tb.innerHTML = it.map(c => `<tr><td><strong>${c.nombre}</strong></td><td style="color:var(--green)">${c.wa||'—'}</td><td>${c.totalCompras||0}</td></tr>`).join('');
+}
+
+function rFia() {
+  const a = D.fiados.filter(f => f.estado !== 'Pagado'), tb = $('tF');
+  if (!a.length) { tb.innerHTML = '<tr><td colspan="3"><div class="em">Sin fiados</div></td></tr>'; return; }
+  tb.innerHTML = a.map(f => `<tr><td><strong>${f.clienteNombre}</strong></td><td>${f.producto}</td><td style="color:var(--red);font-weight:700">${cop(f.saldo)}</td></tr>`).join('');
+}
+
+function rPag() {
+  const tb = $('tP'), mo = new Date().getMonth(), yr = new Date().getFullYear();
+  const tm = D.pagos.filter(p => { const pt = (p.fecha||'').split('/'); return pt.length === 3 && +pt[1]-1 === mo && +pt[2] === yr; }).reduce((a,p) => a + (+p.monto||0), 0);
+  $('tpm').textContent = 'Este mes: ' + cop(tm);
+  if (!D.pagos.length) { tb.innerHTML = '<tr><td colspan="3"><div class="em">Sin pagos</div></td></tr>'; return; }
+  tb.innerHTML = D.pagos.slice(0, 20).map(p => `<tr><td style="color:var(--muted);font-size:11px">${p.fecha}</td><td><strong>${p.trabajador}</strong></td><td class="cop" style="color:var(--red)"><strong>${cop(p.monto)}</strong></td></tr>`).join('');
+}
+
+function rPrv() {
+  const tb = $('tPr');
+  if (!D.proveedores.length) { tb.innerHTML = '<tr><td colspan="2"><div class="em">Sin proveedores</div></td></tr>'; return; }
+  tb.innerHTML = D.proveedores.map(p => `<tr><td><strong>${p.nombre}</strong></td><td style="color:var(--green)">${p.contacto}</td></tr>`).join('');
+}
+
+function rSrv() {
+  const l = $('lS');
+  if (!l) return;
+  let it = D.servicios;
+  if (!it.length) { l.innerHTML = '<div class="em"><div class="ei">🔧</div><p>Sin servicios</p></div>'; return; }
+  l.innerHTML = it.map(s => `<div class="ic pend"><div class="ic-t">${s.cliente} — ${s.equipo}</div><div class="ic-d">🔧 ${s.tipo} | ${s.fecha}</div><div class="ic-f"><span class="bg bg-gd">${s.estado}</span> <span style="color:var(--red);font-weight:700">${cop(s.saldo)}</span></div></div>`).join('');
+}
+
+function rep(per, btn) {
+  if (btn) btn.parentElement.querySelectorAll('.b').forEach(x => x.classList.remove('ac')), btn.classList.add('ac');
+  const h = new Date();
+  const fil = f => {
+    if (!f) return false;
+    const p = f.split('/');
+    if (p.length !== 3) return false;
+    const d = new Date(+p[2], p[1]-1, +p[0]);
+    if (per === 'hoy') return d.toDateString() === h.toDateString();
+    if (per === 'sem') return d >= new Date(h.getTime() - 7*864e5);
+    if (per === 'mes') return d.getMonth() === h.getMonth() && d.getFullYear() === h.getFullYear();
+    return true;
+  };
+  const v = D.ventas.filter(x => fil(x.fecha)), s = D.servicios.filter(x => fil(x.fecha));
+  const tV = v.reduce((a,x) => a + (+x.precio||0), 0), tG = v.reduce((a,x) => a + (+x.ganancia||0), 0), tS = s.reduce((a,x) => a + (+x.abono||0), 0);
+  $('rC').innerHTML = `<div class="sg" style="grid-template-columns:repeat(2,1fr)"><div class="sc gr"><div class="sl">Ingresos</div><div class="sv" style="color:var(--green)">${cop(tG+tS)}</div></div><div class="sc rd"><div class="sl">Servicios</div><div class="sv" style="color:var(--orange)">${cop(tS)}</div></div><div class="sc gd" style="grid-column:1/-1"><div class="sl">Ventas</div><div class="sv" style="color:var(--gold)">${v.length} — ${cop(tV)}</div></div></div>`;
+}
+
+// INIT
+if (URL_) $('urlIn').value = URL_;
+lLoad();
+ss('lo');
+rAll();
+</script>
+</body>
+</html>
