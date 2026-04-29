@@ -1057,6 +1057,18 @@ function initMic(){
   if(!SR){toast('⚠️ Usa Safari en iPhone');return false;}
   rec=new SR();rec.lang='es-CO';rec.continuous=false;rec.interimResults=true;
   rec.onstart=()=>{micA=true;$('mb').className='esc';$('vt').textContent='🔴 Escuchando...';$('vr').textContent='';};
+  rec.onresult=e=>{let i='',f='';for(let k=e.resultIndex;k<e.results.length;k++){if(e.results[k].isFinal)f+=e.results[k][0].transcript;else i+=e.results[k][0].transcript;}$('vt').textContent=f||i||'...';if(f)proc(f.trim().toLowerCase());};
+  rec.onerror=()=>{micA=false;$('mb').className='';$('vt').textContent='🎤 Toca el micrófono...';};
+  rec.onend=()=>{micA=false;$('mb').className='';};
+  return true;
+}
+
+function mic(){
+  if(!rec){if(!initMic())return;}
+  if(micA)rec.stop();
+  else{try{rec.start();}catch(e){rec=null;initMic();try{rec.start();}catch(e2){}}}
+}
+
 // ============================================================
 // VIDEOTIENDA EL PADRINO — SISTEMA DE VOZ SIMPLIFICADO
 // ============================================================
@@ -1402,41 +1414,6 @@ async function proc(tx) {
   rAll();
   toast(resultado.msg,4000);
 }
-
-  if (/nequi|nequi\s+pay/i.test(tx)) return 'Nequi';
-  if (/bancolombia|banco\s+colombiano|bancocol/i.test(tx)) return 'Bancolombia';
-  if (/daviplata|davivienda|davi/i.test(tx)) return 'Daviplata';
-  if (/tarjeta|débito|crédito|visa|mastercard/i.test(tx)) return 'Tarjeta';
-  if (/efectivo|cash|pesos|con\s+efectivo/i.test(tx)) return 'Efectivo';
-  
-  // Por defecto: Efectivo
-  return 'Efectivo';
-}
-
-function inferirPlataforma(prod) {
-  if (prod.includes('ps')) return 'PlayStation';
-  if (prod.includes('xbox')) return 'Xbox';
-  if (prod.includes('switch') || prod.includes('nintendo')) return 'Nintendo Switch';
-  return 'Otro';
-}
-
-function capitalizar(s) {
-  return s ? s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
-}
-
-function cop(n) {
-  return '$' + parseInt(n||0).toLocaleString('es-CO');
-}
-
-// ============================================================
-// EXPORTAR PARA USAR EN EL DASHBOARD
-// ============================================================
-// (module.exports removed - browser only)
-function norm(t){t=t.replace(/(\d+)\s*['`']\s*(\d+)/g,(_,m,k)=>+m*1e6+(+k)*1e3);t=t.replace(/(\d+)\s*millones?/g,(_,n)=>+n*1e6);t=t.replace(/(\d+)\s*mil/g,(_,n)=>+n*1e3);t=t.replace(/(\d+)\s*k\b/g,(_,n)=>+n*1e3);const m={'un millon':1e6,'medio millon':5e5,'quinientos mil':5e5,'cuatrocientos mil':4e5,'trescientos mil':3e5,'doscientos mil':2e5,'ciento cincuenta mil':15e4,'cien mil':1e5,'ochenta mil':8e4,'setenta mil':7e4,'sesenta mil':6e4,'cincuenta mil':5e4,'cuarenta mil':4e4,'treinta mil':3e4,'veinte mil':2e4,'quince mil':15e3,'diez mil':1e4,'cinco mil':5e3};for(const[k,v] of Object.entries(m))t=t.replace(new RegExp(k,'g'),String(v));return t;}
-function extP(t){const n=[];(t.match(/\d[\d.,]*/g)||[]).forEach(m=>{const v=parseInt(m.replace(/[.,]/g,''));if(v>=5000)n.push(v);});return n.length?Math.max(...n):null;}
-function extCant(t){const m=t.match(/^(\d+)\s+[a-z]/)||t.match(/compré?\s+(\d+)/i);return m?parseInt(m[1]):1;}
-function extProd(t){let s=t.replace(/venta|vendí|vendi|se llevó|se llevo|salió|compré|compra|formado/gi,'').replace(/a\s+\w+\s+(?:por|en)\s+\d+.*/,'').replace(/(?:por|en)\s+\d+.*/,'').replace(/\d[\d.,]*/g,'').replace(/\s+/g,' ').trim();return s.length>2?s:null;}
-function buscar(n){if(!n)return null;const q=n.toLowerCase();let p=D.inventario.find(p=>(+p.stock||0)>0&&(p.nombre||'').toLowerCase()===q);if(p)return p;return D.inventario.find(p=>(+p.stock||0)>0&&((p.nombre||'').toLowerCase().includes(q)||q.includes((p.nombre||'').toLowerCase().split(' ')[0])))||null;}
 
 function addHist(cmd,r,t){const h=$('hV'),i={venta:'💰',compra:'🛒',cambio:'🔄',abono:'💳',pago:'💵',servicio:'🔧',tarea:'📅'};const d=document.createElement('div');d.style.cssText='padding:8px;background:rgba(245,197,24,.04);border:1px solid rgba(245,197,24,.12);border-radius:6px;margin-bottom:6px;font-size:12px';d.innerHTML=`<div style="color:var(--muted);margin-bottom:3px">${i[t]||'🎤'} "${cmd}"</div><div style="color:var(--green)">${r}</div>`;h.insertBefore(d,h.firstChild);if(h.children.length>10)h.removeChild(h.lastChild);}
 
