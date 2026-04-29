@@ -53,7 +53,7 @@ main{padding:14px;max-width:1300px;margin:0 auto;padding-bottom:150px}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .sc.gd::before{background:var(--gold)}.sc.gr::before{background:var(--green)}.sc.rd::before{background:var(--red)}.sc.bl::before{background:var(--blue)}.sc.pr::before{background:var(--purple)}.sc.or::before{background:var(--orange)}
 .sl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
-.sv{font-family:var(--pixel);font-size:10px;line-height:1.4}
+.sv{font-family:var(--pixel);font-size:13px;line-height:1.4}
 .si{position:absolute;right:8px;top:8px;font-size:16px;opacity:.2}
 
 /* === PANEL === */
@@ -196,11 +196,29 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 <div id="sec-dash" class="sec a">
   <div class="sg">
     <div class="sc gd"><div class="si">💰</div><div class="sl">Ventas Hoy</div><div class="sv" id="d-v" style="color:var(--gold)">$0</div></div>
-    <div class="sc gr"><div class="si">📈</div><div class="sl">Ganancia</div><div class="sv" id="d-g" style="color:var(--green)">$0</div></div>
+    <div class="sc gr"><div class="si">📈</div><div class="sl">Ganancia</div><div class="sv" id="d-g" style="color:var(--green)">$0</div><div id="d-gp" style="font-size:10px;color:var(--green)"></div></div>
     <div class="sc or"><div class="si">🔧</div><div class="sl">Servicios</div><div class="sv" id="d-s" style="color:var(--orange)">$0</div></div>
-    <div class="sc bl"><div class="si">📦</div><div class="sl">Inventario</div><div class="sv" id="d-i">$0</div></div>
+    <div class="sc bl"><div class="si">📦</div><div class="sl">Inventario</div><div class="sv" id="d-i" style="color:var(--blue)">$0</div><div id="d-is" style="font-size:10px;color:var(--muted)"></div></div>
     <div class="sc rd"><div class="si">💳</div><div class="sl">Fiados</div><div class="sv" id="d-f" style="color:var(--red)">$0</div></div>
-    <div class="sc pr"><div class="si">📅</div><div class="sl">Tareas Hoy</div><div class="sv" id="d-t">0</div></div>
+    <div class="sc pr"><div class="si">📅</div><div class="sl">Tareas</div><div class="sv" id="d-t">0</div></div>
+  </div>
+  <div class="p" style="border:2px solid var(--gold);margin-bottom:18px"><div class="ph" style="background:rgba(245,197,24,.08)"><span class="pt">💵 CAJA DEL DÍA</span><span id="d-caja-fecha" style="color:var(--muted);font-size:11px"></span></div><div class="pb">
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="b b-gd bs" onclick="cajaBase()">💰 Base de Caja</button>
+      <button class="b b-gr bs" onclick="cajaMovimiento('entrada')">➕ Ingresar</button>
+      <button class="b b-rd bs" onclick="cajaMovimiento('salida')">➖ Sacar</button>
+    </div>
+    <div id="d-caja-base" style="font-size:11px;color:var(--muted);margin-bottom:8px"></div>
+    <div class="sg" style="grid-template-columns:repeat(2,1fr)">
+      <div class="sc gr"><div class="sl">💰 Entradas</div><div class="sv" id="d-cin" style="color:var(--green);font-size:15px">$0</div><div id="d-cin-det" style="font-size:10px;color:var(--muted)"></div></div>
+      <div class="sc rd"><div class="sl">💸 Salidas</div><div class="sv" id="d-cout" style="color:var(--red);font-size:15px">$0</div><div id="d-cout-det" style="font-size:10px;color:var(--muted)"></div></div>
+    </div>
+    <div style="text-align:center;padding:12px;margin-top:8px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">En Caja</div>
+      <div id="d-caja" style="font-family:var(--pixel);font-size:18px;font-weight:700">$0</div>
+    </div>
+    <div id="d-caja-mov" style="margin-top:10px"></div>
+  </div></div>
   </div>
   <div class="p"><div class="ph"><span class="pt">⚡ Accesos Rápidos</span></div><div class="pb">
     <div class="br">
@@ -763,9 +781,14 @@ async function addVta(){
 
 function rVta(){
   const tb=$('tV'),h=hoy(),th=D.ventas.filter(v=>v.fecha===h).reduce((a,v)=>a+(+v.precio||0),0);
-  $('tvh').textContent='Hoy: '+cop(th);
+  const gh=D.ventas.filter(v=>v.fecha===h).reduce((a,v)=>a+(+v.ganancia||0),0);
+  const pct=th>0?Math.round((gh/th)*100):0;
+  $('tvh').textContent='Hoy: '+cop(th)+' · Ganancia: '+cop(gh)+' ('+pct+'%)';
   if(!D.ventas.length){tb.innerHTML='<tr><td colspan="7"><div class="em"><div class="ei">💸</div><p>Sin ventas</p></div></td></tr>';return;}
-  tb.innerHTML=D.ventas.map(v=>`<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td style="font-size:12px">${v.clienteNombre||''}</td><td class="cop">${cop(v.precio)}</td><td style="color:${(+v.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(v.ganancia)}</strong></td><td><button class="b b-gh bs" onclick="recibo('${v.id}')">🧾</button></td><td><button class="b b-rd bs" onclick="borrar('ventas','${v.id}')">🗑️</button></td></tr>`).join('');
+  tb.innerHTML=D.ventas.map(v=>{
+    const pctV=(+v.precio||0)>0?Math.round(((+v.ganancia||0)/(+v.precio||0))*100):0;
+    return `<tr><td style="color:var(--muted);font-size:11px">${v.fecha}</td><td><strong>${v.producto}</strong></td><td style="font-size:12px">${v.clienteNombre||''}</td><td class="cop">${cop(v.precio)}</td><td style="color:${(+v.ganancia||0)>=0?'var(--green)':'var(--red)'}"><strong>${cop(v.ganancia)}</strong><br><span style="font-size:10px">${pctV}%</span></td><td><button class="b b-gh bs" onclick="recibo('${v.id}')">🧾</button></td><td><button class="b b-rd bs" onclick="borrar('ventas','${v.id}')">🗑️</button></td></tr>`;
+  }).join('');
 }
 
 function recibo(id){if(!id)return toast('⚠️ Sin venta');const v=D.ventas.find(x=>x.id===id);if(!v)return;
@@ -978,25 +1001,33 @@ function repRango(){
 }
 
 function repDatos(fil,per){
+  try{
   const v=D.ventas.filter(x=>fil(x.fecha)),s=D.servicios.filter(x=>fil(x.fecha)),c=D.cambios.filter(x=>fil(x.fecha)),co=D.compras.filter(x=>fil(x.fecha)),pa=D.pagos.filter(x=>fil(x.fecha));
   const tV=v.reduce((a,x)=>a+(+x.precio||0),0),tG=v.reduce((a,x)=>a+(+x.ganancia||0),0);
   const tSval=s.reduce((a,x)=>a+(+x.valor||0),0),tSabo=s.reduce((a,x)=>a+(+x.abono||0),0);
   const tCg=c.reduce((a,x)=>a+(+x.ganancia||0),0),tCo=co.reduce((a,x)=>a+(+x.total||0),0),tP=pa.reduce((a,x)=>a+(+x.monto||0),0);
   const ing=tG+tSabo+tCg,gas=tCo+tP,net=ing-gas;
+  const pctM=tV>0?Math.round((tG/tV)*100):0;
   const pr={};v.forEach(x=>{pr[x.producto]=(pr[x.producto]||0)+1;});const top=Object.entries(pr).sort((a,b)=>b[1]-a[1]).slice(0,5);
   
   // Servicios por tipo
   const srvTipo={};s.forEach(x=>{const t=x.tipo||'Otro';if(!srvTipo[t])srvTipo[t]={cant:0,valor:0,abono:0};srvTipo[t].cant++;srvTipo[t].valor+=(+x.valor||0);srvTipo[t].abono+=(+x.abono||0);});
   const srvList=Object.entries(srvTipo).sort((a,b)=>b[1].cant-a[1].cant);
 
+  if(!v.length&&!s.length&&!c.length&&!co.length&&!pa.length){
+    $('rC').innerHTML='<div class="em"><div class="ei">📊</div><p>Sin datos para este período</p></div>';
+    if($('rH'))$('rH').innerHTML='';
+    return;
+  }
+
   $('rC').innerHTML=`
   <div class="sg" style="grid-template-columns:repeat(2,1fr)">
     <div class="sc gr"><div class="sl">Ingresos</div><div class="sv" style="color:var(--green)">${cop(ing)}</div></div>
     <div class="sc rd"><div class="sl">Gastos</div><div class="sv" style="color:var(--red)">${cop(gas)}</div></div>
-    <div class="sc ${net>=0?'gr':'rd'}" style="grid-column:1/-1"><div class="sl">Neto</div><div class="sv" style="color:${net>=0?'var(--green)':'var(--red)'}">${cop(net)}</div></div>
+    <div class="sc ${net>=0?'gr':'rd'}" style="grid-column:1/-1"><div class="sl">Neto (${pctM}% margen)</div><div class="sv" style="color:${net>=0?'var(--green)':'var(--red)'}">${cop(net)}</div></div>
   </div>
   <div class="p"><div class="ph"><span class="pt">📊 Detalle</span></div><div class="pb"><div style="line-height:2;font-size:14px">
-    💰 Ventas: <strong>${v.length}</strong> — ${cop(tV)} — Ganancia: <span class="cop">${cop(tG)}</span><br>
+    💰 Ventas: <strong>${v.length}</strong> — ${cop(tV)} — Ganancia: <span class="cop">${cop(tG)}</span> (${pctM}%)<br>
     🔧 Servicios: <strong>${s.length}</strong> — Valor: ${cop(tSval)} — Cobrado: <span class="cop">${cop(tSabo)}</span><br>
     🔄 Cambios: <strong>${c.length}</strong> — <span class="cop">${cop(tCg)}</span><br>
     🛒 Compras: <strong>${co.length}</strong> — <span style="color:var(--red)">${cop(tCo)}</span><br>
@@ -1019,6 +1050,38 @@ function repDatos(fil,per){
       }).join('')}</tbody></table></div></div></div>`;
     }else{$('rH').innerHTML='';}
   }else{$('rH').innerHTML='';}
+  }catch(e){$('rC').innerHTML='<div class="em"><div class="ei">⚠️</div><p>Error: '+e.message+'</p></div>';console.error('Reportes:',e);}
+}
+
+// ============================================================
+// CAJA — Base, Ingresos y Retiros
+// ============================================================
+function getCajaHoy(){
+  const h=hoy();
+  let caja=JSON.parse(localStorage.getItem('vtp_caja_'+h)||'{"base":0,"movimientos":[]}');
+  return caja;
+}
+function saveCajaHoy(caja){localStorage.setItem('vtp_caja_'+hoy(),JSON.stringify(caja));}
+
+function cajaBase(){
+  const actual=getCajaHoy();
+  const monto=parseInt(prompt('💰 ¿Cuánto dejas de base en caja hoy?\nActual: '+cop(actual.base)));
+  if(!monto&&monto!==0)return;
+  actual.base=monto;
+  saveCajaHoy(actual);
+  rDash();
+  toast('💰 Base de caja: '+cop(monto));
+}
+
+function cajaMovimiento(tipo){
+  const monto=parseInt(prompt(tipo==='entrada'?'➕ ¿Cuánto INGRESÁS a caja?\n(Ej: préstamo, traer de casa)':'➖ ¿Cuánto SACÁS de caja?\n(Ej: retiro, gasto personal)'));
+  if(!monto||monto<=0)return;
+  const concepto=prompt('📝 Concepto (opcional):')||(tipo==='entrada'?'Ingreso manual':'Retiro manual');
+  const caja=getCajaHoy();
+  caja.movimientos.push({tipo,monto,concepto,hora:new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'})});
+  saveCajaHoy(caja);
+  rDash();
+  toast((tipo==='entrada'?'➕ Ingreso: ':'➖ Retiro: ')+cop(monto));
 }
 
 // ============================================================
@@ -1027,11 +1090,52 @@ function repDatos(fil,per){
 function rDash(){
   const h=hoy(),vH=D.ventas.filter(v=>v.fecha===h),tV=vH.reduce((a,v)=>a+(+v.precio||0),0),tG=vH.reduce((a,v)=>a+(+v.ganancia||0),0);
   const sH=D.servicios.filter(s=>s.fecha===h),tS=sH.reduce((a,s)=>a+(+s.abono||0),0);
-  const vI=D.inventario.reduce((a,p)=>a+(+p.precio||0)*(+p.stock||0),0);
+  const vI=D.inventario.reduce((a,p)=>a+((+p.precio||0)*(+p.stock||0)),0);
+  const stockTotal=D.inventario.reduce((a,p)=>a+(+p.stock||0),0);
+  const itemsTotal=D.inventario.length;
   const fD=D.fiados.filter(f=>f.estado!=='Pagado').reduce((a,f)=>a+(+f.saldo||0),0);
   const tH=D.tareas.filter(t=>!t.completada).length;
-  $('d-v').textContent=cop(tV);$('d-g').textContent=cop(tG);$('d-s').textContent=cop(tS);
-  $('d-i').textContent=cop(vI);$('d-f').textContent=cop(fD);$('d-t').textContent=tH+' pendientes';
+  const pct=tV>0?Math.round((tG/tV)*100):0;
+  $('d-v').textContent=cop(tV);$('d-g').textContent=cop(tG);
+  $('d-gp').textContent=tV>0?pct+'% margen':'';
+  $('d-s').textContent=cop(tS);
+  $('d-i').textContent=cop(vI);
+  $('d-is').textContent=stockTotal+' uds · '+itemsTotal+' productos';
+  $('d-f').textContent=cop(fD);$('d-t').textContent=tH+' pendientes';
+
+  // === CAJA DEL DÍA ===
+  const cajaData=getCajaHoy();
+  const baseCaja=cajaData.base||0;
+  const movEntradas=cajaData.movimientos.filter(m=>m.tipo==='entrada').reduce((a,m)=>a+(+m.monto||0),0);
+  const movSalidas=cajaData.movimientos.filter(m=>m.tipo==='salida').reduce((a,m)=>a+(+m.monto||0),0);
+  
+  // ENTRADAS: base + ventas + servicios + fiados + cambios + ingresos manuales
+  const aboFiados=D.fiados?D.fiados.filter(f=>f.fecha===h).reduce((a,f)=>a+(+f.abonado||0),0):0;
+  const camEncime=D.cambios.filter(c=>c.fecha===h).reduce((a,c)=>a+(+c.encime||0),0);
+  const entradas=tV+tS+aboFiados+camEncime+movEntradas;
+  
+  // SALIDAS: compras + pagos + deudas + retiros manuales
+  const comprasHoy=D.compras.filter(c=>c.fecha===h).reduce((a,c)=>a+(+c.total||0),0);
+  const pagosHoy=D.pagos.filter(p=>p.fecha===h).reduce((a,p)=>a+(+p.monto||0),0);
+  const aboDeudas=D.deudasPrv?D.deudasPrv.filter(d=>d.fecha===h).reduce((a,d)=>a+(+d.abonado||0),0):0;
+  const salidas=comprasHoy+pagosHoy+aboDeudas+movSalidas;
+  
+  const caja=baseCaja+entradas-salidas;
+  
+  $('d-caja-fecha').textContent=h;
+  $('d-caja-base').textContent=baseCaja?'Base: '+cop(baseCaja):'⚠️ Sin base de caja — Toca "💰 Base de Caja"';
+  $('d-cin').textContent=cop(entradas);
+  $('d-cin-det').textContent='Ventas: '+cop(tV)+(tS?' · Srv: '+cop(tS):'')+(aboFiados?' · Fiados: '+cop(aboFiados):'')+(camEncime?' · Cambios: '+cop(camEncime):'')+(movEntradas?' · Manual: '+cop(movEntradas):'');
+  $('d-cout').textContent=cop(salidas);
+  $('d-cout-det').textContent='Compras: '+cop(comprasHoy)+(pagosHoy?' · Pagos: '+cop(pagosHoy):'')+(aboDeudas?' · Deudas: '+cop(aboDeudas):'')+(movSalidas?' · Retiros: '+cop(movSalidas):'');
+  $('d-caja').textContent=cop(caja);
+  $('d-caja').style.color=caja>=0?'var(--green)':'var(--red)';
+  
+  // Mostrar movimientos manuales del día
+  const movDiv=$('d-caja-mov');
+  if(movDiv&&cajaData.movimientos.length){
+    movDiv.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Movimientos manuales:</div>'+cajaData.movimientos.map(m=>`<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid rgba(37,37,64,.3)"><span>${m.hora} — ${m.concepto}</span><span style="color:${m.tipo==='entrada'?'var(--green)':'var(--red)'};font-weight:700">${m.tipo==='entrada'?'+':'-'}${cop(m.monto)}</span></div>`).join('');
+  }else if(movDiv){movDiv.innerHTML='';}
 
   // Tareas pendientes (todas, no solo hoy)
   const tHoy=D.tareas.filter(t=>!t.completada).slice(0,5);
