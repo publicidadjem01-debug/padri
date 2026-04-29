@@ -225,10 +225,35 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
   <div class="p"><div class="ph"><span class="pt">🎤 Comandos de Voz — VOZ V4 PRO</span></div><div class="pb">
     <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Toca el 🎤 abajo y habla natural. Entiende 150+ variaciones.</p>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px">
-      <div style="color:var(--gold);font-weight:700;margin-bottom:6px;font-size:11px">💰 VENTAS:</div>
-      <div class="ci"><span class="ce">"Vendí PS5 Slim Nueva Disco"</span><span class="cd">✅</span></div>
-      <div class="ci"><span class="ce">"Se llevó play 5 a Carlos en Nequi"</span><span class="cd">✅</span></div>
-      <div class="ci"><span class="ce">"Venta Xbox 2.1"</span><span class="cd">✅</span></div>
+      <div style="color:var(--gold);font-weight:700;margin-bottom:6px;font-size:11px">💰 VENTAS (di "vendí" + producto):</div>
+      <div style="color:var(--muted);font-size:10px;margin-bottom:6px">⚠️ PS5: especifica disco/digital + nueva/usada</div>
+      <div class="ci"><span class="ce">"Vendí play 5 disco nueva"</span><span class="cd">→ $2.400.000</span></div>
+      <div class="ci"><span class="ce">"Vendí play 5 digital nueva"</span><span class="cd">→ $2.200.000</span></div>
+      <div class="ci"><span class="ce">"Vendí play 5 disco usada"</span><span class="cd">→ $1.880.000</span></div>
+      <div class="ci"><span class="ce">"Vendí play 5 digital usada"</span><span class="cd">→ $1.700.000</span></div>
+      <div class="ci"><span class="ce">"Vendí play 5 fat"</span><span class="cd">→ $1.700.000</span></div>
+      <div class="ci"><span class="ce">"Vendí play 4"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí play 4 pro"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí play 3"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí xbox s"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí xbox x"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí switch oled"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí switch 1"</span><span class="cd">→ Precio de Sheets</span></div>
+      <div class="ci"><span class="ce">"Vendí control ps5 nuevo"</span><span class="cd">→ $290.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control ps5 usado"</span><span class="cd">→ $200.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control ps4"</span><span class="cd">→ $130.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control replica"</span><span class="cd">→ $80.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control xbox one"</span><span class="cd">→ $250.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control xbox 360"</span><span class="cd">→ $60.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control pro"</span><span class="cd">→ $130.000</span></div>
+      <div class="ci"><span class="ce">"Vendí joycon"</span><span class="cd">→ $140.000</span></div>
+      <div class="ci"><span class="ce">"Vendí juego FIFA en 180"</span><span class="cd">→ $180.000</span></div>
+      <div class="ci"><span class="ce">"Vendí juego God of War usado en 80"</span><span class="cd">→ $80.000</span></div>
+      
+      <div style="color:var(--pink);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">💲 CON DESCUENTO (di el precio):</div>
+      <div class="ci"><span class="ce">"Vendí play 5 disco en 2.3"</span><span class="cd">→ $2.300.000</span></div>
+      <div class="ci"><span class="ce">"Vendí control ps5 nuevo en 280"</span><span class="cd">→ $280.000</span></div>
+      <div class="ci"><span class="ce">"Vendí xbox s en 1.1"</span><span class="cd">→ $1.100.000</span></div>
       
       <div style="color:var(--orange);font-weight:700;margin-top:8px;margin-bottom:6px;font-size:11px">🛒 COMPRAS:</div>
       <div class="ci"><span class="ce">"Compré PS5 2.4"</span><span class="cd">✅</span></div>
@@ -265,10 +290,11 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
     <button class="b b-pr" onclick="addTar()">📅 Crear Tarea</button>
   </div></div>
   <div class="ch" id="chT">
-    <button class="b b-gh bs ac" onclick="fT='hoy';rTar();uc(this)">Hoy</button>
+    <button class="b b-gh bs" onclick="fT='hoy';rTar();uc(this)">Hoy</button>
     <button class="b b-gh bs" onclick="fT='man';rTar();uc(this)">Mañana</button>
     <button class="b b-gh bs" onclick="fT='sem';rTar();uc(this)">Semana</button>
-    <button class="b b-gh bs" onclick="fT='pend';rTar();uc(this)">Pendientes</button>
+    <button class="b b-gh bs ac" onclick="fT='pend';rTar();uc(this)">⏳ Pendientes</button>
+    <button class="b b-gh bs" onclick="fT='comp';rTar();uc(this)">✅ Completadas</button>
     <button class="b b-gh bs" onclick="fT='all';rTar();uc(this)">Todas</button>
   </div>
   <div id="lT"></div>
@@ -346,12 +372,15 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 <div id="sec-vta" class="sec">
   <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">💸 Nueva Venta</span><span class="ca">▼</span></div><div class="pb">
     <div class="fg">
-      <div class="ff"><label>Producto</label><select id="v-pro"></select></div>
+      <div class="ff"><label>Producto</label><select id="v-pro" onchange="vtaProd()"></select></div>
+      <div class="ff"><label>O escribe el producto</label><input id="v-pro-txt" placeholder="Ej: Juego FIFA 25"></div>
       <div class="ff"><label>Cliente</label><select id="v-cli"><option value="">Cliente general</option></select></div>
-      <div class="ff"><label>Precio (COP)</label><input type="number" id="v-pre" placeholder="0"></div>
+      <div class="ff"><label>O escribe nuevo cliente</label><input id="v-cli-txt" placeholder="Nombre del cliente"></div>
+      <div class="ff"><label>Precio (COP) — editable para descuentos</label><input type="number" id="v-pre" placeholder="Se llena auto, cámbialo si hay descuento"></div>
       <div class="ff"><label>Pago</label><select id="v-pag"><option>Efectivo</option><option>Nequi</option><option>Bancolombia</option><option>Daviplata</option><option>Tarjeta</option></select></div>
       <div class="ff"><label>Canal</label><select id="v-can"><option>Tienda Física</option><option>WhatsApp</option><option>Facebook</option><option>Instagram</option><option>Mercado Libre</option></select></div>
-      <div class="ff"><label>Vendedor</label><input id="v-ven" placeholder="Nombre"></div>
+      <div class="ff"><label>Serial (consolas)</label><input id="v-ser" placeholder="Número de serie"></div>
+      <div class="ff"><label>Vendedor</label><input id="v-ven" placeholder="Dueño"></div>
     </div>
     <div class="br"><button class="b b-gd" onclick="addVta()">💰 Registrar</button><button class="b b-gh" onclick="recibo(uV)">🧾 Recibo</button></div>
   </div></div>
@@ -439,14 +468,27 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
       </div>
       <button class="b b-gd" onclick="addTrb()">➕ Agregar</button>
     </div></div>
-    <div class="p"><div class="ph"><span class="pt">💵 Pago Diario</span></div><div class="pb">
+    <div class="p"><div class="ph"><span class="pt">💵 Pago / Comisión</span></div><div class="pb">
       <div class="fg" style="grid-template-columns:1fr">
         <div class="ff"><label>Trabajador</label><select id="pg-trb"></select></div>
-        <div class="ff"><label>Monto</label><input type="number" id="pg-mon" placeholder="0"></div>
-        <div class="ff"><label>Concepto</label><select id="pg-con"><option>Día trabajado</option><option>Comisión</option><option>Bono</option><option>Adelanto</option></select></div>
+        <div class="ff"><label>O escribe nombre</label><input id="pg-trb-txt" placeholder="Nombre del trabajador"></div>
+        <div class="ff"><label>Comisión rápida</label>
+          <div class="br" style="flex-wrap:wrap">
+            <button class="b b-gh bs" onclick="$('pg-mon').value=50000">$50k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=60000">$60k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=70000">$70k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=80000">$80k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=90000">$90k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=100000">$100k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=110000">$110k</button>
+            <button class="b b-gh bs" onclick="$('pg-mon').value=120000">$120k</button>
+          </div>
+        </div>
+        <div class="ff"><label>O monto manual</label><input type="number" id="pg-mon" placeholder="0"></div>
+        <div class="ff"><label>Concepto</label><select id="pg-con"><option>Comisión</option><option>Día trabajado</option><option>Bono</option><option>Adelanto</option></select></div>
         <div class="ff"><label>Método</label><select id="pg-met"><option>Efectivo</option><option>Nequi</option><option>Bancolombia</option></select></div>
       </div>
-      <button class="b b-gr" onclick="addPag()">💵 Registrar</button>
+      <button class="b b-gr" onclick="addPag()">💵 Registrar Pago</button>
     </div></div>
   </div>
   <div class="p"><div class="ph"><span class="pt">📋 Pagos</span><span id="tpm" style="color:var(--red);font-size:12px;font-weight:700"></span></div>
@@ -456,7 +498,7 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 
 <!-- ===== PROVEEDORES ===== -->
 <div id="sec-prv" class="sec">
-  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🏭 Proveedor</span><span class="ca">▼</span></div><div class="pb">
+  <div class="p cl"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">🏭 Nuevo Proveedor</span><span class="ca">▼</span></div><div class="pb">
     <div class="fg">
       <div class="ff"><label>Nombre</label><input id="pr-nom" placeholder="Nombre"></div>
       <div class="ff"><label>WhatsApp</label><input id="pr-con" placeholder="+57..."></div>
@@ -467,6 +509,27 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
   </div></div>
   <div class="p"><div class="ph"><span class="pt">📋 Proveedores</span></div>
     <div class="pb"><div class="tw"><table><thead><tr><th>Nombre</th><th>Contacto</th><th>Tipo</th><th></th></tr></thead><tbody id="tPr"></tbody></table></div></div>
+  </div>
+  
+  <div class="p cl op"><div class="ph" onclick="tg(this.parentElement)"><span class="pt">💳 Nueva Deuda a Proveedor</span><span class="ca">▼</span></div><div class="pb">
+    <div class="fg">
+      <div class="ff"><label>Proveedor</label><select id="dp-prv"><option value="">Seleccionar...</option></select></div>
+      <div class="ff"><label>O escribe nombre</label><input id="dp-prv-txt" placeholder="Nombre proveedor"></div>
+      <div class="ff"><label>Descripción</label><input id="dp-desc" placeholder="Ej: 5 PS5 Slim Disco"></div>
+      <div class="ff"><label>Valor Total (COP)</label><input type="number" id="dp-val" placeholder="0"></div>
+      <div class="ff"><label>Abono Inicial (COP)</label><input type="number" id="dp-abo" placeholder="0"></div>
+      <div class="ff"><label>Fecha límite</label><input type="date" id="dp-lim"></div>
+    </div>
+    <button class="b b-rd" onclick="addDeudaPrv()">💳 Registrar Deuda</button>
+  </div></div>
+
+  <div class="p"><div class="ph"><span class="pt">📋 Deudas a Proveedores</span><span id="tdp" style="color:var(--red);font-size:12px;font-weight:700"></span></div>
+    <div class="ch">
+      <button class="b b-gh bs ac" onclick="fDP='pend';rDeudaPrv();uc(this)">⏳ Pendientes</button>
+      <button class="b b-gh bs" onclick="fDP='pagado';rDeudaPrv();uc(this)">✅ Pagadas</button>
+      <button class="b b-gh bs" onclick="fDP='all';rDeudaPrv();uc(this)">Todas</button>
+    </div>
+    <div id="lDP"></div>
   </div>
 </div>
 
@@ -504,8 +567,8 @@ td{padding:9px 10px;vertical-align:middle;white-space:nowrap}
 // CORE
 // ============================================================
 let URL_=localStorage.getItem('vtp_url')||'',ON=false,uV=null,rN=parseInt(localStorage.getItem('vtp_rn')||'1');
-let micA=false,rec=null,fS='Pendiente',fT='hoy',fI='all';
-const D={inventario:[],ventas:[],cambios:[],compras:[],clientes:[],fiados:[],trabajadores:[],pagos:[],proveedores:[],servicios:[],tareas:[]};
+let micA=false,rec=null,fS='Pendiente',fT='pend',fI='all';
+const D={inventario:[],ventas:[],cambios:[],compras:[],clientes:[],fiados:[],trabajadores:[],pagos:[],proveedores:[],servicios:[],tareas:[],deudasPrv:[]};
 
 // API
 async function api(action,table,payload=null,id=null,updates=null,query=null){
@@ -550,20 +613,27 @@ function go(id,btn){
 function rAll(){rInv();rVta();rCam();rCom();rCli();rFia();rPag();rPrv();rSrv();rTar();rDash();pop();badges();}
 
 function badges(){
-  const bT=D.tareas.filter(t=>!t.completada&&(t.fecha===hoy()||t.fecha===man())).length;
+  const bT=D.tareas.filter(t=>!t.completada).length;
   const bS=D.servicios.filter(s=>s.estado==='Pendiente').length;
   const bF=D.fiados.filter(f=>f.estado!=='Pagado').length;
   [['bt',bT],['bs',bS],['bf',bF]].forEach(([id,n])=>{const e=$(id);e.style.display=n>0?'inline-block':'none';e.textContent=n;});
 }
 
 function pop(){
-  const pr=D.inventario.filter(p=>parseInt(p.stock||0)>0);
+  const pr=D.inventario;
   const gr={};pr.forEach(p=>{const k=p.plataforma||'Otro';if(!gr[k])gr[k]=[];gr[k].push(p);});
   ['v-pro','c-sal'].forEach(id=>{const e=$(id);if(!e)return;let h='<option value="">Seleccionar...</option>';
-    Object.keys(gr).sort().forEach(k=>{h+=`<optgroup label="${k}">`;gr[k].forEach(p=>{h+=`<option value="${p.id}">${p.nombre} — ${cop(p.precio)} (${p.stock})</option>`;});h+='</optgroup>';});e.innerHTML=h;});
+    Object.keys(gr).sort().forEach(k=>{h+=`<optgroup label="${k}">`;gr[k].forEach(p=>{h+=`<option value="${p.id}">${p.nombre} — ${cop(p.precio)} (Stock: ${+p.stock||0})</option>`;});h+='</optgroup>';});e.innerHTML=h;});
   ['v-cli','c-cli','f-cli'].forEach(id=>{const e=$(id);if(!e)return;e.innerHTML='<option value="">Cliente general</option>'+D.clientes.map(c=>`<option value="${c.id}">${c.nombre}</option>`).join('');});
   const pe=$('co-prv');if(pe)pe.innerHTML='<option value="">Particular</option>'+D.proveedores.map(p=>`<option value="${p.id}">${p.nombre}</option>`).join('');
   const te=$('pg-trb');if(te)te.innerHTML=D.trabajadores.length?D.trabajadores.map(t=>`<option value="${t.id}">${t.nombre}</option>`).join(''):'<option>Sin trabajadores</option>';
+}
+
+// Cuando selecciona producto, llenar precio automático
+function vtaProd(){
+  const pid=$('v-pro').value;
+  const pr=D.inventario.find(p=>p.id===pid);
+  if(pr)$('v-pre').value=pr.precio;
 }
 
 // ============================================================
@@ -585,6 +655,7 @@ function rTar(){
   else if(fT==='man')it=it.filter(t=>t.fecha===m&&!t.completada);
   else if(fT==='sem'){const now=new Date(),end=new Date(now.getTime()+7*86400000);it=it.filter(t=>{if(t.completada)return false;const p=(t.fecha||'').split('/');if(p.length!==3)return false;const d=new Date(+p[2],p[1]-1,+p[0]);return d>=now&&d<=end;});}
   else if(fT==='pend')it=it.filter(t=>!t.completada);
+  else if(fT==='comp')it=it.filter(t=>t.completada);
   const po={alta:1,media:2,normal:3,baja:4};it.sort((a,b)=>po[a.prioridad]-po[b.prioridad]);
   if(!it.length){l.innerHTML='<div class="em"><div class="ei">📅</div><p>Sin tareas</p></div>';return;}
   l.innerHTML=it.map(t=>{const isH=t.fecha===h,pi={alta:'🔴',media:'🟡',baja:'🟢',normal:'🔵'}[t.prioridad],pb={alta:'bg-rd',media:'bg-gd',baja:'bg-gr',normal:'bg-bl'}[t.prioridad];
@@ -641,14 +712,53 @@ function rInv(){
 // VENTAS
 // ============================================================
 async function addVta(){
-  const pid=$('v-pro').value,pr=D.inventario.find(p=>p.id===pid);if(!pr)return toast('⚠️ Producto');
-  const pre=parseInt($('v-pre').value)||pr.precio,cid=$('v-cli').value,cl=D.clientes.find(c=>c.id===cid);
-  const v={id:uid(),fecha:hoy(),prodId:pid,producto:pr.nombre,plataforma:pr.plataforma,costo:pr.costo,precio:pre,ganancia:pre-(+pr.costo||0),pago:$('v-pag').value,canal:$('v-can').value,vendedor:$('v-ven').value||'Dueño',clienteId:cid||'',clienteNombre:cl?cl.nombre:'Cliente general'};
-  pr.stock=Math.max(0,(+pr.stock||0)-1);lSave('inventario');
-  if(ON)await api('update','inventario',pr.id,{stock:pr.stock});
+  // Producto: seleccionado O escrito
+  const pid=$('v-pro').value;
+  const proTxt=($('v-pro-txt')||{}).value||'';
+  let pr=null,nombreProd='',platProd='Otro',costoProd=0;
+  
+  if(pid){
+    pr=D.inventario.find(p=>p.id===pid);
+    if(pr){nombreProd=pr.nombre;platProd=pr.plataforma;costoProd=+pr.costo||0;}
+  }else if(proTxt.trim()){
+    nombreProd=proTxt.trim();platProd=inferirPlataforma(nombreProd);
+  }
+  if(!nombreProd)return toast('⚠️ Selecciona o escribe un producto');
+  
+  const pre=parseInt($('v-pre').value)||(pr?pr.precio:0);
+  if(!pre)return toast('⚠️ Escribe el precio');
+  
+  // Cliente: seleccionado O escrito
+  const cid=$('v-cli').value;
+  const cliTxt=($('v-cli-txt')||{}).value||'';
+  let cl=null,cliNombre='Cliente general',cliId='';
+  
+  if(cid){
+    cl=D.clientes.find(c=>c.id===cid);
+    if(cl){cliNombre=cl.nombre;cliId=cl.id;}
+  }else if(cliTxt.trim()){
+    cliNombre=cliTxt.trim();
+    // Crear cliente nuevo automáticamente
+    cl=D.clientes.find(c=>c.nombre.toLowerCase()===cliNombre.toLowerCase());
+    if(!cl){
+      cl={id:uid(),nombre:cliNombre,wa:'',plataforma:'Todas',notas:'Creado en dashboard',totalCompras:0,totalGastado:0,fecha:hoy()};
+      D.clientes.push(cl);lSave('clientes');if(ON)await api('insert','clientes',cl);
+    }
+    cliId=cl.id;cliNombre=cl.nombre;
+  }
+  
+  const v={id:uid(),fecha:hoy(),prodId:pid||'',producto:nombreProd,plataforma:platProd,costo:costoProd,precio:pre,ganancia:pre-costoProd,pago:$('v-pag').value,canal:$('v-can').value,vendedor:$('v-ven').value||'Dueño',clienteId:cliId,clienteNombre:cliNombre,serial:($('v-ser')||{}).value||''};
+  
+  // Descontar stock si existe en inventario
+  if(pr){pr.stock=Math.max(0,(+pr.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',pr.id,{stock:pr.stock});}
+  
+  // Actualizar cliente
   if(cl){cl.totalCompras=(+cl.totalCompras||0)+1;cl.totalGastado=(+cl.totalGastado||0)+pre;lSave('clientes');if(ON)await api('update','clientes',cl.id,{totalCompras:cl.totalCompras,totalGastado:cl.totalGastado});}
+  
   D.ventas.unshift(v);lSave('ventas');if(ON)await api('insert','ventas',v);
-  uV=v.id;rVta();rDash();pop();toast('💰 Ganancia: '+cop(v.ganancia));
+  uV=v.id;rVta();rDash();pop();toast('💰 '+nombreProd+' — Ganancia: '+cop(v.ganancia));
+  // Limpiar campos
+  $('v-pre').value='';if($('v-pro-txt'))$('v-pro-txt').value='';if($('v-cli-txt'))$('v-cli-txt').value='';if($('v-ser'))$('v-ser').value='';
 }
 
 function rVta(){
@@ -660,7 +770,8 @@ function rVta(){
 
 function recibo(id){if(!id)return toast('⚠️ Sin venta');const v=D.ventas.find(x=>x.id===id);if(!v)return;
   const n=String(rN).padStart(4,'0');rN++;localStorage.setItem('vtp_rn',rN);
-  $('rP').textContent=`════════════════════════════\n  VIDEOTIENDA EL PADRINO\n  Cra 80 #11a-51 Local 1-96\n  Sanandresito del Sur\n════════════════════════════\n  RECIBO N° ${n}   ${v.fecha}\n────────────────────────────\n  ${v.producto}\n  TOTAL: ${cop(v.precio)}\n────────────────────────────\n  Pago: ${v.pago} | ${v.canal}\n  Cliente: ${v.clienteNombre}\n════════════════════════════\n  ¡Gracias por su compra! 🎮\n════════════════════════════`;
+  const serial=v.serial?`\n  Serial: ${v.serial}`:'';
+  $('rP').textContent=`════════════════════════════\n  🎮 VIDEOTIENDA EL PADRINO\n  @videotiendaelpadrino\n  Cra 80 #11a-51 Local 1-96\n  Sanandresito del Sur, Bogotá\n════════════════════════════\n  RECIBO N° ${n}   ${v.fecha}\n────────────────────────────\n  Producto: ${v.producto}${serial}\n  Plataforma: ${v.plataforma||''}\n────────────────────────────\n  TOTAL: ${cop(v.precio)}\n  Pago: ${v.pago} | ${v.canal}\n  Cliente: ${v.clienteNombre}\n  Vendedor: ${v.vendedor||'Dueño'}\n════════════════════════════\n  Garantía sujeta a condiciones\n  ¡Gracias por su compra! 🎮\n  @videotiendaelpadrino\n════════════════════════════`;
   $('rM').classList.add('op');}
 function X(id){$(id).classList.remove('op')}
 function prn(){const c=$('rP').textContent;const w=window.open('','_blank');w.document.write(`<pre style="font-family:monospace;font-size:14px;padding:24px">${c}</pre>`);w.print();}
@@ -671,9 +782,10 @@ function prn(){const c=$('rP').textContent;const w=window.open('','_blank');w.do
 async function borrar(tabla, id) {
   if (!confirm('¿Seguro que quieres eliminar este registro?')) return;
   D[tabla] = D[tabla].filter(x => x.id !== id);
-  lSave(tabla);
+  localStorage.setItem('vtp_'+tabla, JSON.stringify(D[tabla]));
   if (ON) await api('delete', tabla, id);
   rAll();
+  badges();
   toast('🗑️ Eliminado');
 }
 
@@ -728,7 +840,22 @@ function rFia(){const a=D.fiados.filter(f=>f.estado!=='Pagado'),tb=$('tF');if(!a
 // TRABAJADORES / PAGOS
 // ============================================================
 async function addTrb(){const n=$('tr-nom').value.trim();if(!n)return toast('⚠️ Nombre');const t={id:uid(),nombre:n,rol:$('tr-rol').value,fecha:hoy()};D.trabajadores.push(t);lSave('trabajadores');if(ON)await api('insert','trabajadores',t);pop();toast('👷 '+n);$('tr-nom').value='';}
-async function addPag(){const tid=$('pg-trb').value,t=D.trabajadores.find(x=>x.id===tid);if(!t)return toast('⚠️ Trabajador');const m=parseInt($('pg-mon').value)||0;if(!m)return toast('⚠️ Monto');const p={id:uid(),fecha:hoy(),trabId:tid,trabajador:t.nombre,monto:m,concepto:$('pg-con').value,metodo:$('pg-met').value};D.pagos.unshift(p);lSave('pagos');if(ON)await api('insert','pagos',p);rPag();toast('💵 '+cop(m)+' a '+t.nombre);$('pg-mon').value='';}
+async function addPag(){
+  const tid=$('pg-trb').value;
+  const trbTxt=($('pg-trb-txt')||{}).value||'';
+  let t=null,tNombre='';
+  if(tid){t=D.trabajadores.find(x=>x.id===tid);if(t)tNombre=t.nombre;}
+  else if(trbTxt.trim()){
+    tNombre=trbTxt.trim();
+    t=D.trabajadores.find(x=>x.nombre.toLowerCase()===tNombre.toLowerCase());
+    if(!t){t={id:uid(),nombre:tNombre,rol:'Vendedor',fecha:hoy()};D.trabajadores.push(t);lSave('trabajadores');if(ON)await api('insert','trabajadores',t);}
+  }
+  if(!tNombre)return toast('⚠️ Selecciona o escribe trabajador');
+  const m=parseInt($('pg-mon').value)||0;if(!m)return toast('⚠️ Selecciona comisión o escribe monto');
+  const p={id:uid(),fecha:hoy(),trabId:t?t.id:'',trabajador:tNombre,monto:m,concepto:$('pg-con').value,metodo:$('pg-met').value};
+  D.pagos.unshift(p);lSave('pagos');if(ON)await api('insert','pagos',p);
+  rPag();pop();toast('💵 '+cop(m)+' a '+tNombre);$('pg-mon').value='';if($('pg-trb-txt'))$('pg-trb-txt').value='';
+}
 function rPag(){const tb=$('tP'),mo=new Date().getMonth(),yr=new Date().getFullYear(),tm=D.pagos.reduce((a,p)=>{const pt=(p.fecha||'').split('/');return pt.length===3&&+pt[1]-1===mo&&+pt[2]===yr?a+(+p.monto||0):a;},0);$('tpm').textContent='Este mes: '+cop(tm);if(!D.pagos.length){tb.innerHTML='<tr><td colspan="4"><div class="em"><div class="ei">👷</div><p>Sin pagos</p></div></td></tr>';return;}tb.innerHTML=D.pagos.map(p=>`<tr><td style="color:var(--muted);font-size:11px">${p.fecha}</td><td><strong>${p.trabajador}</strong></td><td class="cop" style="color:var(--red)"><strong>${cop(p.monto)}</strong></td><td><span class="bg bg-pr">${p.concepto}</span></td></tr>`).join('');}
 
 // ============================================================
@@ -736,7 +863,97 @@ function rPag(){const tb=$('tP'),mo=new Date().getMonth(),yr=new Date().getFullY
 // ============================================================
 async function addPrv(){const n=$('pr-nom').value.trim();if(!n)return toast('⚠️ Nombre');const p={id:uid(),nombre:n,contacto:$('pr-con').value,tipo:$('pr-tip').value,plataformas:$('pr-pla').value,fecha:hoy()};D.proveedores.push(p);lSave('proveedores');if(ON)await api('insert','proveedores',p);rPrv();pop();toast('🏭 Agregado');['pr-nom','pr-con','pr-pla'].forEach(id=>$(id).value='');}
 async function delPrv(id){if(!confirm('¿Eliminar?'))return;D.proveedores=D.proveedores.filter(p=>p.id!==id);lSave('proveedores');if(ON)await api('delete','proveedores',id);rPrv();pop();}
-function rPrv(){const tb=$('tPr');if(!D.proveedores.length){tb.innerHTML='<tr><td colspan="4"><div class="em"><div class="ei">🏭</div><p>Sin proveedores</p></div></td></tr>';return;}tb.innerHTML=D.proveedores.map(p=>`<tr><td><strong>${p.nombre}</strong></td><td style="color:var(--green)">${p.contacto}</td><td><span class="bg bg-bl">${p.tipo}</span></td><td><button class="b b-gh bs" onclick="delPrv('${p.id}')">🗑</button></td></tr>`).join('');}
+function rPrv(){const tb=$('tPr');if(!D.proveedores.length){tb.innerHTML='<tr><td colspan="4"><div class="em"><div class="ei">🏭</div><p>Sin proveedores</p></div></td></tr>';return;}tb.innerHTML=D.proveedores.map(p=>`<tr><td><strong>${p.nombre}</strong></td><td style="color:var(--green)">${p.contacto}</td><td><span class="bg bg-bl">${p.tipo}</span></td><td><button class="b b-gh bs" onclick="delPrv('${p.id}')">🗑</button></td></tr>`).join('');
+  // Llenar selector de proveedores en deudas
+  const dp=$('dp-prv');if(dp)dp.innerHTML='<option value="">Seleccionar...</option>'+D.proveedores.map(p=>`<option value="${p.id}">${p.nombre}</option>`).join('');
+  rDeudaPrv();
+}
+
+// ============================================================
+// DEUDAS A PROVEEDORES
+// ============================================================
+let fDP='pend';
+
+async function addDeudaPrv(){
+  const pid=$('dp-prv').value;
+  const prvTxt=($('dp-prv-txt')||{}).value||'';
+  let prvNombre='';
+  
+  if(pid){const p=D.proveedores.find(x=>x.id===pid);if(p)prvNombre=p.nombre;}
+  else if(prvTxt.trim()){prvNombre=prvTxt.trim();}
+  if(!prvNombre)return toast('⚠️ Selecciona o escribe proveedor');
+  
+  const desc=$('dp-desc').value.trim();if(!desc)return toast('⚠️ Descripción');
+  const val=parseInt($('dp-val').value)||0;if(!val)return toast('⚠️ Valor');
+  const abo=parseInt($('dp-abo').value)||0;
+  let lim=$('dp-lim').value||'';
+  if(lim&&lim.includes('-')){const p=lim.split('-');lim=p[2]+'/'+p[1]+'/'+p[0];}
+  
+  const d={id:uid(),fecha:hoy(),proveedor:prvNombre,descripcion:desc,valor:val,abonado:abo,saldo:val-abo,fechaLimite:lim,estado:val-abo<=0?'Pagado':'Pendiente'};
+  
+  if(!D.deudasPrv)D.deudasPrv=[];
+  D.deudasPrv.unshift(d);lSave('deudasPrv');if(ON)await api('insert','deudasPrv',d);
+  rDeudaPrv();toast('💳 Deuda: '+cop(d.saldo)+' a '+prvNombre);
+  ['dp-desc','dp-val','dp-abo','dp-lim'].forEach(id=>$(id).value='');if($('dp-prv-txt'))$('dp-prv-txt').value='';
+}
+
+async function abonoPrv(id){
+  if(!D.deudasPrv)return;
+  const d=D.deudasPrv.find(x=>x.id===id);if(!d)return;
+  const monto=parseInt(prompt('¿Cuánto abonas a '+d.proveedor+'?\nSaldo: '+cop(d.saldo)));
+  if(!monto||monto<=0)return;
+  d.abonado=(+d.abonado||0)+monto;
+  d.saldo=(+d.valor||0)-d.abonado;
+  if(d.saldo<=0){d.saldo=0;d.estado='Pagado';}
+  lSave('deudasPrv');if(ON)await api('update','deudasPrv',d.id,{abonado:d.abonado,saldo:d.saldo,estado:d.estado});
+  rDeudaPrv();toast('✅ Abono '+cop(monto)+' — Saldo: '+cop(d.saldo));
+}
+
+async function delDeudaPrv(id){
+  if(!confirm('¿Eliminar esta deuda?'))return;
+  D.deudasPrv=D.deudasPrv.filter(x=>x.id!==id);
+  localStorage.setItem('vtp_deudasPrv',JSON.stringify(D.deudasPrv));
+  if(ON)await api('delete','deudasPrv',id);
+  rDeudaPrv();toast('🗑️ Eliminado');
+}
+
+function rDeudaPrv(){
+  const l=$('lDP');if(!l)return;
+  if(!D.deudasPrv)D.deudasPrv=[];
+  
+  let it=[...D.deudasPrv];
+  if(fDP==='pend')it=it.filter(d=>d.estado!=='Pagado');
+  else if(fDP==='pagado')it=it.filter(d=>d.estado==='Pagado');
+  
+  // Total deuda
+  const totalDeuda=D.deudasPrv.filter(d=>d.estado!=='Pagado').reduce((a,d)=>a+(+d.saldo||0),0);
+  const tdp=$('tdp');if(tdp)tdp.textContent='Total deuda: '+cop(totalDeuda);
+  
+  if(!it.length){l.innerHTML='<div class="em"><div class="ei">✅</div><p>Sin deudas</p></div>';return;}
+  
+  l.innerHTML=it.map(d=>{
+    const vencida=d.fechaLimite&&d.estado!=='Pagado'?(() => {const p=d.fechaLimite.split('/');if(p.length===3){const fd=new Date(+p[2],p[1]-1,+p[0]);return fd<new Date();}return false;})():false;
+    return `<div class="ic ${d.estado==='Pagado'?'entr':vencida?'urg':'pend'}">
+      <div class="ic-t">${d.proveedor} <span style="color:var(--muted);font-size:12px;font-weight:400">— ${d.descripcion}</span></div>
+      <div class="ic-d">📅 ${d.fecha}${d.fechaLimite?' | ⏰ Límite: '+d.fechaLimite:''}${vencida?' <span class="bg bg-rd">VENCIDA</span>':''}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <div>
+          <span style="font-size:13px">Total: <strong>${cop(d.valor)}</strong></span> |
+          <span style="color:var(--green)">Abonado: ${cop(d.abonado)}</span> |
+          <span style="color:var(--red);font-weight:700">Saldo: ${cop(d.saldo)}</span>
+        </div>
+      </div>
+      <div class="ic-f" style="margin-top:8px">
+        <span class="bg ${d.estado==='Pagado'?'bg-gr':'bg-rd'}">${d.estado}</span>
+        <div class="br">
+          ${d.estado!=='Pagado'?`<button class="b b-gr bs" onclick="abonoPrv('${d.id}')">💰 Abonar</button>`:''}
+          ${d.proveedor?`<button class="b b-gh bs" onclick="window.open('https://wa.me/57','_blank')">📱 WA</button>`:''}
+          <button class="b b-rd bs" onclick="delDeudaPrv('${d.id}')">🗑️</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
 
 // ============================================================
 // REPORTES
@@ -812,12 +1029,12 @@ function rDash(){
   const sH=D.servicios.filter(s=>s.fecha===h),tS=sH.reduce((a,s)=>a+(+s.abono||0),0);
   const vI=D.inventario.reduce((a,p)=>a+(+p.precio||0)*(+p.stock||0),0);
   const fD=D.fiados.filter(f=>f.estado!=='Pagado').reduce((a,f)=>a+(+f.saldo||0),0);
-  const tH=D.tareas.filter(t=>!t.completada&&t.fecha===h).length;
+  const tH=D.tareas.filter(t=>!t.completada).length;
   $('d-v').textContent=cop(tV);$('d-g').textContent=cop(tG);$('d-s').textContent=cop(tS);
-  $('d-i').textContent=cop(vI);$('d-f').textContent=cop(fD);$('d-t').textContent=tH+' tareas';
+  $('d-i').textContent=cop(vI);$('d-f').textContent=cop(fD);$('d-t').textContent=tH+' pendientes';
 
-  // Tareas hoy
-  const tHoy=D.tareas.filter(t=>!t.completada&&(t.fecha===h||t.fecha===man())).slice(0,5);
+  // Tareas pendientes (todas, no solo hoy)
+  const tHoy=D.tareas.filter(t=>!t.completada).slice(0,5);
   $('dT').innerHTML=tHoy.map(t=>{const pi={alta:'🔴',media:'🟡',baja:'🟢',normal:'🔵'}[t.prioridad];
     return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);align-items:center"><div style="flex:1"><div style="font-size:13px;font-weight:600">${pi} ${t.titulo}</div><div style="font-size:11px;color:var(--muted)">${t.fecha}${t.hora?' 🕐 '+t.hora:''}</div></div><button class="b b-gr bs" onclick="compTar('${t.id}')">✓</button></div>`;}).join('')||'<div style="color:var(--green);text-align:center;padding:14px">✅ Sin tareas</div>';
 
@@ -840,467 +1057,352 @@ function initMic(){
   if(!SR){toast('⚠️ Usa Safari en iPhone');return false;}
   rec=new SR();rec.lang='es-CO';rec.continuous=false;rec.interimResults=true;
   rec.onstart=()=>{micA=true;$('mb').className='esc';$('vt').textContent='🔴 Escuchando...';$('vr').textContent='';};
-  rec.onresult=e=>{let i='',f='';for(let k=e.resultIndex;k<e.results.length;k++){if(e.results[k].isFinal)f+=e.results[k][0].transcript;else i+=e.results[k][0].transcript;}$('vt').textContent=f||i||'...';if(f)proc(f.trim().toLowerCase());};
-  rec.onerror=()=>{micA=false;$('mb').className='';$('vt').textContent='🎤 Toca el micrófono y habla...';};
-  rec.onend=()=>{micA=false;$('mb').className='';};return true;
-}
-function mic(){if(!rec){if(!initMic())return;}if(micA)rec.stop();else{try{rec.start();}catch(e){rec=null;initMic();try{rec.start();}catch(e2){}}}}
-
 // ============================================================
-// VIDEOTIENDA EL PADRINO — SISTEMA DE VOZ V4 PRO
-// 150+ variaciones de comandos inteligentes
+// VIDEOTIENDA EL PADRINO — SISTEMA DE VOZ SIMPLIFICADO
 // ============================================================
 
 const VENDEDOR_DEFAULT = 'Dueño';
-const PAGOS_DEFAULT = ['Efectivo', 'Nequi'];
-const CANAL_DEFAULT = 'Tienda Física';
-
-// Base de productos clave (para búsqueda rápida)
-const PRODUCTOS_CLAVE = {
-  'ps5 slim nueva disco': { nombre: 'PS5 Slim Nueva Disco', precio: 2400000, costo: 1900000, plataforma: 'PlayStation' },
-  'ps5 slim nueva digital': { nombre: 'PS5 Slim Nueva Digital', precio: 2200000, costo: 2080000, plataforma: 'PlayStation' },
-  'ps5 slim usada disco': { nombre: 'PS5 Slim Usada Disco', precio: 1880000, costo: 1680000, plataforma: 'PlayStation' },
-  'ps5 slim usada digital': { nombre: 'PS5 Slim Usada Digital', precio: 1700000, costo: 1500000, plataforma: 'PlayStation' },
-  'xbox series x usada': { nombre: 'Xbox Series X Usada', precio: 2100000, costo: 1700000, plataforma: 'Xbox' },
-  'xbox series s usada': { nombre: 'Xbox Series S Usada', precio: 1150000, costo: 900000, plataforma: 'Xbox' },
-  'xbox series s usada 1tb': { nombre: 'Xbox Series S Usada 1TB', precio: 1550000, costo: 1200000, plataforma: 'Xbox' },
-  'nintendo switch oled nueva': { nombre: 'Nintendo Switch OLED Nueva', precio: 1350000, costo: 1200000, plataforma: 'Nintendo Switch' },
-  'nintendo switch oled usada': { nombre: 'Nintendo Switch OLED Usada', precio: 980000, costo: 850000, plataforma: 'Nintendo Switch' },
-  'nintendo switch 1 usada': { nombre: 'Nintendo Switch 1 Usada', precio: 750000, costo: 600000, plataforma: 'Nintendo Switch' },
-  'ps4 slim usada': { nombre: 'PS4 Slim Usada', precio: 800000, costo: 600000, plataforma: 'PlayStation' },
-  'ps4 fat usada': { nombre: 'PS4 Fat Usada', precio: 650000, costo: 450000, plataforma: 'PlayStation' },
-  'ps4 pro usada': { nombre: 'PS4 Pro Usada', precio: 950000, costo: 800000, plataforma: 'PlayStation' },
-  'ps5 disco fat usada': { nombre: 'PS5 Disco Fat Usada', precio: 1700000, costo: 1600000, plataforma: 'PlayStation' },
-  'juegos nuevos switch': { nombre: 'Juegos Nuevos Switch', precio: 220000, costo: 190000, plataforma: 'Videojuego' },
-};
-
-// ============================================================
-// PATRONES DE COMANDOS — 150+ VARIACIONES
-// ============================================================
-
-const PATRONES_VENTA = [
-  /^(vend[íi]|vend|se llevó|se llevo|salió|vendi|vendemos|vendé|compró|compro)\s+(.+?)\s+(?:en|por|a)\s+(\d+)/i,
-  /^(.+?)\s+(?:vend[íi]|vend|compró|compro)\s+por\s+(\d+)/i,
-  /^(vendí|vendi|vend|se llevó)\s+(.+?)$/i,
-  /^(?:venta|vende|se fue)\s+(.+?)\s+de\s+(\d+)/i,
-  /^(.+?)\s+en\s+(\d+)\s+(?:pesos|cop|mil)/i,
-  /^venta\s+(.+?)\s+(\d+)/i,
-  /^vendí\s+(.+?)(?:\s+a\s+(\w+))?\s+en\s+(\d+)/i,
-];
-
-const PATRONES_COMPRA = [
-  /^(?:-|menos)\s*(\d+)\s+(?:compra|compré|formado)\s+(.+)/i,
-  /^compré?\s+(.+?)\s+por\s+(\d+)/i,
-  /^(?:compra|compré)\s+(\d+)\s+(?:de\s+)?(.+?)\s+a\s+(\d+)/i,
-  /^compré?\s+(.+?)(?:\s+x\s*(\d+))?\s+de\s+(\d+)/i,
-  /^llegó\s+(.+?)\s+de\s+(\d+)/i,
-  /^nuevo\s+inventario\s+(.+?)\s+(\d+)/i,
-  /^recibí\s+(.+?)\s+de\s+(\d+)/i,
-];
-
-const PATRONES_CAMBIO = [
-  /^(?:se|recib[io]|resibe|recibe)\s+(.+?)\s+(?:llevan|se llevan|enciman|encima|cambio)\s+(.+?)\s+encima?\s+(\d+)/i,
-  /^cambio\s+(.+?)\s+por\s+(.+?)\s+encima\s+(\d+)/i,
-  /^trueque\s+(.+?)\s+→\s+(.+?)\s+(\d+)/i,
-  /^(.+?)\s+x\s+(.+?)\s+encime\s+(\d+)/i,
-];
-
-const PATRONES_SERVICIO = [
-  /^(?:dejan|deja|trae|traen|dejaron)\s+(.+?)\s+(?:para|cambio|arreglo|acetato|hdmi|joystick|dado|drift|mantenimiento|revisión|instalación|programación)\s+(.+?)(?:\s+(\w+))?\s+(\d{7,})?/i,
-  /^servicio\s+(.+?)\s+(.+?)(?:\s+(\d{7,}))?/i,
-  /^reparación\s+(.+?)(?:\s+de\s+(\w+))?/i,
-  /^revisar\s+(.+?)\s+(?:de\s+)?(\w+)?/i,
-];
-
-const PATRONES_SERVICIO_LISTO = [
-  /^(?:listo|qued[oó]\s+list|ya\s+est[aá]|terminado|listo\s+el)\s+(?:control\s+de\s+)?(\w+)/i,
-  /^✅\s+(.+)/i,
-  /^servicio\s+listo\s+(.+)/i,
-];
-
-const PATRONES_SERVICIO_ENTREGADO = [
-  /^(?:entregad|vinieron\s+por|se\s+lo\s+llev|fue\s+a\s+buscar|paso\s+a\s+recoger|ya\s+se\s+lo\s+llev)\s+(?:el|del\s+)?(.+)/i,
-  /^📦\s+(.+)/i,
-  /^entregué\s+(.+)\s+a\s+(\w+)/i,
-];
-
-const PATRONES_PAGO_SERVICIO = [
-  /^(?:pagan|paga|pague|cobr[eé]|cobré)\s+(\d+)\s+(?:por\s+)?(?:arreglo|servicio|acetato|hdmi|joystick|drift|mantenimiento)(?:\s+(?:de|del|del\s+)?(\w+))?/i,
-  /^(\w+)\s+(?:pagan|pagó|pague)\s+(\d+)\s+(?:arreglo|servicio)(?:\s+de\s+(.+))?/i,
-  /^pago\s+(\d+)\s+servicio\s+(.+)/i,
-  /^cobré\s+(\d+)\s+(?:a\s+)?(\w+)/i,
-];
-
-const PATRONES_PAGO_TRABAJADOR = [
-  /^(?:-|menos)\s*(\d+)\s+(?:pago|pagué|pague|cobré|pagación)\s+(?:a\s+)?(\w+)/i,
-  /^pago\s+(\d+)\s+(?:a\s+)?(\w+)/i,
-  /^(\w+)\s+recibe\s+(\d+)/i,
-  /^paguéle\s+(\d+)\s+(?:a\s+)?(\w+)/i,
-];
-
-const PATRONES_ABONO_FIADO = [
-  /^(\w+)\s+(?:abon[oó]|abonó|pagó)\s+(\d+)(?:\s+fiado)?/i,
-  /^abono\s+(\d+)\s+(?:a\s+)?(\w+)/i,
-  /^(\w+)\s+puso\s+(\d+)/i,
-  /^recibí\s+(\d+)\s+de\s+(\w+)/i,
-];
-
-const PATRONES_TAREA = [
-  /^(?:record[aá]rme|recordar|agenda|tarea|recordatorio|apunta|pon)\s+(.+?)(?:\s+(?:mañana|hoy|después))?\s*$/i,
-  /^📅\s+(.+)/i,
-  /^no\s+olvides\s+(.+)/i,
-  /^tengo\s+que\s+(.+)(?:\s+mañana)?/i,
-];
-
-const PATRONES_REPORTES = [
-  /^(?:cu[aá]nto|cuanto)\s+(?:vend[íi]|vendí|gané|tengo)\s+(?:hoy|ahorita)/i,
-  /^reporte\s+(?:de\s+)?(?:hoy|diario|venta)/i,
-  /^ventas\s+(?:de\s+)?hoy/i,
-  /^¿cuántas\s+(?:ventas|transacciones)?\s+hoy/i,
-];
-
-const PATRONES_CONSULTA_STOCK = [
-  /^qu[eé]\s+tengo\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo|retro|juegos|accesorios)/i,
-  /^stock\s+(?:de\s+)?(playstation|ps\d|xbox|switch|nintendo)/i,
-  /^hay\s+(?:de\s+)?(ps5|ps4|xbox|switch)/i,
-  /^disponible\s+(.+)/i,
-];
-
-// ============================================================
-// FUNCIÓN PRINCIPAL DE PROCESAMIENTO
-// ============================================================
-
-async function procVozV4(tx) {
-  console.log('🎤 Procesando:', tx);
-  
-  tx = normalizarTexto(tx);
-  let resultado = { tipo: null, datos: {} };
-
-  // 1. VENTA — 50+ variaciones
-  for (let patron of PATRONES_VENTA) {
-    const match = tx.match(patron);
-    if (match) {
-      resultado = procesarVenta(match, tx);
-      if (resultado.tipo) return resultado;
-    }
-  }
-
-  // 2. COMPRA — 30+ variaciones
-  for (let patron of PATRONES_COMPRA) {
-    const match = tx.match(patron);
-    if (match) {
-      resultado = procesarCompra(match, tx);
-      if (resultado.tipo) return resultado;
-    }
-  }
-
-  // 3. CAMBIO — 15+ variaciones
-  for (let patron of PATRONES_CAMBIO) {
-    const match = tx.match(patron);
-    if (match) {
-      resultado = procesarCambio(match, tx);
-      if (resultado.tipo) return resultado;
-    }
-  }
-
-  // 4. SERVICIO — 20+ variaciones
-  for (let patron of PATRONES_SERVICIO) {
-    const match = tx.match(patron);
-    if (match) {
-      resultado = procesarServicio(match, tx);
-      if (resultado.tipo) return resultado;
-    }
-  }
-
-  // 5. SERVICIO LISTO
-  for (let patron of PATRONES_SERVICIO_LISTO) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'servicio_listo', nombre: match[1], msg: `✅ ${match[1]} — Listo para entregar` };
-    }
-  }
-
-  // 6. SERVICIO ENTREGADO
-  for (let patron of PATRONES_SERVICIO_ENTREGADO) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'servicio_entregado', nombre: match[1], msg: `📦 Entregado: ${match[1]}` };
-    }
-  }
-
-  // 7. PAGO SERVICIO
-  for (let patron of PATRONES_PAGO_SERVICIO) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'pago_servicio', monto: match[1], cliente: match[2], msg: `✅ Pago ${cop(match[1])}` };
-    }
-  }
-
-  // 8. PAGO TRABAJADOR
-  for (let patron of PATRONES_PAGO_TRABAJADOR) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'pago_trabajador', monto: match[1], trabajador: match[2], msg: `💵 ${cop(match[1])} a ${match[2]}` };
-    }
-  }
-
-  // 9. ABONO FIADO
-  for (let patron of PATRONES_ABONO_FIADO) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'abono_fiado', cliente: match[1], monto: match[2], msg: `💳 Abono ${cop(match[2])} de ${match[1]}` };
-    }
-  }
-
-  // 10. TAREA
-  for (let patron of PATRONES_TAREA) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'tarea', titulo: match[1], msg: `📅 Tarea: ${match[1]}` };
-    }
-  }
-
-  // 11. REPORTES
-  for (let patron of PATRONES_REPORTES) {
-    if (patron.test(tx)) {
-      return { tipo: 'reporte', msg: '📊 Mostrando ventas de hoy' };
-    }
-  }
-
-  // 12. CONSULTA STOCK
-  for (let patron of PATRONES_CONSULTA_STOCK) {
-    const match = tx.match(patron);
-    if (match) {
-      return { tipo: 'stock', plataforma: match[1], msg: `📦 Stock de ${match[1]}` };
-    }
-  }
-
-  return { tipo: null, msg: '🤔 No entendí. Prueba: "Vendí ps5 slim 2.4" o "Compré xbox 2.1"' };
-}
-
-// ============================================================
-// FUNCIONES DE PROCESAMIENTO
-// ============================================================
-
-function procesarVenta(match, tx) {
-  const nombreProd = extraerProducto(tx);
-  const precioVoz = extraerPrecio(tx);
-  const cliente = extraerCliente(tx);
-  const pago = extraerMetodoPago(tx);
-
-  if (!nombreProd) return { tipo: null };
-
-  // ✅ BUSCAR PRODUCTO EN GOOGLE SHEETS (precios actuales)
-  let prodData = null;
-  if (typeof D !== 'undefined' && D.inventario) {
-    prodData = D.inventario.find(p => 
-      p.nombre.toLowerCase().includes(nombreProd.toLowerCase()) ||
-      nombreProd.toLowerCase().includes(p.nombre.toLowerCase().split(' ')[0])
-    );
-  }
-
-  // Si no lo encuentra en Sheets, usar datos del código
-  if (!prodData) {
-    prodData = PRODUCTOS_CLAVE[nombreProd] || { 
-      nombre: nombreProd, 
-      precio: precioVoz || 0,
-      costo: Math.round((precioVoz || 0) * 0.7)
-    };
-  }
-
-  // ✅ USAR PRECIO DE SHEETS O DE LA VOZ SI LO DIJO
-  const precioFinal = precioVoz || prodData.precio || 0;
-  const costoFinal = prodData.costo || Math.round(precioFinal * 0.7);
-
-  if (!precioFinal) return { tipo: null };
-
-  return {
-    tipo: 'venta',
-    datos: {
-      prodId: prodData.id || '',
-      producto: prodData.nombre,
-      plataforma: prodData.plataforma || 'Otro',
-      costo: costoFinal,
-      precio: precioFinal,
-      ganancia: precioFinal - costoFinal,
-      cliente,
-      pago: pago,
-      canal: CANAL_DEFAULT,
-      vendedor: VENDEDOR_DEFAULT,
-    },
-    msg: `💰 ${prodData.nombre} — ${cop(precioFinal)} — ${pago} — Ganancia: ${cop(precioFinal - costoFinal)}`,
-  };
-}
-
-function procesarCompra(match, tx) {
-  const precio = extraerPrecio(tx);
-  const cantidad = extraerCantidad(tx) || 1;
-  const producto = extraerProducto(tx, 'compra');
-
-  if (!precio || !producto) return { tipo: null };
-
-  // ✅ BUSCAR EN SHEETS PARA OBTENER PLATAFORMA ACTUALIZADA
-  let plataforma = 'Otro';
-  if (typeof D !== 'undefined' && D.inventario) {
-    const existe = D.inventario.find(p => 
-      p.nombre.toLowerCase().includes(producto.toLowerCase())
-    );
-    if (existe) plataforma = existe.plataforma;
-  }
-
-  if (!plataforma || plataforma === 'Otro') {
-    plataforma = inferirPlataforma(producto);
-  }
-
-  return {
-    tipo: 'compra',
-    datos: {
-      producto,
-      cantidad,
-      precio,
-      total: cantidad * precio,
-      plataforma: plataforma,
-    },
-    msg: `🛒 ${cantidad}x ${producto} — ${cop(precio)} c/u — Total: ${cop(cantidad * precio)}`,
-  };
-}
-
-function procesarCambio(match, tx) {
-  const entra = match[1]?.trim() || '';
-  const sale = match[2]?.trim() || '';
-  const encime = parseInt(match[3]) || 0;
-
-  if (!entra || !sale) return { tipo: null };
-
-  return {
-    tipo: 'cambio',
-    datos: {
-      entra,
-      valorEntra: 0,
-      sale,
-      encime,
-      ganancia: encime,
-    },
-    msg: `🔄 ${entra} → ${sale} encime ${cop(encime)}`,
-  };
-}
-
-function procesarServicio(match, tx) {
-  const cliente = extraerCliente(tx);
-  const equipo = match[1]?.trim() || 'Equipo';
-  const tipo = match[2]?.trim() || 'Revisión general';
-  const tel = extraerTelefono(tx);
-
-  return {
-    tipo: 'servicio',
-    datos: {
-      cliente,
-      equipo,
-      tipo,
-      tel,
-      valor: 50000,
-      notas: tx,
-    },
-    msg: `🔧 ${cliente} — ${equipo} — ${tipo}`,
-  };
-}
-
-// ============================================================
-// FUNCIONES AUXILIARES
-// ============================================================
 
 function normalizarTexto(tx) {
   tx = tx.toLowerCase().trim();
-  // Normalizar números
-  tx = tx.replace(/(\d+)\s*['`']\s*(\d+)/g, (_,m,k) => parseInt(m)*1e6+parseInt(k)*1e3);
-  tx = tx.replace(/(\d+)\s*millones?/g, (_,n) => parseInt(n)*1e6);
-  tx = tx.replace(/(\d+)\s*mil/g, (_,n) => parseInt(n)*1e3);
-  
-  // Alias de productos
-  const aliases = {
-    'play 5': 'ps5', 'play5': 'ps5', 'playstation 5': 'ps5', 'ps 5': 'ps5',
-    'play 4': 'ps4', 'play4': 'ps4', 'playstation 4': 'ps4', 'ps 4': 'ps4',
-    'xbox x': 'xbox series x', 'series x': 'xbox series x',
-    'xbox s': 'xbox series s', 'series s': 'xbox series s',
-    'switch': 'nintendo switch', 'switchol': 'nintendo switch oled',
-  };
-  for (const [alias, real] of Object.entries(aliases)) {
-    tx = tx.replace(new RegExp(alias, 'g'), real);
-  }
+  tx = tx.replace(/(\d+)\s*['`']\s*(\d+)/g, (_,m,k) => String(parseInt(m)*1e6+parseInt(k)*1e3));
+  tx = tx.replace(/(\d+)\s*millones?/g, (_,n) => String(+n*1e6));
+  tx = tx.replace(/(\d+)\s*mil/g, (_,n) => String(+n*1e3));
+  tx = tx.replace(/(\d+)\s*k\b/g, (_,n) => String(+n*1e3));
+  const m={'un millon':'1000000','medio millon':'500000','quinientos mil':'500000','cuatrocientos mil':'400000','trescientos mil':'300000','doscientos mil':'200000','ciento cincuenta mil':'150000','cien mil':'100000','ochenta mil':'80000','setenta mil':'70000','sesenta mil':'60000','cincuenta mil':'50000','cuarenta mil':'40000','treinta mil':'30000','veinte mil':'20000','quince mil':'15000','diez mil':'10000','cinco mil':'5000'};
+  for(const[k,v] of Object.entries(m))tx=tx.replace(new RegExp(k,'g'),v);
   return tx;
 }
 
-function extraerProducto(tx, tipo = 'venta') {
-  const palabras = tx.split(/\s+/);
-  
-  // Buscar en productos clave
-  for (let i = 0; i < palabras.length; i++) {
-    for (const [clave] of Object.entries(PRODUCTOS_CLAVE)) {
-      if (tx.includes(clave)) return clave;
-    }
+function capitalizar(s){return s?s.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' '):''}
+
+// ALIAS de productos
+const ALIAS_PRODUCTOS = {
+  // === CONSOLAS PS5 (requiere disco/digital + nuevo/usado) ===
+  'play 5 nueva disco':'ps5 slim nueva disco','play 5 slim nueva disco':'ps5 slim nueva disco',
+  'play 5 disco nueva':'ps5 slim nueva disco','ps5 nueva disco':'ps5 slim nueva disco',
+  'ps5 disco nueva':'ps5 slim nueva disco','ps5 slim nueva disco':'ps5 slim nueva disco',
+  'play cinco disco nueva':'ps5 slim nueva disco','play cinco nueva disco':'ps5 slim nueva disco',
+  'play 5 disco nuevo':'ps5 slim nueva disco','ps5 disco nuevo':'ps5 slim nueva disco',
+  'play 5 usada disco':'ps5 slim usada disco','play 5 disco usada':'ps5 slim usada disco',
+  'ps5 usada disco':'ps5 slim usada disco','ps5 disco usada':'ps5 slim usada disco',
+  'ps5 slim usada disco':'ps5 slim usada disco','play cinco disco usada':'ps5 slim usada disco',
+  'play 5 disco usado':'ps5 slim usada disco','ps5 disco usado':'ps5 slim usada disco',
+  'play 5 nueva digital':'ps5 slim nueva digital','play 5 digital nueva':'ps5 slim nueva digital',
+  'ps5 nueva digital':'ps5 slim nueva digital','ps5 digital nueva':'ps5 slim nueva digital',
+  'ps5 slim nueva digital':'ps5 slim nueva digital','play cinco digital nueva':'ps5 slim nueva digital',
+  'play 5 digital nuevo':'ps5 slim nueva digital','ps5 digital nuevo':'ps5 slim nueva digital',
+  'play 5 usada digital':'ps5 slim usada digital','play 5 digital usada':'ps5 slim usada digital',
+  'ps5 usada digital':'ps5 slim usada digital','ps5 digital usada':'ps5 slim usada digital',
+  'play 5 digital usado':'ps5 slim usada digital','ps5 digital usado':'ps5 slim usada digital',
+  'play 5 fat':'ps5 disco fat usada','ps5 fat':'ps5 disco fat usada','play 5 gorda':'ps5 disco fat usada',
+  // === CONSOLAS PS4 ===
+  'play 4 slim':'ps4 slim usada','ps4 slim':'ps4 slim usada',
+  'play 4':'ps4 slim usada','ps4':'ps4 slim usada','play cuatro':'ps4 slim usada',
+  'play 4 fat':'ps4 fat usada','ps4 fat':'ps4 fat usada','play 4 gorda':'ps4 fat usada',
+  'play 4 pro':'ps4 pro usada','ps4 pro':'ps4 pro usada',
+  // === CONSOLA PS3 ===
+  'play 3':'ps3','ps3':'ps3','play tres':'ps3',
+  // === XBOX ===
+  'xbox x':'xbox series x usada','xbox series x':'xbox series x usada','series x':'xbox series x usada',
+  'xbox s':'xbox series s usada','xbox series s':'xbox series s usada','series s':'xbox series s usada',
+  'xbox s 1tb':'xbox series s usada 1tb','xbox series s 1tb':'xbox series s usada 1tb',
+  // === NINTENDO ===
+  'switch oled nueva':'nintendo switch oled nueva','switch oled':'nintendo switch oled usada',
+  'switch nueva':'nintendo switch oled nueva','nintendo oled':'nintendo switch oled usada',
+  'switch':'nintendo switch oled usada','nintendo switch':'nintendo switch oled usada',
+  'switch 1':'nintendo switch 1 usada','switch vieja':'nintendo switch 1 usada','switch uno':'nintendo switch 1 usada',
+  'switch 2':'nintendo switch 2','nintendo switch 2':'nintendo switch 2',
+  'nintendo':'nintendo switch oled usada',
+  // === CONTROLES PS5 ===
+  'control ps5 nuevo':'control ps5 nuevo','control play 5 nuevo':'control ps5 nuevo',
+  'control de ps5 nuevo':'control ps5 nuevo','mando ps5 nuevo':'control ps5 nuevo',
+  'control ps5 usado':'control ps5 usado','control play 5 usado':'control ps5 usado',
+  'control de ps5 usado':'control ps5 usado','mando ps5 usado':'control ps5 usado',
+  'control ps5':'control ps5 nuevo','control play 5':'control ps5 nuevo','control de play 5':'control ps5 nuevo',
+  // === CONTROLES PS4 ===
+  'control ps4 original':'control ps4 original usado','control play 4 original':'control ps4 original usado',
+  'control ps4 usado':'control ps4 original usado','control play 4 usado':'control ps4 original usado',
+  'control ps4':'control ps4 original usado','control play 4':'control ps4 original usado',
+  'control de ps4':'control ps4 original usado','control de play 4':'control ps4 original usado',
+  'mando ps4':'control ps4 original usado',
+  'control ps4 replica':'control ps4 replica nuevo','control play 4 replica':'control ps4 replica nuevo',
+  'control replica ps4':'control ps4 replica nuevo','control generico ps4':'control ps4 replica nuevo',
+  'control replica':'control ps4 replica nuevo',
+  // === CONTROLES XBOX ===
+  'control xbox one':'control xbox one','mando xbox one':'control xbox one',
+  'control xbox one usado':'control xbox one usado','mando xbox one usado':'control xbox one usado',
+  'control xbox 360':'control xbox 360','mando xbox 360':'control xbox 360',
+  'control xbox':'control xbox one',
+  // === CONTROLES SWITCH ===
+  'control pro switch':'control pro switch','control pro':'control pro switch',
+  'pro controller':'control pro switch','mando pro switch':'control pro switch',
+  'joycon':'joycon','joy con':'joycon','joycons':'joycon',
+  'controles switch':'joycon','mando switch':'control pro switch',
+  // === JUEGOS POPULARES ===
+  'fifa 26 ps5':'fifa 26 ps5','fifa ps5':'fifa 26 ps5','fifa 26 play 5':'fifa 26 ps5','fifa play 5':'fifa 26 ps5',
+  'fifa 26 ps4':'fifa 26 ps4','fifa ps4':'fifa 26 ps4','fifa 26 play 4':'fifa 26 ps4','fifa play 4':'fifa 26 ps4',
+  'gta 5 ps5':'gta 5 ps5','gta ps5':'gta 5 ps5','gta 5 play 5':'gta 5 ps5','gta play 5':'gta 5 ps5',
+  'gta 5 ps4':'gta 5 ps4','gta ps4':'gta 5 ps4','gta 5 play 4':'gta 5 ps4','gta play 4':'gta 5 ps4',
+};
+
+// PRODUCTOS CON PRECIO FIJO (backup si no está en Sheets)
+const PRODUCTOS_PRECIO_FIJO = {
+  'control ps5 nuevo':{nombre:'Control PS5 Nuevo',precio:290000,costo:200000,plataforma:'PlayStation'},
+  'control ps5 usado':{nombre:'Control PS5 Usado',precio:200000,costo:130000,plataforma:'PlayStation'},
+  'control ps4 original usado':{nombre:'Control PS4 Original Usado',precio:130000,costo:80000,plataforma:'PlayStation'},
+  'control ps4 replica nuevo':{nombre:'Control PS4 Réplica Nuevo',precio:80000,costo:45000,plataforma:'PlayStation'},
+  'control xbox one':{nombre:'Control Xbox One',precio:250000,costo:170000,plataforma:'Xbox'},
+  'control xbox one usado':{nombre:'Control Xbox One Usado',precio:190000,costo:120000,plataforma:'Xbox'},
+  'control xbox 360':{nombre:'Control Xbox 360',precio:60000,costo:35000,plataforma:'Xbox'},
+  'control pro switch':{nombre:'Control Pro Switch',precio:130000,costo:80000,plataforma:'Nintendo Switch'},
+  'joycon':{nombre:'Joycon',precio:140000,costo:85000,plataforma:'Nintendo Switch'},
+  'ps5 slim nueva disco':{nombre:'PS5 Slim Nueva Disco',precio:2400000,costo:1900000,plataforma:'PlayStation'},
+  'ps5 slim nueva digital':{nombre:'PS5 Slim Nueva Digital',precio:2200000,costo:2080000,plataforma:'PlayStation'},
+  'ps5 slim usada disco':{nombre:'PS5 Slim Usada Disco',precio:1880000,costo:1680000,plataforma:'PlayStation'},
+  'ps5 slim usada digital':{nombre:'PS5 Slim Usada Digital',precio:1700000,costo:1500000,plataforma:'PlayStation'},
+  'ps5 disco fat usada':{nombre:'PS5 Disco Fat Usada',precio:1700000,costo:1600000,plataforma:'PlayStation'},
+  'xbox series x usada':{nombre:'Xbox Series X Usada',precio:2100000,costo:1700000,plataforma:'Xbox'},
+  'xbox series s usada':{nombre:'Xbox Series S Usada',precio:1150000,costo:900000,plataforma:'Xbox'},
+  'xbox series s usada 1tb':{nombre:'Xbox Series S Usada 1TB',precio:1550000,costo:1200000,plataforma:'Xbox'},
+  'nintendo switch oled nueva':{nombre:'Nintendo Switch OLED Nueva',precio:1350000,costo:1200000,plataforma:'Nintendo Switch'},
+  'nintendo switch oled usada':{nombre:'Nintendo Switch OLED Usada',precio:980000,costo:850000,plataforma:'Nintendo Switch'},
+  'nintendo switch 1 usada':{nombre:'Nintendo Switch 1 Usada',precio:750000,costo:600000,plataforma:'Nintendo Switch'},
+  'ps4 slim usada':{nombre:'PS4 Slim Usada',precio:800000,costo:600000,plataforma:'PlayStation'},
+  'ps4 fat usada':{nombre:'PS4 Fat Usada',precio:650000,costo:450000,plataforma:'PlayStation'},
+  'ps4 pro usada':{nombre:'PS4 Pro Usada',precio:950000,costo:800000,plataforma:'PlayStation'},
+  // === JUEGOS POPULARES ===
+  'fifa 26 ps5':{nombre:'FIFA 26 PS5',precio:220000,costo:190000,plataforma:'PlayStation'},
+  'fifa 26 ps4':{nombre:'FIFA 26 PS4',precio:180000,costo:150000,plataforma:'PlayStation'},
+  'gta 5 ps5':{nombre:'GTA 5 PS5',precio:180000,costo:140000,plataforma:'PlayStation'},
+  'gta 5 ps4':{nombre:'GTA 5 PS4',precio:120000,costo:80000,plataforma:'PlayStation'},
+};
+
+function extraerProductoSimple(tx) {
+  // 1. Buscar alias (de más largo a más corto)
+  const aliasOrdenados = Object.entries(ALIAS_PRODUCTOS).sort((a,b)=>b[0].length-a[0].length);
+  for(const[alias,clave] of aliasOrdenados){if(tx.includes(alias))return clave;}
+  // 2. Buscar en inventario de Sheets
+  if(D.inventario){
+    for(const p of D.inventario){if(tx.includes(p.nombre.toLowerCase()))return p.nombre.toLowerCase();}
+    for(const p of D.inventario){const w=p.nombre.toLowerCase().split(' ');const m=w.filter(x=>x.length>2&&tx.includes(x));if(m.length>=2)return p.nombre.toLowerCase();}
   }
-
-  // Buscar palabras clave genéricas
-  const genericas = tx.match(/(ps5|ps4|xbox|switch|nintendo|play|juegos|control|joycon)/i);
-  return genericas ? genericas[0] : null;
+  // 3. Detectar JUEGO (nombre variable)
+  const jm=tx.match(/juego\s+(.+?)(?:\s+en\s+\d|\s+por\s+\d|\s+\d|\s+a\s+|\s*$)/i);
+  if(jm){
+    const nj=jm[1].replace(/nuevo|usada?|de\s+ps[45]|de\s+switch|de\s+xbox/gi,'').trim();
+    let pl='PS5';if(/ps4|play 4/i.test(tx))pl='PS4';if(/switch|nintendo/i.test(tx))pl='Switch';if(/xbox/i.test(tx))pl='Xbox';
+    const es=/usado|usada/i.test(tx)?'Usado':'Nuevo';
+    return 'Juego '+pl+' '+es+' '+capitalizar(nj);
+  }
+  // 4. Devolver lo que quede
+  let limpio=tx.replace(/vend[íi]|vendi|se llev[oó]|sali[oó]|venta|compr[eé]|compra|lleg[oó]/gi,'');
+  limpio=limpio.replace(/\d[\d.,]*/g,'').replace(/(?:a|para|en)\s+[a-záéíóúñ]+\s*$/i,'').replace(/en\s+(nequi|bancolombia|daviplata|tarjeta|efectivo)/gi,'').trim();
+  return limpio||null;
 }
 
-function extraerPrecio(tx) {
-  const nums = [];
-  (tx.match(/\d[\d.,]*/g) || []).forEach(m => {
-    const n = parseInt(m.replace(/[.,]/g,''));
-    if (n >= 10000) nums.push(n);
-  });
-  return nums.length ? Math.max(...nums) : null;
+function extraerPrecio(tx){
+  const nums=[];(tx.match(/\d[\d.,]*/g)||[]).forEach(m=>{const n=parseInt(m.replace(/[.,]/g,''));if(n>=10000)nums.push(n);});
+  return nums.length?Math.max(...nums):null;
 }
 
-function extraerCantidad(tx) {
-  const m = tx.match(/^(\d+)\s+[a-z]/) || tx.match(/compr[eé]?\s+(\d+)/i);
-  return m ? parseInt(m[1]) : 1;
-}
+function extraerCantidad(tx){const m=tx.match(/compr[eé]?\s+(\d+)/i)||tx.match(/^(\d+)\s+[a-z]/);return m?parseInt(m[1]):1;}
 
-function extraerCliente(tx) {
-  const m = tx.match(/(?:a|para|de|del)\s+([a-záéíóúñ]{3,})/i);
-  
-  // Si encontró un nombre
-  if (m) {
-    const nombre = capitalizar(m[1]);
-    
-    // Si el nombre no existe en clientes, créalo automáticamente
-    if (typeof D !== 'undefined' && D.clientes) {
-      if (!D.clientes.find(c => c.nombre.toLowerCase() === nombre.toLowerCase())) {
-        const nuevoCliente = {
-          id: uid(),
-          nombre: nombre,
-          wa: '',
-          plataforma: 'Todas',
-          notas: 'Creado por voz',
-          totalCompras: 0,
-          totalGastado: 0,
-          ultimaCompra: '',
-          fecha: hoy()
-        };
-        D.clientes.push(nuevoCliente);
-        if (typeof lSave === 'function') lSave('clientes');
-        if (typeof ON !== 'undefined' && ON && typeof api === 'function') {
-          api('insert', 'clientes', nuevoCliente).catch(e => console.log('Cliente guardado localmente'));
-        }
-      }
+function extraerCliente(tx){
+  const m=tx.match(/(?:a|para)\s+([a-záéíóúñ]{3,})/i);
+  if(m){
+    const nombre=capitalizar(m[1]);
+    if(D.clientes&&!D.clientes.find(c=>c.nombre.toLowerCase()===nombre.toLowerCase())){
+      const nc={id:uid(),nombre,wa:'',plataforma:'Todas',notas:'Por voz',totalCompras:0,totalGastado:0,fecha:hoy()};
+      D.clientes.push(nc);lSave('clientes');if(ON)api('insert','clientes',nc);
     }
-    
     return nombre;
   }
-  
   return 'Cliente general';
 }
 
-function extraerTelefono(tx) {
-  const m = tx.match(/(\d{7,10})/);
-  return m ? m[1] : '';
+function extraerTelefono(tx){const m=tx.match(/(\d{7,10})/);return m?m[1]:'';}
+
+function extraerMetodoPago(tx){
+  if(/nequi/i.test(tx))return'Nequi';
+  if(/bancolombia|banco/i.test(tx))return'Bancolombia';
+  if(/daviplata|davi/i.test(tx))return'Daviplata';
+  if(/tarjeta|débito|crédito/i.test(tx))return'Tarjeta';
+  return'Efectivo';
 }
 
-function extraerMetodoPago(tx) {
-  // Detectar método de pago
+function inferirPlataforma(p){
+  if(!p)return'Otro';p=p.toLowerCase();
+  if(/ps5|ps4|ps3|play/i.test(p))return'PlayStation';
+  if(/xbox|series/i.test(p))return'Xbox';
+  if(/switch|nintendo/i.test(p))return'Nintendo Switch';
+  return'Otro';
+}
+
+// ============================================================
+// FUNCIÓN PRINCIPAL DE VOZ
+// ============================================================
+async function procVozV4(tx) {
+  tx = normalizarTexto(tx);
+
+  // 1. VENTA — solo di "vendí" + producto (+ precio opcional)
+  if(/vend[íi]|vendi|se llev[oó]|sali[oó]|venta|vendemos/i.test(tx)){
+    const producto=extraerProductoSimple(tx);
+    const precio=extraerPrecio(tx);
+    
+    // Buscar precio: 1) Sheets, 2) PRODUCTOS_PRECIO_FIJO, 3) precio dicho por voz
+    let prodData=null;
+    if(producto&&D.inventario){
+      prodData=D.inventario.find(p=>p.nombre.toLowerCase()===producto.toLowerCase());
+      if(!prodData)prodData=D.inventario.find(p=>p.nombre.toLowerCase().includes(producto.toLowerCase())||producto.toLowerCase().includes(p.nombre.toLowerCase().split(' ')[0]));
+    }
+    if(!prodData&&producto){prodData=PRODUCTOS_PRECIO_FIJO[producto.toLowerCase()]||null;}
+    
+    const precioFinal=precio||(prodData?(+prodData.precio||0):0);
+    const costoFinal=prodData?(+prodData.costo||0):Math.round(precioFinal*0.7);
+    const nombreFinal=prodData?prodData.nombre:capitalizar(producto||'Producto');
+    const plataforma=prodData?prodData.plataforma:inferirPlataforma(producto);
+    
+    if(precioFinal||prodData){
+      return{tipo:'venta',datos:{producto:nombreFinal,plataforma,precio:precioFinal,costo:costoFinal,cliente:'Cliente general',pago:'Efectivo',ganancia:precioFinal-costoFinal,vendedor:'Dueño',canal:'Tienda Física'},msg:'💰 '+nombreFinal+' — '+cop(precioFinal)+' — Ganancia: '+cop(precioFinal-costoFinal)};
+    }
+    // Si no encontró precio ni producto
+    if(producto){return{tipo:null,msg:'⚠️ No encontré precio de "'+capitalizar(producto)+'". Agrega a Sheets o di el precio: "Vendí '+producto+' en 200"'};}
+    // Si dijo play 5 o ps5 sin especificar
+    if(/play 5|ps5|play cinco/i.test(tx)){
+      if(!/disco|digital|fat|gorda/i.test(tx)){
+        return{tipo:null,msg:'⚠️ Especifica: "Vendí play 5 DISCO" o "play 5 DIGITAL"'};
+      }
+      if(!/nueva?|usada?/i.test(tx)){
+        return{tipo:null,msg:'⚠️ Especifica: "Vendí play 5 disco NUEVA" o "play 5 disco USADA"'};
+      }
+    }
+  }
+
+  // 2. COMPRA — "compré" + producto + precio
+  if(/compr[eé]|compra|lleg[oó]|nuevo inventario|recib[ií]/i.test(tx)){
+    const producto=extraerProductoSimple(tx);
+    const precio=extraerPrecio(tx);
+    const cantidad=extraerCantidad(tx);
+    if(precio&&producto){
+      return{tipo:'compra',datos:{producto:capitalizar(producto),cantidad,precio,total:cantidad*precio,plataforma:inferirPlataforma(producto)},msg:'🛒 '+cantidad+'x '+capitalizar(producto)+' — '+cop(precio)+' — Total: '+cop(cantidad*precio)};
+    }
+    if(producto){return{tipo:null,msg:'⚠️ Di el precio: "Compré '+producto+' en 1.5"'};}
+  }
+
+  // 3. CAMBIO
+  if(/se recibe|reciben|cambio .+ por|trueque/i.test(tx)){
+    const enc=extraerPrecio(tx)||0;
+    const eM=tx.match(/(?:se recibe|recibe|reciben)\s+(.+?)\s+(?:llevan|enciman|cambio)/i);
+    const sM=tx.match(/(?:llevan|enciman|por)\s+(.+?)(?:\s+encima|\s+\d|$)/i);
+    if(eM&&sM){
+      return{tipo:'cambio',datos:{entra:capitalizar(eM[1].trim()),sale:capitalizar(sM[1].trim()),encime:enc,ganancia:enc,plataforma:inferirPlataforma(eM[1])},msg:'🔄 Entra: '+eM[1].trim()+' → Sale: '+sM[1].trim()+' — Encime: '+cop(enc)};
+    }
+  }
+
+  // 4. SERVICIO
+  if(/dejan|deja |trae|traen|dejaron|servicio/i.test(tx)){
+    const equipo=tx.match(/(control|play|ps\d|xbox|switch|nintendo|consola|mando|joycon|joystick)[\s\w]*/i);
+    const tipo=tx.match(/(acetato|hdmi|joystick|drift|mantenimiento|revisión|limpieza|reballing)/i);
+    const cliente=extraerCliente(tx);
+    const precio=extraerPrecio(tx);
+    const tel=extraerTelefono(tx);
+    return{tipo:'servicio',datos:{cliente,equipo:equipo?equipo[0].trim():'Equipo',tipo:tipo?capitalizar(tipo[0]):'Revisión',valor:precio||50000,tel,notas:tx},msg:'🔧 '+cliente+' — '+(equipo?equipo[0].trim():'Equipo')};
+  }
+
+  // 5. SERVICIO LISTO
+  if(/listo|qued[oó] list|ya est[aá]|terminado/i.test(tx)){
+    const m=tx.match(/(?:de|el|del)\s+([a-záéíóúñ]+)/i)||tx.match(/listo\s+([a-záéíóúñ]+)/i);
+    const nombre=m?m[1]:'';
+    const srv=D.servicios.find(s=>s.estado==='Pendiente'&&(s.cliente||'').toLowerCase().includes(nombre.toLowerCase()));
+    if(srv){srv.estado='Listo';lSave('servicios');if(ON)await api('update','servicios',srv.id,{estado:'Listo'});return{tipo:'servicio_listo',msg:'✅ '+srv.cliente+' — LISTO'};}
+    return{tipo:null,msg:'⚠️ No encontré servicio de "'+nombre+'"'};
+  }
+
+  // 6. PAGO TRABAJADOR — "-60 David"
+  if(/^-\s*\d+\s+[a-z]/i.test(tx)){
+    const m=tx.match(/^-\s*(\d+)\s+(.+)/i);
+    if(m){const monto=parseInt(m[1])*1000;const trabajador=capitalizar(m[2].trim());
+      const p={id:uid(),fecha:hoy(),trabId:'',trabajador,monto,concepto:'Por voz'};
+      D.pagos.unshift(p);lSave('pagos');if(ON)await api('insert','pagos',p);
+      return{tipo:'pago_trabajador',msg:'💵 '+cop(monto)+' a '+trabajador};}
+  }
+
+  // 7. ABONO FIADO
+  if(/abon[oó]|abono/i.test(tx)){
+    const m=tx.match(/([a-záéíóúñ]+)\s+abon[oó]\s+(\d+)/i)||tx.match(/abono\s+(\d+)\s+(?:de|a)\s+([a-záéíóúñ]+)/i);
+    if(m){const nombre=capitalizar(m[1]),monto=parseInt(m[2])*1000;
+      const f=D.fiados.find(x=>x.estado!=='Pagado'&&(x.clienteNombre||'').toLowerCase().includes(nombre.toLowerCase()));
+      if(f){f.abonado=(+f.abonado||0)+monto;f.saldo=(+f.valor||0)-f.abonado;if(f.saldo<=0)f.estado='Pagado';
+        lSave('fiados');if(ON)await api('update','fiados',f.id,{abonado:f.abonado,saldo:f.saldo,estado:f.estado});
+        return{tipo:'abono',msg:'💳 '+nombre+' abonó '+cop(monto)+' — Saldo: '+cop(f.saldo)};}
+      return{tipo:null,msg:'⚠️ No encontré fiado de "'+nombre+'"'};}
+  }
+
+  // 8. TAREA
+  if(/record[aá]|agenda|tarea|recordatorio|apunta|no olvides|tengo que/i.test(tx)){
+    const titulo=tx.replace(/record[aá]rme|recordar|tarea|agenda|recordatorio|apunta|no olvides|tengo que/gi,'').replace(/mañana|hoy|después/gi,'').trim();
+    const fecha=/ma[ñn]ana/i.test(tx)?man():hoy();
+    return{tipo:'tarea',datos:{titulo:capitalizar(titulo),fecha},msg:'📅 '+capitalizar(titulo)+' — '+fecha};
+  }
+
+  // 9. REPORTE
+  if(/cu[aá]nto vend[ií]|reporte|ventas de hoy/i.test(tx)){
+    const h=hoy(),vH=D.ventas.filter(v=>v.fecha===h);
+    const tV=vH.reduce((a,v)=>a+(+v.precio||0),0),tG=vH.reduce((a,v)=>a+(+v.ganancia||0),0);
+    return{tipo:'reporte',msg:'📊 Hoy: '+vH.length+' ventas — '+cop(tV)+' — Ganancia: '+cop(tG)};
+  }
+
+  // 10. STOCK
+  if(/qu[eé] tengo|stock|hay de|disponible/i.test(tx)){
+    const plat=tx.match(/(playstation|ps5|ps4|xbox|switch|nintendo)/i);
+    if(plat){const items=D.inventario.filter(p=>(+p.stock||0)>0&&(p.plataforma||p.nombre||'').toLowerCase().includes(plat[1].toLowerCase()));
+      return{tipo:'consulta',msg:'📦 '+items.map(p=>p.nombre+': '+p.stock).join(', ')||'Sin stock'};}
+  }
+
+  return{tipo:null,msg:'🤔 No entendí. Prueba: "Vendí play 5" o "Compré xbox 1.5"'};
+}
+
+// ============================================================
+// FUNCIÓN proc() — CONECTA VOZ CON DASHBOARD
+// ============================================================
+async function proc(tx) {
+  $('mb').className='pro';$('vt').textContent='⚙️ "'+tx+'"';
+  const resultado = await procVozV4(tx);
+  
+  if(resultado.tipo==='venta'){
+    const v={id:uid(),fecha:hoy(),producto:resultado.datos.producto,plataforma:resultado.datos.plataforma,costo:resultado.datos.costo,precio:resultado.datos.precio,ganancia:resultado.datos.ganancia,pago:resultado.datos.pago,canal:'Tienda Física',vendedor:'Dueño',clienteNombre:resultado.datos.cliente};
+    const prod=D.inventario.find(p=>p.nombre===resultado.datos.producto);
+    if(prod){prod.stock=Math.max(0,(+prod.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',prod.id,{stock:prod.stock});}
+    D.ventas.unshift(v);lSave('ventas');if(ON)await api('insert','ventas',v);
+  }else if(resultado.tipo==='compra'){
+    const co={id:uid(),fecha:hoy(),producto:resultado.datos.producto,plataforma:resultado.datos.plataforma,cantidad:resultado.datos.cantidad,precio:resultado.datos.precio,total:resultado.datos.total,estado:'Pagado'};
+    const inv={id:uid(),nombre:resultado.datos.producto,plataforma:resultado.datos.plataforma,condicion:'Usado - Bueno',costo:resultado.datos.precio,precio:Math.round(resultado.datos.precio*1.35),stock:resultado.datos.cantidad||1,fecha:hoy()};
+    D.compras.unshift(co);D.inventario.push(inv);lSave('compras');lSave('inventario');
+    if(ON){await api('insert','compras',co);await api('insert','inventario',inv);}
+  }else if(resultado.tipo==='cambio'){
+    const ps=D.inventario.find(p=>p.nombre.toLowerCase().includes((resultado.datos.sale||'').toLowerCase()));
+    if(ps){ps.stock=Math.max(0,(+ps.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',ps.id,{stock:ps.stock});}
+    const nv={id:uid(),nombre:resultado.datos.entra,plataforma:resultado.datos.plataforma||'PlayStation',condicion:'Usado',costo:0,precio:0,stock:1,fecha:hoy()};
+    const cm={id:uid(),fecha:hoy(),entra:resultado.datos.entra,sale:resultado.datos.sale,encime:resultado.datos.encime,ganancia:resultado.datos.ganancia};
+    D.cambios.unshift(cm);D.inventario.push(nv);lSave('cambios');lSave('inventario');
+    if(ON){await api('insert','cambios',cm);await api('insert','inventario',nv);}
+  }else if(resultado.tipo==='servicio'){
+    const s={id:uid(),fecha:hoy(),cliente:resultado.datos.cliente,tel:resultado.datos.tel||'',equipo:resultado.datos.equipo,tipo:resultado.datos.tipo,valor:resultado.datos.valor,abono:0,saldo:resultado.datos.valor,notas:resultado.datos.notas||'',estado:'Pendiente'};
+    D.servicios.unshift(s);lSave('servicios');if(ON)await api('insert','servicios',s);
+  }else if(resultado.tipo==='tarea'){
+    const t={id:uid(),titulo:resultado.datos.titulo,fecha:resultado.datos.fecha||hoy(),hora:'',prioridad:'normal',notas:'Por voz',completada:false,creada:hoy()};
+    D.tareas.unshift(t);lSave('tareas');if(ON)await api('insert','tareas',t);
+  }
+  
+  $('vr').textContent=resultado.msg;
+  $('mb').className='';
+  $('vt').textContent='🎤 Toca el micrófono y habla...';
+  addHist(tx,resultado.msg,resultado.tipo);
+  rAll();
+  toast(resultado.msg,4000);
+}
+
   if (/nequi|nequi\s+pay/i.test(tx)) return 'Nequi';
   if (/bancolombia|banco\s+colombiano|bancocol/i.test(tx)) return 'Bancolombia';
   if (/daviplata|davivienda|davi/i.test(tx)) return 'Daviplata';
@@ -1329,68 +1431,7 @@ function cop(n) {
 // ============================================================
 // EXPORTAR PARA USAR EN EL DASHBOARD
 // ============================================================
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { procVozV4, PRODUCTOS_CLAVE };
-}
-
-// ============================================================
-// FUNCIÓN PRINCIPAL - VOZ V4 PRO
-// ============================================================
-
-async function proc(tx) {
-  const resultado = await procVozV4(tx);
-  
-  if (resultado.tipo === 'venta') {
-    await addVta2(resultado.datos);
-  } else if (resultado.tipo === 'compra') {
-    await addCom2(resultado.datos);
-  } else if (resultado.tipo === 'cambio') {
-    await addCam2(resultado.datos);
-  } else if (resultado.tipo === 'servicio') {
-    await addSrv2(resultado.datos);
-  } else if (resultado.tipo === 'tarea') {
-    await addTar2(resultado.datos);
-  }
-  
-  $('vr').textContent = resultado.msg;
-  $('mb').className = '';
-  $('vt').textContent = '🎤 Toca el micrófono y habla...';
-  rAll();
-  toast(resultado.msg, 4000);
-}
-
-async function addVta2(datos) {
-  const v = {id:uid(),fecha:hoy(),prodId:datos.prodId||'',producto:datos.producto||'Producto',plataforma:datos.plataforma||'Otro',costo:datos.costo||0,precio:datos.precio||0,ganancia:datos.ganancia||0,pago:datos.pago||'Efectivo',canal:datos.canal||'Tienda Física',vendedor:datos.vendedor||'Dueño',clienteId:datos.clienteId||'',clienteNombre:datos.clienteNombre||'Cliente general'};
-  const prod=D.inventario.find(p=>p.nombre===datos.producto);
-  if(prod){prod.stock=Math.max(0,(+prod.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',prod.id,{stock:prod.stock});}
-  D.ventas.unshift(v);lSave('ventas');if(ON)await api('insert','ventas',v);uV=v.id;
-}
-
-async function addCom2(datos) {
-  const co={id:uid(),fecha:hoy(),proveedorId:datos.proveedorId||'',proveedor:datos.proveedor||'Particular',producto:datos.producto||'Producto',plataforma:datos.plataforma||'Otro',cantidad:datos.cantidad||1,precio:datos.precio||0,total:datos.total||0,estado:'Pagado'};
-  const inv={id:uid(),nombre:datos.producto,plataforma:datos.plataforma,condicion:'Usado - Bueno',costo:datos.precio,precio:Math.round(datos.precio*1.35),stock:datos.cantidad||1,serie:'N/A',origen:'Compra directa',fecha:hoy()};
-  D.compras.unshift(co);D.inventario.push(inv);lSave('compras');lSave('inventario');if(ON){await api('insert','compras',co);await api('insert','inventario',inv);}
-}
-
-async function addCam2(datos) {
-  const nv={id:uid(),nombre:datos.entra,plataforma:datos.plataforma||'PlayStation',condicion:'Usado - Bueno',costo:datos.valorEntra||0,precio:Math.round((datos.valorEntra||0)*1.3),stock:1,serie:'N/A',origen:'Cambio/Trueque',fecha:hoy()};
-  const ps=D.inventario.find(p=>p.nombre===datos.sale);
-  if(ps){ps.stock=Math.max(0,(+ps.stock||0)-1);lSave('inventario');if(ON)await api('update','inventario',ps.id,{stock:ps.stock});}
-  D.inventario.push(nv);
-  const cm={id:uid(),fecha:hoy(),clienteId:datos.clienteId||'',clienteNombre:datos.clienteNombre||'Cliente general',entra:datos.entra,valorEntra:datos.valorEntra||0,sale:datos.sale,costeSale:datos.costeSale||0,encime:datos.encime||0,ganancia:datos.ganancia||0,notas:'Por voz'};
-  D.cambios.unshift(cm);lSave('cambios');lSave('inventario');if(ON){await api('insert','inventario',nv);if(ps)await api('update','inventario',ps.id,{stock:ps.stock});await api('insert','cambios',cm);}
-}
-
-async function addSrv2(datos) {
-  const s={id:uid(),fecha:hoy(),cliente:datos.cliente||'Cliente',tel:datos.tel||'',equipo:datos.equipo||'Equipo',tipo:datos.tipo||'Revisión',valor:datos.valor||50000,abono:datos.abono||0,saldo:(datos.valor||50000)-(datos.abono||0),notas:datos.notas||'',estado:'Pendiente'};
-  D.servicios.unshift(s);lSave('servicios');if(ON)await api('insert','servicios',s);
-}
-
-async function addTar2(datos) {
-  const t={id:uid(),titulo:datos.titulo||'Tarea',fecha:hoy(),hora:'',prioridad:'normal',notas:datos.notas||'Por voz',completada:false,creada:hoy()};
-  D.tareas.unshift(t);lSave('tareas');if(ON)await api('insert','tareas',t);
-}
-
+// (module.exports removed - browser only)
 function norm(t){t=t.replace(/(\d+)\s*['`']\s*(\d+)/g,(_,m,k)=>+m*1e6+(+k)*1e3);t=t.replace(/(\d+)\s*millones?/g,(_,n)=>+n*1e6);t=t.replace(/(\d+)\s*mil/g,(_,n)=>+n*1e3);t=t.replace(/(\d+)\s*k\b/g,(_,n)=>+n*1e3);const m={'un millon':1e6,'medio millon':5e5,'quinientos mil':5e5,'cuatrocientos mil':4e5,'trescientos mil':3e5,'doscientos mil':2e5,'ciento cincuenta mil':15e4,'cien mil':1e5,'ochenta mil':8e4,'setenta mil':7e4,'sesenta mil':6e4,'cincuenta mil':5e4,'cuarenta mil':4e4,'treinta mil':3e4,'veinte mil':2e4,'quince mil':15e3,'diez mil':1e4,'cinco mil':5e3};for(const[k,v] of Object.entries(m))t=t.replace(new RegExp(k,'g'),String(v));return t;}
 function extP(t){const n=[];(t.match(/\d[\d.,]*/g)||[]).forEach(m=>{const v=parseInt(m.replace(/[.,]/g,''));if(v>=5000)n.push(v);});return n.length?Math.max(...n):null;}
 function extCant(t){const m=t.match(/^(\d+)\s+[a-z]/)||t.match(/compré?\s+(\d+)/i);return m?parseInt(m[1]):1;}
